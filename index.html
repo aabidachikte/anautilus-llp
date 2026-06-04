@@ -30,7 +30,7 @@
             scroll-behavior: smooth;
         }
 
-        /* Modernized Navigation Bar */
+        /* Navigation Bar */
         header {
             background-color: rgba(11, 37, 69, 0.95);
             backdrop-filter: blur(10px);
@@ -108,25 +108,25 @@
             width: 100%;
         }
 
-        /* Hero Wrapper to Layer Text Over Big Background Waves */
+        /* Hero Wrapper */
         .hero-wrapper {
             position: relative;
             width: 100%;
-            min-height: 85vh;
+            min-height: 95vh;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            background-color: var(--deep-ocean);
+            background: linear-gradient(to bottom, var(--deep-ocean) 60%, var(--clean-marine) 100%);
         }
 
         .hero-section {
             position: relative;
-            z-index: 10; /* Sits sharply on top of the waves */
+            z-index: 10;
             text-align: center;
             max-width: 950px;
             margin: 0 auto;
-            padding: 180px 2rem 80px 2rem;
+            padding: 180px 2rem 120px 2rem;
         }
 
         .hero-section h1 {
@@ -135,7 +135,7 @@
             margin-bottom: 1.5rem;
             font-weight: 800;
             line-height: 1.2;
-            text-shadow: 0 4px 15px rgba(11, 37, 69, 0.8);
+            text-shadow: 0 4px 15px rgba(11, 37, 69, 0.9);
         }
 
         .hero-section h1 span {
@@ -160,13 +160,14 @@
             border-left: 4px solid var(--river-aqua);
             padding-left: 1.5rem;
             text-shadow: 0 2px 10px rgba(11, 37, 69, 0.9);
-            background: rgba(11, 37, 69, 0.4);
+            background: rgba(11, 37, 69, 0.5);
             padding-top: 0.5rem;
             padding-bottom: 0.5rem;
             border-radius: 0 8px 8px 0;
+            backdrop-filter: blur(2px);
         }
 
-        /* --- BIG ANIMATED WATER WAVE BACKGROUND --- */
+        /* --- NEW REALISTIC FLUID WAVES WITH DEBRIS SYSTEM --- */
         .wave-background {
             position: absolute;
             top: 0;
@@ -179,43 +180,116 @@
 
         .giant-wave {
             position: absolute;
-            bottom: -10%;
+            bottom: 0;
             left: 0;
             width: 200%;
-            height: 110%; /* Stretches high up into the hero container */
+            height: 100%;
             background-repeat: repeat-x;
-            transform: translate3d(0, 0, 0);
+            background-position: 0 bottom;
+            transform-origin: center bottom;
         }
 
-        /* Deep Swishing Wave 1 (Dark Blue Base) */
+        /* Deep, realistic gradient SVG paths for wave textures */
         .giant-wave.wave-alpha {
-            opacity: 0.25;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" preserveAspectRatio="none"><path d="M0,250 C300,450 600,50 900,350 C1050,450 1150,300 1200,250 L1200,600 L0,600 Z" fill="%23134074"/></svg>');
-            animation: swishMotion 20s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+            opacity: 0.3;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" preserveAspectRatio="none"><path d="M0,380 Q150,320 300,380 T600,380 T900,380 T1200,380 L1200,600 L0,600 Z" fill="%23134074"/></svg>');
+            animation: realisticFluid 16s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
         }
 
-        /* Intersecting Swishing Wave 2 (Bright Aqua Swish from image_9.png) */
         .giant-wave.wave-beta {
-            opacity: 0.2;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" preserveAspectRatio="none"><path d="M0,350 C250,100 550,500 850,200 C1000,100 1150,250 1200,300 L1200,600 L0,600 Z" fill="%2300B4D8"/></svg>');
-            animation: swishMotion 14s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite reverse;
+            opacity: 0.25;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" preserveAspectRatio="none"><path d="M0,420 Q200,480 400,420 T800,420 T1200,420 L1200,600 L0,600 Z" fill="%2300B4D8"/></svg>');
+            animation: realisticFluid 12s cubic-bezier(0.35, 0.15, 0.65, 0.85) infinite reverse;
         }
 
-        /* Front Floating Accent Wave 3 */
         .giant-wave.wave-gamma {
             opacity: 0.15;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" preserveAspectRatio="none"><path d="M0,200 C400,100 700,400 1200,150 L1200,600 L0,600 Z" fill="%2390E0EF"/></svg>');
-            animation: swishMotion 26s linear infinite;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" preserveAspectRatio="none"><path d="M0,400 Q250,330 500,400 T1000,400 T1200,400 L1200,600 L0,600 Z" fill="%2390E0EF"/></svg>');
+            animation: realisticFluid 22s linear infinite;
         }
 
-        /* Slow, smooth horizontal traveling animation */
-        @keyframes swishMotion {
-            0% { transform: translateX(0) scaleY(1); }
-            50% { transform: translateX(-25%) scaleY(1.08); }
-            100% { transform: translateX(-50%) scaleY(1); }
+        @keyframes realisticFluid {
+            0% { transform: translateX(0) scaleY(1) skewX(0deg); }
+            50% { transform: translateX(-25%) scaleY(1.15) skewX(2deg); }
+            100% { transform: translateX(-50%) scaleY(1) skewX(0deg); }
         }
 
-        /* River Stream Dashboard Grid Layout */
+        /* Debris Container Layer */
+        .debris-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 5;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        /* Individual falling/floating debris styling */
+        .trash-item {
+            position: absolute;
+            opacity: 0;
+            fill: rgba(144, 224, 239, 0.6);
+            filter: drop-shadow(0 4px 6px rgba(11, 37, 69, 0.3));
+        }
+
+        /* Sequential individual droppers triggered via custom animations */
+        .trash-item:nth-child(1) {
+            width: 25px; height: 40px;
+            left: 15%; top: 45%;
+            animation: debrisCycle 12s infinite ease-in-out;
+            animation-delay: 0s;
+        }
+        .trash-item:nth-child(2) {
+            width: 35px; height: 35px;
+            left: 45%; top: 48%;
+            animation: debrisCycle 14s infinite ease-in-out;
+            animation-delay: 3s;
+        }
+        .trash-item:nth-child(3) {
+            width: 30px; height: 45px;
+            left: 75%; top: 42%;
+            animation: debrisCycle 11s infinite ease-in-out;
+            animation-delay: 6s;
+        }
+        .trash-item:nth-child(4) {
+            width: 40px; height: 30px;
+            left: 30%; top: 52%;
+            animation: debrisCycle 16s infinite ease-in-out;
+            animation-delay: 9s;
+        }
+
+        /* Dropping down one by one, sinking smoothly out of sight */
+        @keyframes debrisCycle {
+            0% {
+                opacity: 0;
+                transform: translate(0, -30px) rotate(0deg);
+            }
+            15% {
+                opacity: 0.75;
+                transform: translate(15px, 0px) rotate(45deg);
+            }
+            40% {
+                opacity: 0.8;
+                transform: translate(30px, 20px) rotate(90deg);
+            }
+            /* The Drop Down Sequence */
+            60% {
+                opacity: 0.5;
+                transform: translate(35px, 120px) rotate(180deg);
+            }
+            85% {
+                opacity: 0.1;
+                transform: translate(40px, 240px) rotate(270deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(40px, 300px) rotate(360deg);
+            }
+        }
+
+        /* Dashboard Container Layout */
         .dashboard-container {
             max-width: 1400px;
             margin: 0 auto;
@@ -317,7 +391,6 @@
 </head>
 <body>
 
-    <!-- 5-Page Navigation Bar -->
     <header>
         <div class="nav-container">
             <a href="#" class="logo-area">
@@ -336,7 +409,6 @@
         </div>
     </header>
 
-    <!-- Hero Section wrapped with Big Background Waves -->
     <div class="hero-wrapper">
         <section class="hero-section">
             <h1>Restoring the Golden Ratio of <span>Our Waters</span></h1>
@@ -350,91 +422,15 @@
             </p>
         </section>
 
-        <!-- Big Background Moving Waves -->
-        <div class="wave-background">
-            <div class="giant-wave wave-alpha"></div>
-            <div class="giant-wave wave-beta"></div>
-            <div class="giant-wave wave-gamma"></div>
-        </div>
-    </div>
-
-    <!-- Main Content Dashboard -->
-    <main class="dashboard-container">
-        <div class="grid-layout">
-            
-            <!-- Card 1: Dahisar River -->
-            <div class="river-card scroll-reveal">
-                <div class="image-wrapper">
-                    <img src="dahisar.jpg" alt="Dahisar River">
-                </div>
-                <div class="card-content">
-                    <h2 class="river-title">Dahisar River</h2>
-                    <div class="river-location">Sanjay Gandhi National Park, Mumbai</div>
-                    <p class="nautilus-concept">
-                        Tracing its origin through pure forest pathways, the Dahisar stream requires spiraled, nautilus-inspired filtration frameworks to intercept urban blockages before they taint the source.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Card 2: Mithi River -->
-            <div class="river-card scroll-reveal">
-                <div class="image-wrapper">
-                    <img src="mithi.jpg" alt="Mithi River">
-                </div>
-                <div class="card-content">
-                    <h2 class="river-title">Mithi River</h2>
-                    <div class="river-location">Vihar Lake to Mahim Creek, Mumbai</div>
-                    <p class="nautilus-concept">
-                        The heavy structural burden of the Mithi demands resilient, deep-sea engineering tactics. Anautilus aims to clear complex channels, restoring the natural, organic pressure chambers of the riverbed.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Card 3: Mutha River -->
-            <div class="river-card scroll-reveal">
-                <div class="image-wrapper">
-                    <img src="mutha.jpg" alt="Mutha River">
-                </div>
-                <div class="card-content">
-                    <h2 class="river-title">Mutha River</h2>
-                    <div class="river-location">Western Ghats to Pune City</div>
-                    <p class="nautilus-concept">
-                        Sustaining vast agricultural and urban corridors, the Mutha is an essential chamber of life. Our objective is to guide its stream cleanly, preventing debris from choking its expansion.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Card 4: Mula River -->
-            <div class="river-card scroll-reveal">
-                <div class="image-wrapper">
-                    <img src="mula.jpg" alt="Mula River">
-                </div>
-                <div class="card-content">
-                    <h2 class="river-title">Mula River</h2>
-                    <div class="river-location">Mulshi Dam to Pune Confluence</div>
-                    <p class="nautilus-concept">
-                        Where the Mula surges, balanced currents must be maintained. By applying the fluid dynamics of ocean-dwelling sentinels, Anautilus optimizes debris extraction without changing natural flow patterns.
-                    </p>
-                </div>
-            </div>
-
-        </div>
-    </main>
-
-    <!-- Scroll Reveal JavaScript Functionality -->
-    <script>
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, {
-            threshold: 0.1
-        });
-
-        document.querySelectorAll('.scroll-reveal').forEach((el) => observer.observe(el));
-    </script>
-
-</body>
-</html>
+        <div class="debris-layer">
+            <svg class="trash-item" viewBox="0 0 24 24">
+                <path d="M19 4h-3c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2H5c-1.1 0-2 .9-2 2v2h18V6c0-1.1-.9-2-2-2zm-2 6H7v10c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2V10zm-2 10H9v-8h6v8z"/>
+            </svg>
+            <svg class="trash-item" viewBox="0 0 24 24">
+                <path d="M4 21h16V7H4v14zm4-11h8v2H8v-2zm0 4h8v2H8v-2zm0 4h5v2H8v-2zM20 3H4c-1.1 0-2 .9-2 2v2h20V5c0-1.1-.9-2-2-2z"/>
+            </svg>
+            <svg class="trash-item" viewBox="0 0 24 24">
+                <path d="M2 22h20V2H2v20zm4-16h12v3H6V6zm0 5h12v8H6v-8z"/>
+            </svg>
+            <svg class="trash-item" viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v2.93zm5.88-5.35c-.13-.34-.45-.58-.83-.58h-1.05v-3c0-.55-.45-1-1-1h-6v-2h2c.55 0 1-.45 1-1V6h1.6c.4 0 .76-.24.93-.6
