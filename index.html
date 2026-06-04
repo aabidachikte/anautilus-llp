@@ -42,7 +42,7 @@
         }
 
         .nav-container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 1rem 2rem;
             display: flex;
@@ -93,7 +93,6 @@
             color: var(--river-aqua);
         }
 
-        /* Underline animation on hover */
         nav ul li a::after {
             content: '';
             position: absolute;
@@ -202,17 +201,20 @@
             transform: translateY(0);
         }
 
-        /* River Stream Dashboard Grid */
+        /* River Stream Dashboard Grid Layout */
         .dashboard-container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 4rem 2rem;
+            overflow-x: auto; /* Ensures mobile users can swipe horizontally */
         }
 
+        /* Enforce exactly 4 items side-by-side */
         .grid-layout {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 2.5rem;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            min-width: 1000px; /* Prevents cards from getting squished too tiny */
         }
 
         /* Premium Floating Cards */
@@ -235,7 +237,7 @@
 
         .image-wrapper {
             position: relative;
-            height: 220px;
+            height: 200px;
             width: 100%;
             overflow: hidden;
         }
@@ -252,21 +254,21 @@
         }
 
         .card-content {
-            padding: 1.75rem;
+            padding: 1.5rem;
             display: flex;
             flex-direction: column;
             flex-grow: 1;
         }
 
         .river-title {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             color: var(--pure-white);
             margin-bottom: 0.5rem;
             font-weight: 700;
         }
 
         .river-location {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 1.5px;
             color: var(--river-aqua);
@@ -275,7 +277,7 @@
         }
 
         .nautilus-concept {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             line-height: 1.6;
             color: var(--pristine-water);
             opacity: 0.9;
@@ -310,7 +312,7 @@
         </div>
     </header>
 
-    <!-- Hero Section featuring the new Brand Aim -->
+    <!-- Hero Section featuring the Brand Aim -->
     <section class="hero-section">
         <h1>Restoring the Golden Ratio of <span>Our Waters</span></h1>
         
