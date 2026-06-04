@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anautilus LLP - Rivers of Maharashtra</title>
+    <title>Anautilus LLP – Liberating Our Waters</title>
     <style>
         /* Color Palette Assignments */
         :root {
@@ -12,6 +12,7 @@
             --river-aqua: #00B4D8;
             --seafoam-teal: #90E0EF;
             --pristine-water: #F4F9FC;
+            --pure-white: #FFFFFF;
         }
 
         * {
@@ -22,569 +23,390 @@
         }
 
         body {
-            background-color: var(--pristine-water);
-            color: var(--deep-ocean);
+            background-color: var(--deep-ocean);
+            color: var(--pristine-water);
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
-        /* Navbar Layout */
+        /* Modernized Navigation Bar */
         header {
-            background-color: #ffffff;
-            border-bottom: 2px solid var(--seafoam-teal);
+            background-color: rgba(11, 37, 69, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(144, 224, 239, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
             padding: 1rem 2rem;
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            align-items: center;
         }
 
-        .logo-container {
+        .logo-area {
             display: flex;
             align-items: center;
             gap: 12px;
+            text-decoration: none;
         }
 
-        .logo-container img {
-            height: 40px;
+        .logo-area img {
+            height: 45px;
             width: auto;
-            object-fit: contain;
+            border-radius: 4px;
         }
 
-        .logo-container h1 {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--deep-ocean);
-            letter-spacing: 0.5px;
+        .brand-name {
+            color: var(--pure-white);
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 1px;
         }
 
-        /* Dashboard Intro */
-        .intro-section {
-            text-align: center;
-            padding: 2.5rem 1.5rem 1rem 1.5rem;
+        .brand-name span {
+            color: var(--river-aqua);
         }
 
-        .intro-section h2 {
-            font-size: 2.2rem;
-            color: var(--deep-ocean);
-            margin-bottom: 0.5rem;
-        }
-
-        .intro-section p {
-            color: var(--clean-marine);
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* Card Container (4 Columns as per Sketch) */
-        .cards-container {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-            padding: 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
-            width: 100%;
-            flex-grow: 1;
-        }
-
-        /* Individual River Card Styling */
-        .river-card {
-            background-color: #ffffff;
-            border: 1px solid var(--seafoam-teal);
-            border-radius: 12px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease;
-            position: relative;
+        nav ul {
             display: flex;
-            flex-direction: column;
-            box-shadow: 0 4px 6px rgba(11, 37, 69, 0.05);
+            list-style: none;
+            gap: 2rem;
         }
 
-        .river-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 24px rgba(19, 64, 116, 0.15);
-            border-color: var(--river-aqua);
-        }
-
-        .card-image-wrapper {
-            height: 200px;
-            position: relative;
-            background-color: var(--deep-ocean);
-        }
-
-        .card-image-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.85;
-            transition: opacity 0.3s ease;
-        }
-
-        .river-card:hover .card-image-wrapper img {
-            opacity: 1;
-        }
-
-        .card-badge {
-            position: absolute;
-            top: 12px;
-            left: 12px;
-            background-color: var(--deep-ocean);
-            color: #ffffff;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .card-content {
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-
-        .card-content h3 {
-            font-size: 1.3rem;
-            color: var(--deep-ocean);
-            margin-bottom: 0.5rem;
-        }
-
-        .card-content .location-line {
-            font-size: 0.9rem;
-            color: var(--clean-marine);
-            margin-bottom: 1rem;
-            font-style: italic;
-        }
-
-        .explore-btn {
-            margin-top: auto;
-            background-color: var(--river-aqua);
-            color: #ffffff;
-            border: none;
-            padding: 10px 16px;
-            border-radius: 6px;
-            font-weight: 600;
-            text-align: center;
+        nav ul li a {
+            color: var(--pristine-water);
+            text-decoration: none;
             font-size: 0.95rem;
-            transition: background-color 0.2s ease;
-        }
-
-        .river-card:hover .explore-btn {
-            background-color: var(--clean-marine);
-        }
-
-        /* Immersive Expanded Overlay */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(11, 37, 69, 0.8);
-            backdrop-filter: blur(8px);
-            z-index: 1000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.4s ease;
-            padding: 2rem;
-        }
-
-        .modal-overlay.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .modal-box {
-            background-color: #ffffff;
-            width: 100%;
-            max-width: 850px;
-            max-height: 85vh;
-            border-radius: 16px;
-            overflow-y: auto;
-            position: relative;
-            transform: scale(0.9) translateY(20px);
-            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            box-shadow: 0 24px 48px rgba(0, 0, 0, 0.3);
-        }
-
-        .modal-overlay.active .modal-box {
-            transform: scale(1) translateY(0);
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 16px;
-            right: 16px;
-            background-color: #ffffff;
-            border: 2px solid var(--seafoam-teal);
-            color: var(--deep-ocean);
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            font-size: 1.2rem;
-            font-weight: bold;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10;
-            transition: all 0.2s ease;
-        }
-
-        .modal-close:hover {
-            background-color: var(--deep-ocean);
-            color: #ffffff;
-            border-color: var(--deep-ocean);
-        }
-
-        .modal-hero {
-            height: 300px;
-            position: relative;
-        }
-
-        .modal-hero img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .modal-hero-title {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(11, 37, 69, 0.95));
-            padding: 2rem;
-            color: #ffffff;
-        }
-
-        .modal-hero-title h2 {
-            font-size: 2.2rem;
-            margin-bottom: 0.2rem;
-        }
-
-        .modal-hero-title p {
-            color: var(--seafoam-teal);
             font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
         }
 
-        .modal-body {
-            padding: 2rem;
+        nav ul li a:hover {
+            color: var(--river-aqua);
         }
 
-        .info-block {
+        /* Underline animation on hover */
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--river-aqua);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section with Brand Aim */
+        .hero-section {
+            padding-top: 160px;
+            padding-bottom: 60px;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            color: var(--pure-white);
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .hero-section h1 span {
+            color: var(--river-aqua);
+        }
+
+        .brand-aim {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            color: var(--seafoam-teal);
             margin-bottom: 2rem;
         }
 
-        .info-block h4 {
+        .brand-creative {
             font-size: 1.1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--clean-marine);
-            border-bottom: 2px solid var(--seafoam-teal);
-            padding-bottom: 0.4rem;
-            margin-bottom: 0.8rem;
-        }
-
-        .info-block p {
-            font-size: 1.05rem;
-            line-height: 1.7;
-            color: #333333;
-            margin-bottom: 1rem;
-        }
-
-        .info-block ul {
-            list-style-type: none;
-        }
-
-        .info-block li {
-            position: relative;
-            padding-left: 1.5rem;
-            margin-bottom: 0.8rem;
-            line-height: 1.5;
-            font-size: 1.05rem;
-            color: #333333;
-        }
-
-        .info-block li::before {
-            content: "•";
-            color: var(--river-aqua);
-            font-size: 1.5rem;
-            position: absolute;
-            left: 0;
-            top: -4px;
-        }
-
-        .citation-box {
-            background-color: var(--pristine-water);
-            border-left: 4px solid var(--clean-marine);
-            padding: 1rem;
-            font-size: 0.9rem;
-            color: var(--clean-marine);
-            border-radius: 0 8px 8px 0;
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--deep-ocean);
+            font-style: italic;
             color: var(--pristine-water);
-            text-align: center;
-            padding: 1.5rem;
-            margin-top: auto;
-            font-size: 0.9rem;
-            border-top: 3px solid var(--river-aqua);
+            opacity: 0.9;
+            max-width: 750px;
+            margin: 0 auto;
+            border-left: 3px solid var(--river-aqua);
+            padding-left: 1.5rem;
         }
 
-        /* Responsive Breakpoints */
-        @media (max-width: 1024px) {
-            .cards-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
+        /* --- WATER WAVE ANIMATION SECTION --- */
+        .wave-container {
+            position: relative;
+            width: 100%;
+            height: 120px;
+            background: transparent;
+            margin-top: 40px;
+            overflow: hidden;
         }
-        @media (max-width: 600px) {
-            .cards-container {
-                grid-template-columns: 1fr;
-                padding: 1rem;
-            }
-            header {
-                flex-direction: column;
-                gap: 10px;
-                text-align: center;
-            }
+
+        .wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 200%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,60 C150,100 350,20 500,60 C650,100 850,20 1000,60 C1150,100 1350,20 1500,60 L1500,120 L0,120 Z" fill="%23134074" opacity="0.4"/></svg>') repeat-x;
+            animation: waveMotion 12s linear infinite;
+            transform: translate3d(0, 0, 0);
+        }
+
+        .wave.wave2 {
+            bottom: 5px;
+            opacity: 0.6;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,50 C200,90 400,10 600,50 C800,90 1000,10 1200,50 L1200,120 L0,120 Z" fill="%2300B4D8" opacity="0.5"/></svg>') repeat-x;
+            animation: waveMotion 8s linear infinite reverse;
+        }
+
+        .wave.wave3 {
+            bottom: 10px;
+            opacity: 0.8;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,40 C150,70 300,10 450,40 C600,70 750,10 900,40 C1050,70 1200,10 1350,40 L1350,120 L0,120 Z" fill="%23134074" opacity="0.9"/></svg>') repeat-x;
+            animation: waveMotion 5s linear infinite;
+        }
+
+        @keyframes waveMotion {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Scroll Transition Class */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease-out;
+        }
+
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* River Stream Dashboard Grid */
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2.5rem;
+        }
+
+        /* Premium Floating Cards */
+        .river-card {
+            background-color: var(--clean-marine);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(144, 224, 239, 0.1);
+        }
+
+        .river-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 180, 216, 0.2);
+            border-color: var(--river-aqua);
+        }
+
+        .image-wrapper {
+            position: relative;
+            height: 220px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .river-card:hover .image-wrapper img {
+            transform: scale(1.1);
+        }
+
+        .card-content {
+            padding: 1.75rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .river-title {
+            font-size: 1.4rem;
+            color: var(--pure-white);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .river-location {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--river-aqua);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .nautilus-concept {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--pristine-water);
+            opacity: 0.9;
+        }
+
+        /* Responsive Design tweaks */
+        @media (max-width: 768px) {
+            nav ul { display: none; } 
+            .hero-section h1 { font-size: 2.2rem; }
+            .brand-aim { font-size: 1.1rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Top Navbar -->
+    <!-- 5-Page Navigation Bar -->
     <header>
-        <div class="logo-container">
-           <img src="logo.jpg" alt="Anautilus Logo" onerror="this.style.display='none'">
-            <h1>ANAUTILUS LLP</h1>
+        <div class="nav-container">
+            <a href="#" class="logo-area">
+                <img src="logo.jpg" alt="Anautilus Logo" onerror="this.style.display='none'">
+                <div class="brand-name">ANAUTILUS<span>LLP</span></div>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                    <li><a href="#library">Library</a></li>
+                    <li><a href="#disclaimer">Disclaimer</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
-    <!-- Intro Text -->
-    <section class="intro-section">
-        <h2>Maharashtra's Urban Rivers</h2>
-        <p>An investigation into the critical transformation, historic layout, and present-day ecological status of vital river networks.</p>
+    <!-- Hero Section featuring the new Brand Aim -->
+    <section class="hero-section">
+        <h1>Restoring the Golden Ratio of <span>Our Waters</span></h1>
+        
+        <p class="brand-aim">
+            We at <strong>Anautilus</strong> have a definitive aim to bring these local rivers, and many vibrant waterbodies like them, to be completely freed from debris, waste, and structural stagnation.
+        </p>
+        
+        <p class="brand-creative">
+            Just like the Nautilus shell perfectly filters, chambers, and navigates the deepest marine depths, Anautilus designs systemic pathways to let nature’s architecture flow clear, unburdened, and pristine once again.
+        </p>
     </section>
 
-    <!-- Main Card Stream Grid (4 Vertical Columns matching Sketch) -->
-    <main class="cards-container">
-        
-        <!-- Card 1: Dahisar -->
-        <div class="river-card" onclick="openRiver('dahisar')">
-            <div class="card-image-wrapper">
-                <span class="card-badge">Mumbai</span>
-                <img src="dahisar.jpg" alt="Dahisar River">
-            </div>
-            <div class="card-content">
-                <h3>Dahisar River</h3>
-                <p class="location-line">Sanjay Gandhi National Park to Manori Creek</p>
-                <button class="explore-btn">Explore Mission</button>
-            </div>
-        </div>
-
-        <!-- Card 2: Mithi -->
-        <div class="river-card" onclick="openRiver('mithi')">
-            <div class="card-image-wrapper">
-                <span class="card-badge">Mumbai</span>
-                <img src="mithi.jpg" alt="Mithi River">
-            </div>
-            <div class="card-content">
-                <h3>Mithi River</h3>
-                <p class="location-line">Vihar Lake to Mahim Creek</p>
-                <button class="explore-btn">Explore Mission</button>
-            </div>
-        </div>
-
-        <!-- Card 3: Mutha -->
-        <div class="river-card" onclick="openRiver('mutha')">
-            <div class="card-image-wrapper">
-                <span class="card-badge">Pune</span>
-                <img src="mutha.jpg" alt="Mutha River">
-            </div>
-            <div class="card-content">
-                <h3>Mutha River</h3>
-                <p class="location-line">Western Ghats through Pune City</p>
-                <button class="explore-btn">Explore Mission</button>
-            </div>
-        </div>
-
-        <!-- Card 4: Mula -->
-        <div class="river-card" onclick="openRiver('mula')">
-            <div class="card-image-wrapper">
-                <span class="card-badge">Pune</span>
-                <img src="mula.jpg" alt="Mula River">
-            </div>
-            <div class="card-content">
-                <h3>Mula River</h3>
-                <p class="location-line">Sahyadri Hills to Sangam Bridge</p>
-                <button class="explore-btn">Explore Mission</button>
-            </div>
-        </div>
-
-    </main>
-
-    <!-- Full Screen Immersive Expansion Overlay -->
-    <div class="modal-overlay" id="modalOverlay" onclick="closeRiver(event)">
-        <div class="modal-box" onclick="event.stopPropagation()">
-            <button class="modal-close" onclick="closeRiver(force=true)">&times;</button>
-            <div class="modal-hero">
-                <img id="modalImg" src="" alt="River Focus">
-                <div class="modal-hero-title">
-                    <h2 id="modalTitle">River Name</h2>
-                    <p id="modalLocLine">Location Context</p>
-                </div>
-            </div>
-            <div class="modal-body" id="modalBody">
-                <!-- Injected dynamically via JavaScript -->
-            </div>
-        </div>
+    <!-- Animated Water Wave Section -->
+    <div class="wave-container">
+        <div class="wave wave1"></div>
+        <div class="wave wave2"></div>
+        <div class="wave wave3"></div>
     </div>
 
-    <!-- Bottom Footer -->
-    <footer>
-        <p>&copy; 2026 ANAUTILUS LLP. All Rights Reserved.</p>
-    </footer>
+    <!-- Main Content Dashboard with Scroll Reveal -->
+    <main class="dashboard-container">
+        <div class="grid-layout">
+            
+            <!-- Card 1: Dahisar River -->
+            <div class="river-card scroll-reveal">
+                <div class="image-wrapper">
+                    <img src="dahisar.jpg" alt="Dahisar River">
+                </div>
+                <div class="card-content">
+                    <h2 class="river-title">Dahisar River</h2>
+                    <div class="river-location">Sanjay Gandhi National Park, Mumbai</div>
+                    <p class="nautilus-concept">
+                        Tracing its origin through pure forest pathways, the Dahisar stream requires spiraled, nautilus-inspired filtration frameworks to intercept urban blockages before they taint the source.
+                    </p>
+                </div>
+            </div>
 
-    <!-- Interactive Transition Logic -->
+            <!-- Card 2: Mithi River -->
+            <div class="river-card scroll-reveal">
+                <div class="image-wrapper">
+                    <img src="mithi.jpg" alt="Mithi River">
+                </div>
+                <div class="card-content">
+                    <h2 class="river-title">Mithi River</h2>
+                    <div class="river-location">Vihar Lake to Mahim Creek, Mumbai</div>
+                    <p class="nautilus-concept">
+                        The heavy structural burden of the Mithi demands resilient, deep-sea engineering tactics. Anautilus aims to clear complex channels, restoring the natural, organic pressure chambers of the riverbed.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card 3: Mutha River -->
+            <div class="river-card scroll-reveal">
+                <div class="image-wrapper">
+                    <img src="mutha.jpg" alt="Mutha River">
+                </div>
+                <div class="card-content">
+                    <h2 class="river-title">Mutha River</h2>
+                    <div class="river-location">Western Ghats to Pune City</div>
+                    <p class="nautilus-concept">
+                        Sustaining vast agricultural and urban corridors, the Mutha is an essential chamber of life. Our objective is to guide its stream cleanly, preventing debris from choking its expansion.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card 4: Mula River -->
+            <div class="river-card scroll-reveal">
+                <div class="image-wrapper">
+                    <img src="mula.jpg" alt="Mula River">
+                </div>
+                <div class="card-content">
+                    <h2 class="river-title">Mula River</h2>
+                    <div class="river-location">Mulshi Dam to Pune Confluence</div>
+                    <p class="nautilus-concept">
+                        Where the Mula surges, balanced currents must be maintained. By applying the fluid dynamics of ocean-dwelling sentinels, Anautilus optimizes debris extraction without changing natural flow patterns.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Scroll Reveal JavaScript Functionality -->
     <script>
-        const riverData = {
-            dahisar: {
-                title: "Dahisar River",
-                locationLine: "Mumbai — 12-kilometer-long stream",
-                img: "dahisar.jpg",
-                content: `
-                    <div class="info-block">
-                        <h4>Location</h4>
-                        <p>The Dahisar River is a 12-kilometer-long river flowing through the northern suburbs of Mumbai, Maharashtra. It originates in the pristine spills of the Tulsi Lake within the Sanjay Gandhi National Park (SGNP). From its forested source, it flows westwards through areas like Sri Krishna Nagar, Daulat Nagar, and Dahisar East and West, before emptying into the Arabian Sea via the Manori Creek.</p>
-                    </div>
-                    <div class="info-block">
-                        <h4>History</h4>
-                        <p>Decades ago, the Dahisar River was a vibrant, sparkling freshwater stream that acted as a lifeline for northern Mumbai. As it traveled out of the National Park, it created rich, swampy floodplains and dense mangrove ecosystems near the coast. These estuarine areas provided critical spawning grounds for local fish species and a stable livelihood for the indigenous Koli (fisherman) and Warli communities settled along its banks.</p>
-                        <p>The river's clean waters and adjacent wetlands were a major haven for urban wildlife. It regularly hosted local and migratory avifauna, including white-throated kingfishers, pond herons, egrets, and purple moorhens. During the monsoons, the river naturally expanded into its wide floodplains, safely absorbing heavy downpours and replenishing groundwater reserves across Dahisar.</p>
-                    </div>
-                    <div class="info-block">
-                        <h4>What Happened?</h4>
-                        <p>The landscape began to change rapidly from the late 1970s onward as Mumbai's population exploded northward. The quiet, green banks of Dahisar were overtaken by massive residential complexes, small-scale industrial units, and commercial marble workshops.</p>
-                        <p>To make room for this urban sprawl, the river’s natural banks were systematically encroached upon, and its floodplains were filled with construction debris. Large stretches of the river were channelized with concrete walls, destroying the natural soil-water interface.</p>
-                        <p>Today, the river faces severe ecological degradation:</p>
-                        <ul>
-                            <li><strong>Industrial and Domestic Waste:</strong> Unlicensed marble cutting units, small printing presses, and local cattle sheds (tabelas) release high volumes of untreated effluents, slurry, and organic waste directly into the channel.</li>
-                            <li><strong>Plastic and Sewage Influx:</strong> Untreated domestic sewage from informal settlements and housing societies mixes with tons of plastic waste, choking the river's flow and stripping it of dissolved oxygen.</li>
-                            <li><strong>Loss of Ecosystem Services:</strong> The loss of its natural wetlands and deep siltation has stripped the river of its ability to absorb excess monsoon runoff, transforming a historic water resource into a primary cause of localized flash floods in northern Mumbai.</li>
-                        </ul>
-                    </div>
-                `
-            },
-            mithi: {
-                title: "Mithi River",
-                locationLine: "Mumbai — 17.8-kilometer-long central artery",
-                img: "mithi.jpg",
-                content: `
-                    <div class="info-block">
-                        <h4>Location</h4>
-                        <p>The Mithi River is a river that flows through the heart of Mumbai, India. It is 17.8 kilometers long. The river gets its water from Vihar lake and Powai lake when they overflow. These overflows pass through areas like Sakinaka, Kurla, Kalina and Bandra. The river then empties into the sea through Mahim creek.</p>
-                    </div>
-                    <div class="info-block">
-                        <h4>History</h4>
-                        <p>The Mithi River used to play a role in Mumbai's natural storm-water drainage system. It helped prevent the low-lying city from flooding during heavy monsoon rains. The river's mouth was once home to a mangrove forest and many migratory birds, aquatic animals and local fishermen. The Mithi River and its surrounding area helped filter rainwater and kept the groundwater level stable.</p>
-                    </div>
-                    <div class="info-block">
-                        <h4>What Happened?</h4>
-                        <p>Mumbai's rapid expansion in the second half of the 20th century significantly changed the geography of the area. The growth of the Bandra-Kurla complex and Chhatrapati Shivaji Maharaj International Airport led to changes to the Mithi River, including extensive channelization. The Mithi River and its surroundings were altered to make way for the expanding city.</p>
-                        <p>Currently, the Mithi River has effectively become a drain. This river is polluted with an approximate amount of 80-100 million liters of wastewater that originates from thousands of unauthorized industrial and domestic setups, including cattle sheds, factories, and settlements located on its bank. Thousands of tons of single-use plastic bags and waste products are dumped into the river each day, causing a choking of the river. This choking effect of the plastic not only causes deposition of silt but also led to catastrophic floods in 2005.</p>
-                    </div>
-                `
-            },
-            mutha: {
-                title: "Mutha River",
-                locationLine: "Pune — 45-kilometer-long historical lifeline",
-                img: "mutha.jpg",
-                content: `
-                    <div class="info-block">
-                        <h4>Location</h4>
-                        <p>The Mutha River is a prominent river in Maharashtra, India, originating in the Western Ghats at Vegaon near Malavali. It flows for approximately 45 kilometers across the Pune district. It winds directly through the heart of Pune city before merging with the Mula River at Sangam Wadi to form the Mula-Mutha River, which eventually joins the Bhima River.</p>
-                    </div>
-                    <div class="info-block">
-                        <h4>History</h4>
-                        <p>The Mutha River is deeply woven into the historical fabric of Pune, serving as the city's primary water source since the era of the Maratha Empire. To secure Pune's water supply, the Khadakwasla Dam was constructed across the Mutha in the late 19th century, creating a vast reservoir upstream. Historically, the river banks featured beautifully constructed stone ghats (steps leading to the water), which served as central hubs for social, cultural, and spiritual life.</p>
-                        <p>Before intensive urbanization, the Mutha River possessed a rich riparian ecosystem. Its clean, fast-flowing waters sustained diverse aquatic life and healthy riverside wetlands. The rocky and sandy stretches of the river provided nesting grounds for a variety of birds, including herons, ibises, and river terns, while the natural riverbed successfully managed the seasonal monsoon torrents coming down from the Western Ghats.</p>
-                    </div>
-                    <div class="info-block">
-                        <h4>What Happened?</h4>
-                        <p>Pune’s transition into a major IT, educational, and industrial metropolis over the last 40 to 50 years has put immense pressure on the Mutha River. The expansion of residential areas, bridges, and roads has severely altered its natural hydrology.</p>
-                        <p>The river’s health has drastically deteriorated due to several compounding urban issues:</p>
-                        <ul>
-                            <li><strong>Untreated Sewage Discharge:</strong> Pune city generates massive volumes of domestic sewage daily, a significant portion of which flows into the Mutha entirely untreated due to inadequate sewage treatment plant (STP) capacity.</li>
-                            <li><strong>Encroachment and Debris Dumping:</strong> Large portions of the riverbed and its floodplains have been encroached upon for construction, or illegally filled with solid waste and debris, drastically narrowing the river's active channel.</li>
-                            <li><strong>Weed Infiltration and Stagnation:</strong> The high nutrient load from sewage has caused massive infestations of invasive water hyacinth (Eichhornia crassipes). This thick green blanket blocks sunlight, depletes oxygen levels, kills native aquatic fauna, and turns sections of the historic river into stagnant, foul-smelling pools during the dry season.</li>
-                        </ul>
-                    </div>
-                    <div class="citation-box">
-                        <strong>Sources:</strong> Wikipedia | hindustantimes.com / Pune Municipal Corporation (PMC) Environmental Status Reports
-                    </div>
-                `
-            },
-            mula: {
-                title: "Mula River",
-                locationLine: "Pune — Sahyadri Hills origins",
-                img: "mula.jpg",
-                content: `
-                    <div class="info-block">
-                        <h4>Location</h4>
-                        <p>The Mula River is an important river in the Pune District of Maharashtra, India. It starts in the Sahyadri Hills of the Western Ghats near Mulshi Dam and flows through major urban and industrial areas of Pune, such as Wakad, Balewadi, Aundh, Hinjawadi, and Khadki. The Mula River joins the Mutha River at the Sangam Bridge in Pune City from there it forms the Mula-Mutha River.</p>
-                    </div>
-                    <div class="info-block">
-                        <h4>History</h4>
-                        <p>The Mula River has always been an important, freshwater source for both the western and northern edges of Pune. Its clean water supply provided sustenance for rural agricultural communities since before the city began to grow; it also supported a wide variety of animals and plants near the banks of the river. Since the Mula River flowed freely without obstructions, it remained clean and well aerated, allowing it to handle large amounts of rainfall by flowing into identified flood plains, which did not endanger low-lying properties.</p>
-                    </div>
-                    <div class="info-block">
-                        <h4>What Happened?</h4>
-                        <p>By the end of the 20th century and the beginning of the 21st century, Pune rapidly evolved into one of the top tech and manufacturing cities in India. Large-scale development of the Hinjawadi IT Park and surrounding residential areas caused wide-spread construction of the area adjacent to the Mula River. Large tracts of land designated as natural river flood plains have been developed into built environments. In addition, in an effort to stop the river from flooding the area built around it, developers have already created raised concrete flood walls running parallel with the river, thus significantly reducing the river's natural flow and dramatically changing the Mula River's ecosystem.</p>
-                        <p>The Mula River is experiencing extreme pollution caused by industrial waste dumped into it and domestic sewage being dumped into the river. There are millions of liters of untreated sewage being dumped into the river through unauthorized slum housing along its banks. The high concentration of nutrients entering the river has allowed for massive growths of Water Hyacinth, an invasive weed species, on the surface of the river. Therefore, there are thousands of tons of plastic bottles, paper, and construction debris trapped within this thickly matted water hyacinth layer, which cause flooding risk around Aundh and Balewadi due to changes in river flow; extinction of native fish populations due to lack of oxygen; and extreme stagnation of water due to the compression of sediment.</p>
-                    </div>
-                    <div class="citation-box">
-                        <strong>Sources:</strong> The Times of India | Pune Mirror
-                    </div>
-                `
-            }
-        };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
 
-        function openRiver(key) {
-            const data = riverData[key];
-            if (!data) return;
-
-            document.getElementById('modalImg').src = data.img;
-            document.getElementById('modalTitle').innerText = data.title;
-            document.getElementById('modalLocLine').innerText = data.locationLine;
-            document.getElementById('modalBody').innerHTML = data.content;
-
-            const overlay = document.getElementById('modalOverlay');
-            overlay.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Stop background scrolling
-        }
-
-        function closeRiver(event, force = false) {
-            if (force || event.target.id === 'modalOverlay') {
-                document.getElementById('modalOverlay').classList.remove('active');
-                document.body.style.overflow = ''; // Restore background scrolling
-            }
-        }
+        document.querySelectorAll('.scroll-reveal').forEach((el) => observer.observe(el));
     </script>
+
 </body>
 </html>
