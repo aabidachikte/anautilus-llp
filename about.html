@@ -7,6 +7,35 @@
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
+        /* Premium Hover Highlight for About Us Panels & Cards */
+.stat-card, .vm-card, .operation-card, .team-card, .award-item, .partner-logo-card {
+    border: 1px solid rgba(144, 224, 239, 0.1);
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
+                border-color 0.3s ease, 
+                box-shadow 0.3s ease,
+                background-color 0.3s ease;
+}
+
+/* Hover States for Main Grid Components */
+.stat-card:hover, 
+.vm-card:hover, 
+.operation-card:hover, 
+.team-card:hover, 
+.award-item:hover, 
+.partner-logo-card:hover {
+    transform: translateY(-6px); /* Clean upward lift */
+    border-color: var(--accent-river-aqua); /* Sharp brand outline shift */
+    background-color: rgba(19, 64, 116, 0.8); /* Slightly enriches card depth */
+    
+    /* Soft aqua ambient glow */
+    box-shadow: 0 12px 24px rgba(0, 180, 216, 0.2), 
+                0 0 12px rgba(0, 180, 216, 0.1);
+}
+
+/* Specific adjustment for horizontal award rows so they push outward instead of upward */
+.award-item:hover {
+    transform: translateX(6px); 
+}
         /* ==========================================================================
            Anautilus LLP - Unified Ocean-Inspired Design System
            ========================================================================== */
