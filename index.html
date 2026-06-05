@@ -483,7 +483,7 @@
             100% { left: 65%; top: 20%; opacity: 0; }
         }
 
-        /* --- NEW: OUR PARTNERS PROFILE GLIDE SECTION --- */
+        /* --- OUR PARTNERS CLEAN SINGLE GLIDE SECTION --- */
         .partners-section {
             background: linear-gradient(to bottom, #05162E, #0B2545);
             padding: 120px 8%;
@@ -496,59 +496,47 @@
             max-width: 1300px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 0.9fr 1.1fr; /* Mirrored layout alignment */
+            grid-template-columns: 0.8fr 1.2fr;
             gap: 80px;
             align-items: center;
         }
 
         .partner-photos-frame {
             position: relative;
-            height: 540px;
+            height: 500px;
             width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .partner-photo-card {
-            position: absolute;
-            border-radius: 16px;
+            width: 85%;
+            height: auto;
+            max-height: 100%;
+            border-radius: 24px;
             overflow: hidden;
             box-shadow: 0 30px 60px rgba(0,0,0,0.5);
             transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.4s ease;
             opacity: 0;
-        }
-
-        /* Essential primary placement focusing verbatim layout parameters on image_10.png */
-        .partner-photo-card.primary-profile {
-            width: 68%;
-            left: 20px;
-            top: 20px;
-            transform: translateX(-80px) translateY(40px) rotate(3deg);
-            z-index: 3;
+            transform: translateX(-60px) translateY(20px);
             border: 1px solid rgba(144, 224, 239, 0.15);
-        }
-
-        .partner-photo-card.secondary-accent {
-            width: 60%;
-            right: 0;
-            bottom: 20px;
-            transform: translateX(80px) translateY(60px) rotate(-4deg);
-            z-index: 2;
         }
 
         .partner-photo-card img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            height: auto;
             display: block;
             transition: transform 0.8s ease;
         }
 
         .partner-photo-card:hover img {
-            transform: scale(1.05);
+            transform: scale(1.03);
         }
 
         .partner-photo-card.glide-active {
             opacity: 1;
-            transform: translateX(0) translateY(0) rotate(0deg) !important;
+            transform: translateX(0) translateY(0) !important;
         }
 
         .partner-profile-text .tag {
@@ -798,6 +786,16 @@
             color: rgba(255,255,255,0.55);
         }
 
+        .input-group input {
+            background: transparent;
+            border: none;
+            color: var(--pure-white);
+            flex-grow: 1;
+            font-size: 1.05rem;
+            outline: none;
+            padding-right: 10px;
+        }
+
         .submit-btn {
             background: transparent;
             border: none;
@@ -1025,19 +1023,15 @@
         </div>
     </section>
 
-    <!-- NEW PREMIUM SECTION: OUR PARTNERS WITH LUXURY GLIDE TRANSITIONS -->
+    <!-- PREMIUM CLEAN SECTION: OUR PARTNERS -->
     <section class="partners-section">
         <div class="partners-wrapper">
             
-            <!-- Dynamic Partner Photo Cluster Frame -->
+            <!-- Clean Profile Frame Layout -->
             <div class="partner-photos-frame">
-                <!-- Verbatim asset placement containing photo data from image_10.png -->
-                <div class="partner-photo-card primary-profile">
-                    <img src="image_10.png" alt="Bhushan Raj Profile Picture">
-                </div>
-                <!-- Complementary premium maritime styling layout layer -->
-                <div class="partner-photo-card secondary-accent">
-                    <img src="https://images.unsplash.com/photo-1516937941344-00b4e0337589?q=80&w=600" alt="Maritime Vessels Engineering Support Canvas">
+                <!-- Single headshot focusing beautifully on the layout shown in edited-image.jpg -->
+                <div class="partner-photo-card">
+                    <img src="edited-image.jpg" alt="Bhushan Raj Profile Picture">
                 </div>
             </div>
 
@@ -1211,11 +1205,10 @@
 
             document.querySelectorAll('.scroll-reveal').forEach((el) => standardObserver.observe(el));
 
-            // Combined Premium Intersect Observer for both glide photo frames
+            // Premium Intersect Observer for glide portrait frame
             const glideObserver = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
-                        // Triggers either architectural glide cards or partner glide cards automatically
                         const premiumCards = entry.target.querySelectorAll('.photo-card-premium, .partner-photo-card');
                         premiumCards.forEach((card, index) => {
                             setTimeout(() => {
