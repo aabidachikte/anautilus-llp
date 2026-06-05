@@ -325,15 +325,18 @@
 
         .social-row {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 12px;
             margin-top: 8px;
+            width: 100%;
         }
 
         .btn-social {
             background-color: var(--bg-deep-ocean);
             border: 1px solid rgba(144, 224, 239, 0.1);
             border-radius: var(--radius-md);
+            width: 100%;
+            box-sizing: border-box;
             color: var(--text-pristine);
             padding: 10px;
             font-size: 0.85rem;
