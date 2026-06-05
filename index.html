@@ -123,7 +123,6 @@
             background-color: var(--deep-ocean);
         }
 
-        /* --- BACKGROUND VIDEO LAYER --- */
         .hero-video-bg {
             position: absolute;
             top: 0;
@@ -134,7 +133,6 @@
             z-index: 1;
         }
 
-        /* --- LIGHT OVERLAY --- */
         .hero-overlay {
             position: absolute;
             top: 0;
@@ -327,9 +325,155 @@
             transform: translateX(0) translateY(0) rotate(0deg) !important;
         }
 
-        /* --- NEW HORIZONTAL QUOTE SLIDER SECTION --- */
+        /* --- NEW REGIONAL MISSION SPLIT SECTION --- */
+        .regional-mission-section {
+            background-color: #031022;
+            padding: 120px 8%;
+            position: relative;
+            z-index: 22;
+            border-top: 1px solid rgba(144, 224, 239, 0.05);
+        }
+
+        .mission-split-grid {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .mission-left h3 {
+            font-size: 0.9rem;
+            letter-spacing: 4px;
+            color: var(--river-aqua);
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .mission-left h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.2;
+            color: var(--pure-white);
+            margin-bottom: 25px;
+        }
+
+        .mission-left p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: rgba(244, 249, 252, 0.8);
+            margin-bottom: 20px;
+        }
+
+        /* --- NAUTILUS INTERCEPTOR ANIMATION CONTAINER --- */
+        .mission-right-animation {
+            background: linear-gradient(145deg, #071931, #0b2545);
+            height: 450px;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0, 180, 216, 0.15);
+            box-shadow: inset 0 0 40px rgba(0,0,0,0.5);
+        }
+
+        /* River flow lines background */
+        .animation-river-flow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, rgba(0, 180, 216, 0.03) 50%, transparent);
+        }
+
+        /* The Nautilus Spiral Interceptor Core */
+        .nautilus-interceptor-core {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-translate(-50%, -50%));
+            width: 160px;
+            height: 160px;
+            margin-top: -80px;
+            margin-left: -80px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(11, 37, 69, 0.9) 0%, rgba(19, 64, 116, 0.6) 70%);
+            border: 2px dashed var(--river-aqua);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulseCore 4s infinite ease-in-out;
+            z-index: 5;
+        }
+
+        .nautilus-interceptor-core::before {
+            content: '';
+            position: absolute;
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            border: 2px solid rgba(144, 224, 239, 0.4);
+            border-left-color: transparent;
+            animation: spinSpiral 6s linear infinite;
+        }
+
+        .nautilus-interceptor-core i {
+            color: var(--seafoam-teal);
+            font-size: 2.2rem;
+            animation: crestRotate 12s linear infinite;
+        }
+
+        /* Floating debris particles being sucked into the system */
+        .debris-particle-node {
+            position: absolute;
+            background-color: var(--river-aqua);
+            border-radius: 50%;
+            opacity: 0;
+            filter: drop-shadow(0 0 4px var(--river-aqua));
+        }
+
+        .p1 { width: 8px; height: 8px; left: 10%; top: -20px; animation: capturePath1 5s infinite linear; }
+        .p2 { width: 6px; height: 6px; left: 45%; top: -20px; animation: capturePath2 4s infinite linear 1.5s; }
+        .p3 { width: 10px; height: 10px; right: 20%; top: -20px; animation: capturePath3 6s infinite linear 0.7s; }
+        .p4 { width: 7px; height: 7px; left: 75%; top: -20px; animation: capturePath2 4.5s infinite linear 2.2s; }
+
+        @keyframes pulseCore {
+            0%, 100% { box-shadow: 0 0 20px rgba(0, 180, 216, 0.2); transform: scale(1); }
+            50% { box-shadow: 0 0 45px rgba(144, 224, 239, 0.4); transform: scale(1.04); }
+        }
+
+        @keyframes spinSpiral {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes capturePath1 {
+            0% { top: -20px; left: 15%; opacity: 0; }
+            20% { opacity: 0.7; }
+            70% { left: 42%; top: 45%; opacity: 0.9; }
+            85% { left: 48%; top: 49%; transform: scale(0.4); opacity: 0.3; }
+            100% { left: 50%; top: 50%; transform: scale(0); opacity: 0; }
+        }
+
+        @keyframes capturePath2 {
+            0% { top: -20px; left: 48%; opacity: 0; }
+            20% { opacity: 0.8; }
+            75% { left: 50%; top: 42%; opacity: 0.9; }
+            90% { left: 50%; top: 48%; transform: scale(0.3); opacity: 0.2; }
+            100% { left: 50%; top: 50%; transform: scale(0); opacity: 0; }
+        }
+
+        @keyframes capturePath3 {
+            0% { top: -20px; left: 80%; opacity: 0; }
+            20% { opacity: 0.6; }
+            70% { left: 56%; top: 46%; opacity: 0.9; }
+            85% { left: 52%; top: 49%; transform: scale(0.4); opacity: 0.3; }
+            100% { left: 50%; top: 50%; transform: scale(0); opacity: 0; }
+        }
+
+        /* --- HORIZONTAL QUOTE SLIDER SECTION --- */
         .quotes-section {
-            background-color: #F4F9FC; /* Light clean dynamic backdrop matching reference layout */
+            background-color: #F4F9FC;
             padding: 100px 8%;
             position: relative;
             z-index: 25;
@@ -343,7 +487,6 @@
             justify-content: flex-end;
         }
 
-        /* Sleek slider navigation arrows */
         .slider-controls {
             display: flex;
             gap: 20px;
@@ -378,7 +521,7 @@
             gap: 2.5rem;
             padding-bottom: 20px;
             scroll-behavior: smooth;
-            scrollbar-width: none; /* Hidden bar architecture */
+            scrollbar-width: none;
         }
 
         .quotes-slider-container::-webkit-scrollbar {
@@ -596,8 +739,9 @@
             .grid-layout { grid-template-columns: repeat(2, 1fr); }
             .footer-links-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
             .glide-wrapper { grid-template-columns: 1fr; gap: 50px; }
+            .mission-split-grid { grid-template-columns: 1fr; gap: 40px; }
             .glide-photos { height: 440px; }
-            .glide-text h2 { font-size: 2.6rem; }
+            .glide-text h2, .mission-left h2 { font-size: 2.4rem; }
         }
 
         @media (max-width: 768px) {
@@ -634,9 +778,7 @@
             <source src="hero-water.mov" type="video/quicktime">
             <source src="hero-water.mov" type="video/mp4">
         </video>
-        
         <div class="hero-overlay"></div>
-
         <section class="hero-section"></section>
     </div>
 
@@ -717,7 +859,32 @@
         </div>
     </section>
 
-<!-- PREMIUM HORIZONTAL QUOTES CAROUSEL -->
+    <!-- NEW REGIONAL MISSION BLOCK (INSPIRED BY SCREENSHOT ARTIFACTS) -->
+    <section class="regional-mission-section">
+        <div class="mission-split-grid">
+            <div class="mission-left scroll-reveal">
+                <h3>A Localized Crisis</h3>
+                <h2>Intercepting Waste Across Mumbai & Pune</h2>
+                <p>Every single day, tons of industrial plastic fragments, solid waste, and urban debris choke critical water basins across the Maharashtra region. From the dense city curves of Mumbai’s Mithi River down to the broad agricultural channels of Pune's Mula-Mutha confluence, the damage cascades rapidly toward our oceans.</p>
+                <p>Anautilus LLP operates at these precise geographic bottlenecks. By deploying custom, non-invasive barrier networks and fluid dynamic extraction systems, we intercept synthetic materials directly from high-velocity currents before they can disintegrate into hazardous microplastics.</p>
+            </div>
+            
+            <div class="mission-right-animation scroll-reveal">
+                <div class="animation-river-flow"></div>
+                <!-- Stylized Nautilus Filtration Loop Core Diagram -->
+                <div class="nautilus-interceptor-core">
+                    <i class="fas fa-dharmachakra"></i>
+                </div>
+                <!-- Dynamic Floating Particle Elements -->
+                <div class="debris-particle-node p1"></div>
+                <div class="debris-particle-node p2"></div>
+                <div class="debris-particle-node p3"></div>
+                <div class="debris-particle-node p4"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PREMIUM HORIZONTAL QUOTES CAROUSEL -->
     <section class="quotes-section">
         <div class="quotes-header">
             <div class="slider-controls">
@@ -767,11 +934,10 @@
         <div class="footer-top">
             <div class="footer-brand-section">
                 <h3>FOLLOW US</h3>
-         <div class="social-icons">
+                <div class="social-icons">
                     <a href="#" class="icon-circle"><i class="fab fa-instagram"></i></a>
                     <a href="#" class="icon-circle"><i class="fab fa-facebook-f"></i></a>
-                    <!-- Updated with a fallback setup so it displays the X logo perfectly -->
-                    <a href="#" class="icon-circle" style="font-weight: bold; font-family: sans-serif;">X</a>
+                    <a href="#" class="icon-circle" style="font-weight: bold; font-family: sans-serif; font-size: 1.1rem; color: #003356;">X</a>
                     <a href="#" class="icon-circle"><i class="fab fa-youtube"></i></a>
                     <a href="#" class="icon-circle"><i class="fab fa-linkedin-in"></i></a>
                     <a href="#" class="icon-circle"><i class="fab fa-tiktok"></i></a>
@@ -875,7 +1041,6 @@
                 glideObserver.observe(glideContainer);
             }
 
-            // Carousel engine controls logic
             const slider = document.getElementById('quoteSlider');
             const nextBtn = document.getElementById('slideNext');
             const prevBtn = document.getElementById('slidePrev');
@@ -890,6 +1055,5 @@
             }
         });
     </script>
-
 </body>
 </html>
