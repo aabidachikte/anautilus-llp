@@ -6,16 +6,26 @@
     <title>Anautilus LLP – Navigation & Footer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Color Palette Assignments */
+        /* ==========================================================================
+           Anautilus LLP - Unified Ocean-Inspired Design System
+           ========================================================================== */
         :root {
-            --deep-ocean: #0B2545;
-            --river-aqua: #00B4D8;
-            --seafoam-teal: #90E0EF;
-            --pristine-water: #F4F9FC;
-            --pure-white: #FFFFFF;
-            --footer-dark: #003356;
+            /* Palette Architecture */
+            --bg-deep-ocean: #0B2545;      /* Main section canvas background */
+            --bg-clean-marine: #134074;    /* Cards, dashboard panels, structural layers */
+            --accent-river-aqua: #00B4D8;  /* Primary brand accents, button states, hovers */
+            --accent-seafoam: #90E0EF;     /* UI tags, input labels, secondary typography */
+            --text-pristine: #F4F9FC;      /* Highly readable off-white paragraph tone */
+            --text-white: #FFFFFF;         /* Primary headers & main branding components */
+            --bg-footer-dark: #003356;     /* Specialized heavy navy bottom anchor depth */
+            
+            /* Layout Tokens */
+            --radius-lg: 16px;
+            --radius-md: 8px;
+            --transition-smooth: all 0.3s ease;
         }
 
+        /* Base Layout & Core Structure */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -24,18 +34,26 @@
         }
 
         body {
-            background-color: var(--deep-ocean);
-            color: var(--pristine-water);
+            background-color: var(--bg-deep-ocean);
+            color: var(--text-pristine);
+            line-height: 1.6;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 24px;
         }
 
         /* --- MODERNIZED NAVIGATION BAR --- */
         header {
             background-color: rgba(11, 37, 69, 0.95);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             position: fixed;
             top: 0;
             width: 100%;
@@ -66,14 +84,14 @@
         }
 
         .brand-name {
-            color: var(--pure-white);
+            color: var(--text-white);
             font-size: 1.5rem;
             font-weight: 800;
             letter-spacing: 1px;
         }
 
         .brand-name span {
-            color: var(--river-aqua);
+            color: var(--accent-river-aqua);
         }
 
         nav ul {
@@ -83,16 +101,16 @@
         }
 
         nav ul li a {
-            color: var(--pristine-water);
+            color: var(--text-pristine);
             text-decoration: none;
             font-size: 0.95rem;
             font-weight: 500;
-            transition: color 0.3s ease;
+            transition: var(--transition-smooth);
             position: relative;
         }
 
         nav ul li a:hover {
-            color: var(--river-aqua);
+            color: var(--accent-river-aqua);
         }
 
         nav ul li a::after {
@@ -102,399 +120,322 @@
             height: 2px;
             bottom: -5px;
             left: 0;
-            background-color: var(--river-aqua);
-            transition: width 0.3s ease;
+            background-color: var(--accent-river-aqua);
+            transition: var(--transition-smooth);
         }
 
         nav ul li a:hover::after {
             width: 100%;
         }
-         /*---CONTENT---*/
+
+        /* --- CONTENT WRAPPER PADDING ADJUSTMENT --- */
+        .main-content {
+            padding-top: 85px; /* Safely clears the fixed navigation block */
+            flex-grow: 1;
+        }
+
         /* ==========================================================================
-   Anautilus LLP - Ocean-Inspired Design System (Based on image_9ae381.png)
-   ========================================================================== */
+           Form & Component Elements (Based on image_9ae381.png)
+           ========================================================================== */
+        .section-tagline {
+            color: var(--accent-seafoam);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
 
-:root {
-  /* Premium Ocean Palette Variables */
-  --bg-deep-ocean: #0B2545;      /* Main section background */
-  --bg-clean-marine: #134074;    /* Cards, dashboard containers, structural elements */
-  --accent-river-aqua: #00B4D8;  /* Primary accents, buttons, active borders, hovers */
-  --accent-seafoam: #90E0EF;     /* Labels, tags, subtle highlights */
-  --text-pristine: #F4F9FC;      /* Body paragraphs, readable text */
-  --text-white: #FFFFFF;         /* Primary headings, high-priority typography */
-  --bg-footer-dark: #003356;     /* Compliance & structural anchor depth */
-  
-  /* Layout Constants */
-  --radius-lg: 16px;
-  --radius-md: 8px;
-  --transition-smooth: all 0.3s ease;
-}
+        .section-heading {
+            color: var(--text-white);
+            font-size: 2.8rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            max-width: 700px;
+        }
 
-/* Base Layout & Reset */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+        .section-heading span.highlight {
+            color: var(--accent-river-aqua);
+        }
 
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  background-color: var(--bg-deep-ocean);
-  color: var(--text-pristine);
-  line-height: 1.6;
-  padding: 60px 20px;
-}
+        .section-description {
+            color: var(--text-pristine);
+            font-size: 1.1rem;
+            max-width: 750px;
+            opacity: 0.9;
+            margin-bottom: 48px;
+        }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 32px;
+            margin-bottom: 48px;
+        }
 
-/* ==========================================================================
-   Header Typography
-   ========================================================================== */
+        .card-panel {
+            background-color: var(--bg-clean-marine);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(11, 37, 69, 0.3);
+        }
 
-.section-tagline {
-  color: var(--accent-seafoam);
-  text-transform: uppercase;
-  font-size: 0.85rem;
-  letter-spacing: 2px;
-  font-weight: 700;
-  margin-bottom: 12px;
-}
+        .sidebar-card {
+            background-color: var(--bg-clean-marine);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
 
-.section-heading {
-  color: var(--text-white);
-  font-size: 2.8rem;
-  font-weight: 800;
-  line-height: 1.2;
-  margin-bottom: 20px;
-  max-width: 700px;
-}
+        .sidebar-card:last-child {
+            margin-bottom: 0;
+        }
 
-/* Emphasized blue/aqua text from the image layout */
-.section-heading span.highlight {
-  color: var(--accent-river-aqua);
-}
+        .form-title {
+            color: var(--text-white);
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 32px;
+        }
 
-.section-description {
-  color: var(--text-pristine);
-  font-size: 1.1rem;
-  max-width: 750px;
-  opacity: 0.9;
-  margin-bottom: 48px;
-}
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 24px;
+        }
 
-/* ==========================================================================
-   Main Grid Layout (Form & Contact Sidebar)
-   ========================================================================== */
+        .form-group {
+            margin-bottom: 24px;
+        }
 
-.contact-grid {
-  display: grid;
-  grid-template-columns: 1.3fr 1fr;
-  gap: 32px;
-  margin-bottom: 48px;
-}
+        .form-label {
+            display: block;
+            color: var(--accent-seafoam);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
 
-@media (max-width: 992px) {
-  .contact-grid {
-    grid-template-columns: 1fr;
-  }
-}
+        .form-control {
+            width: 100%;
+            background-color: var(--bg-deep-ocean);
+            border: 1px solid rgba(144, 224, 239, 0.15);
+            border-radius: var(--radius-md);
+            padding: 14px 16px;
+            color: var(--text-white);
+            font-size: 1rem;
+            transition: var(--transition-smooth);
+        }
 
-/* Component Cards */
-.card-panel {
-  background-color: var(--bg-clean-marine);
-  border-radius: var(--radius-lg);
-  padding: 40px;
-  box-shadow: 0 10px 30px rgba(11, 37, 69, 0.3);
-}
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-river-aqua);
+            box-shadow: 0 0 0 3px rgba(0, 180, 216, 0.2);
+        }
 
-.sidebar-card {
-  background-color: var(--bg-clean-marine);
-  border-radius: var(--radius-lg);
-  padding: 24px;
-  margin-bottom: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%2390E0EF' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: calc(100% - 16px) center;
+            padding-right: 40px;
+        }
 
-.sidebar-card:last-child {
-  margin-bottom: 0;
-}
+        textarea.form-control {
+            resize: vertical;
+            min-height: 140px;
+        }
 
-/* ==========================================================================
-   Inquiry Form Elements
-   ========================================================================== */
+        .btn-transmit {
+            background-color: var(--accent-river-aqua);
+            color: var(--bg-deep-ocean);
+            border: none;
+            border-radius: var(--radius-md);
+            padding: 14px 28px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition-smooth);
+        }
 
-.form-title {
-  color: var(--text-white);
-  font-size: 1.8rem;
-  font-weight: 700;
-  margin-bottom: 32px;
-}
+        .btn-transmit:hover {
+            background-color: var(--accent-seafoam);
+            box-shadow: 0 0 20px rgba(144, 224, 239, 0.4);
+            transform: translateY(-1px);
+        }
 
-.form-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  margin-bottom: 24px;
-}
+        .hq-map-wrapper {
+            background-image: linear-gradient(rgba(19, 64, 116, 0.85), rgba(19, 64, 116, 0.95)), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath d='M0 0h100v100H0z' fill='none'/%3E%3Cpath d='M10 10h80v80H10z' fill='none' stroke='%230B2545' stroke-width='0.5' opacity='0.3'/%3E%3C/svg%3E");
+            background-size: cover;
+            border: 1px solid rgba(0, 180, 216, 0.25);
+        }
 
-@media (max-width: 576px) {
-  .form-row {
-    grid-template-columns: 1fr;
-  }
-}
+        .info-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent-seafoam);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
 
-.form-group {
-  margin-bottom: 24px;
-}
+        .info-content {
+            color: var(--text-white);
+            font-size: 1.05rem;
+            font-weight: 500;
+        }
 
-.form-label {
-  display: block;
-  color: var(--accent-seafoam);
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 8px;
-}
+        .info-subtext {
+            color: var(--text-pristine);
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
 
-.form-control {
-  width: 100%;
-  background-color: var(--bg-deep-ocean);
-  border: 1px solid rgba(144, 224, 239, 0.15);
-  border-radius: var(--radius-md);
-  padding: 14px 16px;
-  color: var(--text-white);
-  font-size: 1rem;
-  transition: var(--transition-smooth);
-}
+        .inline-link {
+            color: var(--accent-river-aqua);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            margin-top: 8px;
+            transition: var(--transition-smooth);
+        }
 
-.form-control:focus {
-  outline: none;
-  border-color: var(--accent-river-aqua);
-  box-shadow: 0 0 0 3px rgba(0, 180, 216, 0.2);
-}
+        .inline-link:hover {
+            color: var(--accent-seafoam);
+        }
 
-select.form-control {
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%2390E0EF' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: calc(100% - 16px) center;
-  padding-right: 40px;
-}
+        .social-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 8px;
+        }
 
-textarea.form-control {
-  resize: vertical;
-  min-height: 140px;
-}
+        .btn-social {
+            background-color: var(--bg-deep-ocean);
+            border: 1px solid rgba(144, 224, 239, 0.1);
+            border-radius: var(--radius-md);
+            color: var(--text-pristine);
+            padding: 10px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: var(--transition-smooth);
+        }
 
-/* Interactive CTA Buttons */
-.btn-transmit {
-  background-color: var(--accent-river-aqua);
-  color: var(--bg-deep-ocean);
-  border: none;
-  border-radius: var(--radius-md);
-  padding: 14px 28px;
-  font-size: 0.95rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  transition: var(--transition-smooth);
-}
+        .btn-social:hover {
+            border-color: var(--accent-river-aqua);
+            color: var(--text-white);
+            background-color: rgba(0, 180, 216, 0.05);
+        }
 
-.btn-transmit:hover {
-  background-color: var(--accent-seafoam);
-  box-shadow: 0 0 20px rgba(144, 224, 239, 0.4);
-  transform: translateY(-1px);
-}
+        .engagement-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+        }
 
-/* ==========================================================================
-   Sidebar Information Components
-   ========================================================================== */
+        .engagement-card {
+            position: relative;
+            background-color: var(--bg-clean-marine);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 240px;
+        }
 
-/* Maps / Headquarters block */
-.hq-map-wrapper {
-  background-image: linear-gradient(rgba(19, 64, 116, 0.85), rgba(19, 64, 116, 0.95)), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath d='M0 0h100v100H0z' fill='none'/%3E%3Cpath d='M10 10h80v80H10z' fill='none' stroke='%230B2545' stroke-width='0.5' opacity='0.3'/%3E%3C/svg%3E"); /* Simulates abstract tech-lines pattern from image */
-  background-size: cover;
-  border: 1px solid rgba(0, 180, 216, 0.25);
-}
+        .engagement-card h3 {
+            color: var(--text-white);
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
 
-.info-header {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--accent-seafoam);
-  font-size: 0.85rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
+        .engagement-card p {
+            color: var(--text-pristine);
+            font-size: 0.95rem;
+            opacity: 0.85;
+            margin-bottom: 24px;
+            max-width: 85%;
+            z-index: 2;
+        }
 
-.info-content {
-  color: var(--text-white);
-  font-size: 1.05rem;
-  font-weight: 500;
-}
+        .engagement-card::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: -10px;
+            width: 120px;
+            height: 120px;
+            opacity: 0.06;
+            background-repeat: no-repeat;
+            background-size: contain;
+            pointer-events: none;
+        }
 
-.info-subtext {
-  color: var(--text-pristine);
-  font-size: 0.85rem;
-  opacity: 0.7;
-}
+        .card-partner::after {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23FFFFFF' viewBox='0 0 16 16'%3E%3Cpath d='M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm11.5 5.5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z'/%3E%3C/svg%3E");
+        }
 
-/* Text Links */
-.inline-link {
-  color: var(--accent-river-aqua);
-  text-decoration: none;
-  font-size: 0.8rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  margin-top: 8px;
-  transition: var(--transition-smooth);
-}
+        .card-volunteer::after {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23FFFFFF' viewBox='0 0 16 16'%3E%3Cpath d='M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z'/%3E%3C/svg%3E");
+        }
 
-.inline-link:hover {
-  color: var(--accent-seafoam);
-}
+        .btn-action-link {
+            color: var(--accent-river-aqua);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: auto;
+            z-index: 2;
+            transition: var(--transition-smooth);
+        }
 
-/* Social Buttons Grid */
-.social-row {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin-top: 8px;
-}
+        .btn-action-link:hover {
+            color: var(--accent-seafoam);
+            transform: translateX(3px);
+        }
 
-.btn-social {
-  background-color: var(--bg-deep-ocean);
-  border: 1px solid rgba(144, 224, 239, 0.1);
-  border-radius: var(--radius-md);
-  color: var(--text-pristine);
-  padding: 10px;
-  font-size: 0.85rem;
-  font-weight: 500;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  transition: var(--transition-smooth);
-}
-
-.btn-social:hover {
-  border-color: var(--accent-river-aqua);
-  color: var(--text-white);
-  background-color: rgba(0, 180, 216, 0.05);
-}
-
-/* ==========================================================================
-   Bottom Engagement Grid (Partner & Volunteer Cards)
-   ========================================================================== */
-
-.engagement-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 32px;
-}
-
-@media (max-width: 768px) {
-  .engagement-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.engagement-card {
-  position: relative;
-  background-color: var(--bg-clean-marine);
-  border-radius: var(--radius-lg);
-  padding: 40px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 240px;
-}
-
-.engagement-card h3 {
-  color: var(--text-white);
-  font-size: 1.6rem;
-  font-weight: 700;
-  margin-bottom: 16px;
-}
-
-.engagement-card p {
-  color: var(--text-pristine);
-  font-size: 0.95rem;
-  opacity: 0.85;
-  margin-bottom: 24px;
-  max-width: 85%;
-  z-index: 2;
-}
-
-/* Decorative watermark/icon overlays positioned in bottom right corner */
-.engagement-card::after {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  right: -10px;
-  width: 120px;
-  height: 120px;
-  opacity: 0.06;
-  background-repeat: no-repeat;
-  background-size: contain;
-  pointer-events: none;
-}
-
-.card-partner::after {
-  /* Handshake icon vector representation */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23FFFFFF' viewBox='0 0 16 16'%3E%3Cpath d='M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm11.5 5.5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z'/%3E%3C/svg%3E");
-}
-
-.card-volunteer::after {
-  /* Heart icon vector representation */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23FFFFFF' viewBox='0 0 16 16'%3E%3Cpath d='M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z'/%3E%3C/svg%3E");
-}
-
-.btn-action-link {
-  color: var(--accent-river-aqua);
-  text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  margin-top: auto;
-  z-index: 2;
-  transition: var(--transition-smooth);
-}
-
-.btn-action-link:hover {
-  color: var(--accent-seafoam);
-  transform: translateX(3px);
-}
         /* --- PREMIUM FOOTER --- */
         .premium-footer {
-            background-color: var(--footer-dark);
-            color: var(--pure-white);
+            background-color: var(--bg-footer-dark);
+            color: var(--text-white);
             padding: 90px 8% 45px 8%;
             position: relative;
             z-index: 30;
             border-top: 1px solid rgba(255, 255, 255, 0.08);
-            margin-top: auto; /* Pushes footer to bottom if page content is short */
+            margin-top: auto; 
         }
 
         .footer-top {
@@ -523,14 +464,14 @@ textarea.form-control {
             width: 44px;
             height: 44px;
             border-radius: 50%;
-            background-color: var(--pure-white);
-            color: var(--footer-dark);
+            background-color: var(--text-white);
+            color: var(--bg-footer-dark);
             display: flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
             font-size: 1.15rem;
-            transition: transform 0.3s ease, opacity 0.3s ease;
+            transition: var(--transition-smooth);
         }
 
         .icon-circle:hover {
@@ -540,21 +481,21 @@ textarea.form-control {
 
         .input-group {
             display: flex;
-            border-bottom: 2px solid var(--pure-white);
+            border-bottom: 2px solid var(--text-white);
             padding-bottom: 10px;
             width: 340px;
             max-width: 100%;
-            transition: border-color 0.3s ease;
+            transition: var(--transition-smooth);
         }
 
         .input-group:focus-within {
-            border-color: var(--river-aqua);
+            border-color: var(--accent-river-aqua);
         }
 
         .input-group input {
             background: transparent;
             border: none;
-            color: var(--pure-white);
+            color: var(--text-white);
             flex-grow: 1;
             font-size: 1.05rem;
             outline: none;
@@ -568,14 +509,14 @@ textarea.form-control {
         .submit-btn {
             background: transparent;
             border: none;
-            color: var(--pure-white);
+            color: var(--text-white);
             cursor: pointer;
             font-size: 1.15rem;
-            transition: color 0.3s ease, transform 0.2s ease;
+            transition: var(--transition-smooth);
         }
 
         .submit-btn:hover {
-            color: var(--river-aqua);
+            color: var(--accent-river-aqua);
             transform: translateX(3px);
         }
 
@@ -617,15 +558,15 @@ textarea.form-control {
         }
 
         .link-column ul li a {
-            color: var(--pure-white);
+            color: var(--text-white);
             text-decoration: none;
             font-size: 0.95rem;
-            transition: color 0.25s ease;
+            transition: var(--transition-smooth);
             opacity: 0.85;
         }
 
         .link-column ul li a:hover {
-            color: var(--river-aqua);
+            color: var(--accent-river-aqua);
             opacity: 1;
         }
 
@@ -634,10 +575,20 @@ textarea.form-control {
             .footer-links-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
         }
 
+        @media (max-width: 992px) {
+            .contact-grid { grid-template-columns: 1fr; }
+        }
+
         @media (max-width: 768px) {
             nav ul { display: none; } 
             .footer-links-grid { grid-template-columns: 1fr; }
             .footer-top { flex-direction: column; gap: 40px; }
+            .engagement-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 576px) {
+            .form-row { grid-template-columns: 1fr; }
+            .section-heading { font-size: 2.2rem; }
         }
     </style>
 </head>
@@ -661,7 +612,97 @@ textarea.form-control {
         </div>
     </header>
 
-    <div style="padding-top: 80px;"></div>
+    <!-- Main Content Container containing components modeled from image_9ae381.png -->
+    <div class="main-content">
+        <div class="container">
+            
+            <p class="section-tagline">CONNECT WITH OUR MISSION</p>
+            <h1 class="section-heading">Chart the Path to <span class="highlight">Marine Restoration</span></h1>
+            <p class="section-description">Whether you're looking to partner on large-scale river conservation or join our technical field teams, your contribution fuels the next wave of ecological engineering.</p>
+
+            <div class="contact-grid">
+                <!-- Inquiry Form Panel -->
+                <div class="card-panel">
+                    <h2 class="form-title">Send an Inquiry</h2>
+                    <form action="#" method="POST">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Full Name</label>
+                                <input type="text" class="form-control" placeholder="Johnathan Doe">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Email Address</label>
+                                <input type="email" class="form-control" placeholder="j.doe@engineering.com">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Subject</label>
+                            <select class="form-control">
+                                <option>General Inquiry</option>
+                                <option>Partnership Proposal</option>
+                                <option>Volunteering Opportunities</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Message</label>
+                            <textarea class="form-control" placeholder="How can we collaborate on river restoration?"></textarea>
+                        </div>
+                        <button type="submit" class="btn-transmit">Transmit Message <i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+
+                <!-- Info Sidebar Blocks -->
+                <div>
+                    <div class="sidebar-card hq-map-wrapper">
+                        <div class="info-header"><i class="fas fa-map-marker-alt"></i> Headquarters</div>
+                        <div class="info-content">Anautilus LLP, 402, Marine Chambers, New Marine Lines, Mumbai, Maharashtra 400020, India</div>
+                        <a href="#" class="inline-link">Open Google Maps <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+
+                    <div class="sidebar-card">
+                        <div class="info-header"><i class="fas fa-envelope"></i> Email Communications</div>
+                        <div class="info-content">contact@anautilus.com</div>
+                        <div class="info-subtext">Technical response within 24 hours.</div>
+                    </div>
+
+                    <div class="sidebar-card">
+                        <div class="info-header"><i class="fas fa-phone-alt"></i> Direct Technical Line</div>
+                        <div class="info-content">+91 22 4593 1100</div>
+                        <div class="info-subtext">Mon-Fri, 0900 to 1800 IST.</div>
+                    </div>
+
+                    <div class="sidebar-card">
+                        <div class="info-header">Connect Socially</div>
+                        <div class="social-row">
+                            <a href="#" class="btn-social"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                            <a href="#" class="btn-social"><i class="fab fa-twitter"></i> Twitter</a>
+                            <a href="#" class="btn-social"><i class="fab fa-instagram"></i> Instagram</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Dashboard Engagement Links -->
+            <div class="engagement-grid">
+                <div class="engagement-card card-partner">
+                    <div>
+                        <h3>Partner with Us</h3>
+                        <p>Collaborate with our marine engineers on corporate sustainability initiatives and environmental mitigation projects. We provide the technical backbone for large-scale ecological restoration.</p>
+                    </div>
+                    <a href="#" class="btn-action-link">Explore Partnerships <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="engagement-card card-volunteer">
+                    <div>
+                        <h3>Volunteer</h3>
+                        <p>Join our seasonal cleanup drives and community monitoring programs. We value hands-on impact from dedicated individuals committed to preserving local river ecosystems.</p>
+                    </div>
+                    <a href="#" class="btn-action-link">Join Our Team <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
 
     <footer class="premium-footer">
         <div class="footer-top">
