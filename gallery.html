@@ -197,7 +197,26 @@
             color: var(--bg-deep-ocean);
             box-shadow: 0 4px 15px rgba(0, 180, 216, 0.3);
         }
+/* Premium Hover Highlight for Gallery Cards */
+.gallery-grid .gallery-card {
+    /* Ensure the card has a crisp baseline border to transition from */
+    border: 1px solid rgba(144, 224, 239, 0.1);
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
+                border-color 0.3s ease, 
+                box-shadow 0.3s ease;
+}
 
+.gallery-grid .gallery-card:hover {
+    /* Smooth lift offset */
+    transform: translateY(-8px); 
+    
+    /* Shift the border to your sharp brand aqua */
+    border-color: var(--accent-river-aqua); 
+    
+    /* Add a rich, underwater aqua neon glow aura */
+    box-shadow: 0 12px 30px rgba(0, 180, 216, 0.25), 
+                0 0 15px rgba(0, 180, 216, 0.1); 
+}
         /* ==========================================================================
            GALLERY MASONRY/GRID TRACK
            ========================================================================== */
@@ -783,5 +802,6 @@
             });
         });
     </script>
+    
 </body>
 </html>
