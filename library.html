@@ -8,6 +8,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Color Palette Assignments */
+        /* Active Navigation State Link Highlight */
+nav ul li a.active {
+    color: var(--accent-river-aqua);
+}
+
+nav ul li a.active::after {
+    width: 100%; /* Keeps the custom slide underline fully expanded */
+    background-color: var(--accent-river-aqua);
+}
         :root {
             --deep-ocean: #0B2545;
             --river-aqua: #00B4D8;
@@ -279,7 +288,7 @@
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
                     <li><a href="contact.html">Contact Us</a></li>
-                    <li><a href="library.html">Library</a></li>
+                    <li><a href="library.html" class="active" >Library</a></li>
                     <li><a href="disclaimer.html">Disclaimer</a></li>
                 </ul>
             </nav>
