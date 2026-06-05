@@ -325,13 +325,12 @@
             transform: translateX(0) translateY(0) rotate(0deg) !important;
         }
 
-        /* --- NEW REGIONAL MISSION SPLIT SECTION --- */
+        /* --- BLENDED REGIONAL MISSION SECTION --- */
         .regional-mission-section {
-            background-color: #031022;
+            background-color: #0B2545; /* Matches core page canvas theme natively */
             padding: 120px 8%;
             position: relative;
             z-index: 22;
-            border-top: 1px solid rgba(144, 224, 239, 0.05);
         }
 
         .mission-split-grid {
@@ -339,7 +338,7 @@
             margin: 0 auto;
             display: grid;
             grid-template-columns: 1.2fr 0.8fr;
-            gap: 60px;
+            gap: 80px;
             align-items: center;
         }
 
@@ -367,108 +366,127 @@
             margin-bottom: 20px;
         }
 
-        /* --- NAUTILUS INTERCEPTOR ANIMATION CONTAINER --- */
+        /* Fully borderless frame hosting transparent interactive graphic variables */
         .mission-right-animation {
-            background: linear-gradient(145deg, #071931, #0b2545);
-            height: 450px;
-            border-radius: 20px;
+            background: transparent;
+            height: 400px;
             position: relative;
             overflow: hidden;
-            border: 1px solid rgba(0, 180, 216, 0.15);
-            box-shadow: inset 0 0 40px rgba(0,0,0,0.5);
-        }
-
-        /* River flow lines background */
-        .animation-river-flow {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, transparent, rgba(0, 180, 216, 0.03) 50%, transparent);
-        }
-
-        /* The Nautilus Spiral Interceptor Core */
-        .nautilus-interceptor-core {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-translate(-50%, -50%));
-            width: 160px;
-            height: 160px;
-            margin-top: -80px;
-            margin-left: -80px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(11, 37, 69, 0.9) 0%, rgba(19, 64, 116, 0.6) 70%);
-            border: 2px dashed var(--river-aqua);
             display: flex;
             align-items: center;
             justify-content: center;
-            animation: pulseCore 4s infinite ease-in-out;
-            z-index: 5;
         }
 
-        .nautilus-interceptor-core::before {
-            content: '';
+        /* Fluid River Flowing Streams lines animation */
+        .river-streamline {
             position: absolute;
-            width: 110px;
-            height: 110px;
-            border-radius: 50%;
-            border: 2px solid rgba(144, 224, 239, 0.4);
-            border-left-color: transparent;
-            animation: spinSpiral 6s linear infinite;
+            left: -100%;
+            width: 200%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(0, 180, 216, 0.35), transparent);
+            animation: flowStream 3.5s infinite linear;
+        }
+        .stream-top { top: 25%; animation-duration: 4.2s; }
+        .stream-middle { top: 50%; animation-duration: 3.2s; }
+        .stream-bottom { top: 75%; animation-duration: 4.8s; }
+
+        /* Elegant Vertical Recovery Interceptor Wall across currents */
+        .interceptor-barrier-line {
+            position: absolute;
+            left: 65%;
+            top: 15%;
+            bottom: 15%;
+            width: 4px;
+            background: linear-gradient(to bottom, transparent, var(--river-aqua), transparent);
+            box-shadow: 0 0 15px var(--river-aqua);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
-        .nautilus-interceptor-core i {
+        .active-pulse-node {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #00F5D4; /* Bright teal active radar target node */
+            box-shadow: 0 0 12px #00F5D4;
+            animation: radarPulse 2s infinite ease-in-out;
+        }
+
+        .barrier-label {
+            position: absolute;
+            transform: rotate(-90deg);
+            white-space: nowrap;
             color: var(--seafoam-teal);
-            font-size: 2.2rem;
-            animation: crestRotate 12s linear infinite;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            bottom: 25px;
+            opacity: 0.65;
         }
 
-        /* Floating debris particles being sucked into the system */
-        .debris-particle-node {
+        /* Self-explanatory debris assets traveling down current loops */
+        .debris-item {
             position: absolute;
-            background-color: var(--river-aqua);
-            border-radius: 50%;
-            opacity: 0;
-            filter: drop-shadow(0 0 4px var(--river-aqua));
+            color: rgba(244, 249, 252, 0.45);
+            font-size: 1.9rem;
+            transform: translateY(-50%);
+            pointer-events: none;
         }
 
-        .p1 { width: 8px; height: 8px; left: 10%; top: -20px; animation: capturePath1 5s infinite linear; }
-        .p2 { width: 6px; height: 6px; left: 45%; top: -20px; animation: capturePath2 4s infinite linear 1.5s; }
-        .p3 { width: 10px; height: 10px; right: 20%; top: -20px; animation: capturePath3 6s infinite linear 0.7s; }
-        .p4 { width: 7px; height: 7px; left: 75%; top: -20px; animation: capturePath2 4.5s infinite linear 2.2s; }
-
-        @keyframes pulseCore {
-            0%, 100% { box-shadow: 0 0 20px rgba(0, 180, 216, 0.2); transform: scale(1); }
-            50% { box-shadow: 0 0 45px rgba(144, 224, 239, 0.4); transform: scale(1.04); }
+        .plastic-bottle {
+            top: 35%;
+            animation: captureTrashOne 5.5s infinite cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        @keyframes spinSpiral {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .plastic-bag {
+            top: 55%;
+            animation: captureTrashTwo 4.2s infinite cubic-bezier(0.4, 0, 0.2, 1) 1.2s;
         }
 
-        @keyframes capturePath1 {
-            0% { top: -20px; left: 15%; opacity: 0; }
+        .waste-box {
+            top: 68%;
+            animation: captureTrashThree 7s infinite cubic-bezier(0.4, 0, 0.2, 1) 0.6s;
+        }
+
+        /* ANIMATION MOTION RIG SYSTEM */
+        @keyframes flowStream {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(50%); }
+        }
+
+        @keyframes radarPulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.4); opacity: 0.5; }
+        }
+
+        /* Trash moves horizontally, intercepts with a neon color indicator shift, and gets extracted upwards */
+        @keyframes captureTrashOne {
+            0% { left: -10%; opacity: 0; transform: rotate(0deg); }
+            15% { opacity: 0.7; }
+            65% { left: 63%; opacity: 0.8; transform: rotate(180deg); color: rgba(244, 249, 252, 0.45); }
+            72% { left: 65%; opacity: 1; color: #00F5D4; transform: rotate(200deg) scale(1.15); filter: drop-shadow(0 0 8px #00F5D4); }
+            85% { left: 65%; top: 10%; opacity: 0; transform: scale(0.3); }
+            100% { left: 65%; top: 10%; opacity: 0; }
+        }
+
+        @keyframes captureTrashTwo {
+            0% { left: -10%; opacity: 0; transform: rotate(0deg); }
             20% { opacity: 0.7; }
-            70% { left: 42%; top: 45%; opacity: 0.9; }
-            85% { left: 48%; top: 49%; transform: scale(0.4); opacity: 0.3; }
-            100% { left: 50%; top: 50%; transform: scale(0); opacity: 0; }
+            65% { left: 63%; opacity: 0.8; transform: rotate(-90deg); color: rgba(244, 249, 252, 0.45); }
+            72% { left: 65%; opacity: 1; color: #00F5D4; transform: rotate(-110deg) scale(1.15); filter: drop-shadow(0 0 8px #00F5D4); }
+            85% { left: 65%; top: 15%; opacity: 0; transform: scale(0.3); }
+            100% { left: 65%; top: 15%; opacity: 0; }
         }
 
-        @keyframes capturePath2 {
-            0% { top: -20px; left: 48%; opacity: 0; }
-            20% { opacity: 0.8; }
-            75% { left: 50%; top: 42%; opacity: 0.9; }
-            90% { left: 50%; top: 48%; transform: scale(0.3); opacity: 0.2; }
-            100% { left: 50%; top: 50%; transform: scale(0); opacity: 0; }
-        }
-
-        @keyframes capturePath3 {
-            0% { top: -20px; left: 80%; opacity: 0; }
-            20% { opacity: 0.6; }
-            70% { left: 56%; top: 46%; opacity: 0.9; }
-            85% { left: 52%; top: 49%; transform: scale(0.4); opacity: 0.3; }
-            100% { left: 50%; top: 50%; transform: scale(0); opacity: 0; }
+        @keyframes captureTrashThree {
+            0% { left: -10%; opacity: 0; transform: rotate(0deg); }
+            10% { opacity: 0.6; }
+            65% { left: 63%; opacity: 0.7; transform: rotate(45deg); color: rgba(244, 249, 252, 0.45); }
+            72% { left: 65%; opacity: 1; color: #00F5D4; transform: rotate(55deg) scale(1.15); filter: drop-shadow(0 0 8px #00F5D4); }
+            85% { left: 65%; top: 20%; opacity: 0; transform: scale(0.3); }
+            100% { left: 65%; top: 20%; opacity: 0; }
         }
 
         /* --- HORIZONTAL QUOTE SLIDER SECTION --- */
@@ -859,7 +877,6 @@
         </div>
     </section>
 
-    <!-- NEW REGIONAL MISSION BLOCK (INSPIRED BY SCREENSHOT ARTIFACTS) -->
     <section class="regional-mission-section">
         <div class="mission-split-grid">
             <div class="mission-left scroll-reveal">
@@ -870,21 +887,22 @@
             </div>
             
             <div class="mission-right-animation scroll-reveal">
-                <div class="animation-river-flow"></div>
-                <!-- Stylized Nautilus Filtration Loop Core Diagram -->
-                <div class="nautilus-interceptor-core">
-                    <i class="fas fa-dharmachakra"></i>
+                <div class="river-streamline stream-top"></div>
+                <div class="river-streamline stream-middle"></div>
+                <div class="river-streamline stream-bottom"></div>
+                
+                <div class="interceptor-barrier-line">
+                    <span class="active-pulse-node"></span>
+                    <span class="barrier-label">ANAUTILUS BARRIER</span>
                 </div>
-                <!-- Dynamic Floating Particle Elements -->
-                <div class="debris-particle-node p1"></div>
-                <div class="debris-particle-node p2"></div>
-                <div class="debris-particle-node p3"></div>
-                <div class="debris-particle-node p4"></div>
+                
+                <div class="debris-item plastic-bottle"><i class="fas fa-wine-bottle"></i></div>
+                <div class="debris-item plastic-bag"><i class="fas fa-shopping-bag"></i></div>
+                <div class="debris-item waste-box"><i class="fas fa-box"></i></div>
             </div>
         </div>
     </section>
 
-    <!-- PREMIUM HORIZONTAL QUOTES CAROUSEL -->
     <section class="quotes-section">
         <div class="quotes-header">
             <div class="slider-controls">
@@ -937,7 +955,7 @@
                 <div class="social-icons">
                     <a href="#" class="icon-circle"><i class="fab fa-instagram"></i></a>
                     <a href="#" class="icon-circle"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="icon-circle" style="font-weight: bold; font-family: sans-serif; font-size: 1.1rem; color: #003356;">X</a>
+                    <a href="#" class="icon-circle" style="font-weight: bold; font-family: sans-serif; font-size: 1.1rem; color: #003356; text-decoration: none;">X</a>
                     <a href="#" class="icon-circle"><i class="fab fa-youtube"></i></a>
                     <a href="#" class="icon-circle"><i class="fab fa-linkedin-in"></i></a>
                     <a href="#" class="icon-circle"><i class="fab fa-tiktok"></i></a>
