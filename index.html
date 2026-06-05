@@ -870,6 +870,30 @@
             opacity: 1;
             transform: translateY(0);
         }
+        /* Compliance Bottom Bar Styling */
+        .footer-bottom-compliance {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            text-align: center;
+        }
+
+        .footer-bottom-compliance p {
+            font-size: 0.8rem;
+            color: rgba(244, 249, 252, 0.45);
+            line-height: 1.6;
+            letter-spacing: 0.3px;
+        }
+
+        .footer-bottom-compliance a {
+            color: rgba(244, 249, 252, 0.6);
+            text-decoration: underline;
+            transition: color 0.25s ease;
+        }
+
+        .footer-bottom-compliance a:hover {
+            color: var(--river-aqua);
+        }
 
         /* --- RESPONSIVE LAYOUT CONSTRAINTS --- */
         @media (max-width: 1200px) {
@@ -1113,7 +1137,7 @@
         </div>
     </section>
 
-    <footer class="premium-footer">
+<footer class="premium-footer">
         <div class="footer-top">
             <div class="footer-brand-section">
                 <h3>FOLLOW US</h3>
@@ -1187,9 +1211,14 @@
                     <li><a href="#">Donation Terms & Conditions</a></li>
                     <li><a href="#">Third Party Code of Conduct</a></li>
                     <li><a href="#">Foundation Details</a></li>
-                    <li><a href="#">American Friends of The Ocean Cleanup</a></li>
+                    <li><a href="#">Friends of Anautilus</a></li>
                 </ul>
             </div>
+        </div>
+
+        <!-- NEW COMPLIANCE BOTTOM BAR -->
+        <div class="footer-bottom-compliance">
+            <p>© 2026 Anautilus LLP. All rights reserved. This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a> and <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer">Terms of Service</a> apply.</p>
         </div>
     </footer>
 
