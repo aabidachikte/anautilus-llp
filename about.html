@@ -3,19 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anautilus LLP – Navigation & Footer</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Anautilus LLP – About Us</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* Color Palette Assignments */
+        /* ==========================================================================
+           Anautilus LLP - Unified Ocean-Inspired Design System
+           ========================================================================== */
         :root {
-            --deep-ocean: #0B2545;
-            --river-aqua: #00B4D8;
-            --seafoam-teal: #90E0EF;
-            --pristine-water: #F4F9FC;
-            --pure-white: #FFFFFF;
-            --footer-dark: #003356;
+            /* Palette Architecture */
+            --bg-deep-ocean: #0B2545;      /* Main section canvas background */
+            --bg-clean-marine: #134074;    /* Cards, dashboard panels, structural layers */
+            --accent-river-aqua: #00B4D8;  /* Primary brand accents, button states, hovers */
+            --accent-seafoam: #90E0EF;     /* UI tags, input labels, secondary typography */
+            --text-pristine: #F4F9FC;      /* Highly readable off-white paragraph tone */
+            --text-white: #FFFFFF;         /* Primary headers & main branding components */
+            --bg-footer-dark: #003356;     /* Specialized heavy navy bottom anchor depth */
+            
+            /* Layout Tokens */
+            --radius-lg: 16px;
+            --radius-md: 8px;
+            --transition-smooth: all 0.3s ease;
         }
 
+        /* Base Layout & Core Structure */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -24,18 +35,31 @@
         }
 
         body {
-            background-color: var(--deep-ocean);
-            color: var(--pristine-water);
+            background-color: var(--bg-deep-ocean);
+            color: var(--text-pristine);
+            line-height: 1.6;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+        }
+
+        /* Interactive Element Text/Color Smooth Transitions */
+        a, button, input, select, textarea, .stat-card, .team-card, .award-item {
+            transition: color 0.25s ease, background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 24px;
         }
 
         /* --- MODERNIZED NAVIGATION BAR --- */
         header {
             background-color: rgba(11, 37, 69, 0.95);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             position: fixed;
             top: 0;
             width: 100%;
@@ -66,14 +90,14 @@
         }
 
         .brand-name {
-            color: var(--pure-white);
+            color: var(--text-white);
             font-size: 1.5rem;
             font-weight: 800;
             letter-spacing: 1px;
         }
 
         .brand-name span {
-            color: var(--river-aqua);
+            color: var(--accent-river-aqua);
         }
 
         nav ul {
@@ -83,16 +107,15 @@
         }
 
         nav ul li a {
-            color: var(--pristine-water);
+            color: var(--text-pristine);
             text-decoration: none;
             font-size: 0.95rem;
             font-weight: 500;
-            transition: color 0.3s ease;
             position: relative;
         }
 
         nav ul li a:hover {
-            color: var(--river-aqua);
+            color: var(--accent-river-aqua);
         }
 
         nav ul li a::after {
@@ -102,23 +125,324 @@
             height: 2px;
             bottom: -5px;
             left: 0;
-            background-color: var(--river-aqua);
-            transition: width 0.3s ease;
+            background-color: var(--accent-river-aqua);
+            transition: var(--transition-smooth);
         }
 
         nav ul li a:hover::after {
             width: 100%;
         }
 
+        /* --- CONTENT WRAPPER PADDING ADJUSTMENT --- */
+        .main-content {
+            padding-top: 85px; 
+            flex-grow: 1;
+        }
+
+        /* ==========================================================================
+           Form & Component Elements
+           ========================================================================== */
+        .section-tagline {
+            color: var(--accent-seafoam);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .section-heading {
+            color: var(--text-white);
+            font-size: 2.8rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            max-width: 700px;
+        }
+
+        .section-heading span.highlight {
+            color: var(--accent-river-aqua);
+        }
+
+        .section-description {
+            color: var(--text-pristine);
+            font-size: 1.1rem;
+            max-width: 750px;
+            opacity: 0.9;
+            margin-bottom: 48px;
+        }
+
+        /* --- ABOUT TEMPLATE GRID LAYOUTS --- */
+        .about-overview-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .card-panel {
+            background-color: var(--bg-clean-marine);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(11, 37, 69, 0.3);
+        }
+
+        .card-panel p {
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+            opacity: 0.95;
+        }
+
+        .card-panel p:last-child {
+            margin-bottom: 0;
+        }
+
+        .sidebar-stats-column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .stat-card {
+            background-color: var(--bg-clean-marine);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent-river-aqua);
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            color: var(--accent-river-aqua);
+            width: 60px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text-white);
+            line-height: 1.1;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--accent-seafoam);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        /* Vision & Mission Row */
+        .vision-mission-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-bottom: 60px;
+        }
+
+        .vm-card {
+            background-color: rgba(19, 64, 116, 0.4);
+            border: 1px solid rgba(144, 224, 239, 0.15);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+        }
+
+        .vm-card h2 {
+            font-size: 1.8rem;
+            color: var(--text-white);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .vm-card h2 i {
+            color: var(--accent-river-aqua);
+        }
+
+        /* What We Do Grid Architecture */
+        .operations-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+
+        .operation-card {
+            background-color: var(--bg-clean-marine);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .operation-card i {
+            font-size: 2rem;
+            color: var(--accent-river-aqua);
+        }
+
+        .operation-card h3 {
+            color: var(--text-white);
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        /* Team Structure Row */
+        .team-section-heading {
+            margin-top: 40px;
+            margin-bottom: 32px;
+            border-left: 4px solid var(--accent-river-aqua);
+            padding-left: 16px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+
+        .team-card {
+            background-color: var(--bg-clean-marine);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .team-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(11, 37, 69, 0.4);
+        }
+
+        .avatar-placeholder {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: var(--bg-deep-ocean);
+            border: 2px solid var(--accent-river-aqua);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: var(--accent-seafoam);
+            margin-bottom: 16px;
+        }
+
+        .team-name {
+            color: var(--text-white);
+            font-size: 1.15rem;
+            font-weight: 700;
+        }
+
+        .team-role {
+            color: var(--accent-seafoam);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        /* Awards and Honors & Partners Double Layout Column */
+        .recognition-partners-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-bottom: 48px;
+        }
+
+        .award-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .award-item {
+            background-color: rgba(19, 64, 116, 0.6);
+            border-radius: var(--radius-md);
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            border-left: 3px solid var(--accent-river-aqua);
+        }
+
+        .award-item:hover {
+            background-color: var(--bg-clean-marine);
+            transform: translateX(4px);
+        }
+
+        .award-item i {
+            font-size: 1.5rem;
+            color: #FFD700; /* Gold trophy highlight */
+        }
+
+        .partner-logos-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            height: 100%;
+        }
+
+        .partner-logo-card {
+            background-color: var(--bg-clean-marine);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border: 1px solid rgba(144, 224, 239, 0.05);
+        }
+
+        .partner-logo-card i {
+            font-size: 2rem;
+            color: var(--accent-seafoam);
+            margin-bottom: 8px;
+        }
+
+        .partner-name {
+            color: var(--text-white);
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        /* ==========================================================================
+           Scroll-Reveal Animation Framework System
+           ========================================================================== */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), 
+                        transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .scroll-reveal.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         /* --- PREMIUM FOOTER --- */
         .premium-footer {
-            background-color: var(--footer-dark);
-            color: var(--pure-white);
+            background-color: var(--bg-footer-dark);
+            color: var(--text-white);
             padding: 90px 8% 45px 8%;
             position: relative;
             z-index: 30;
             border-top: 1px solid rgba(255, 255, 255, 0.08);
-            margin-top: auto; /* Pushes footer to bottom if page content is short */
+            margin-top: auto; 
         }
 
         .footer-top {
@@ -147,14 +471,13 @@
             width: 44px;
             height: 44px;
             border-radius: 50%;
-            background-color: var(--pure-white);
-            color: var(--footer-dark);
+            background-color: var(--text-white);
+            color: var(--bg-footer-dark);
             display: flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
             font-size: 1.15rem;
-            transition: transform 0.3s ease, opacity 0.3s ease;
         }
 
         .icon-circle:hover {
@@ -164,21 +487,20 @@
 
         .input-group {
             display: flex;
-            border-bottom: 2px solid var(--pure-white);
+            border-bottom: 2px solid var(--text-white);
             padding-bottom: 10px;
             width: 340px;
             max-width: 100%;
-            transition: border-color 0.3s ease;
         }
 
         .input-group:focus-within {
-            border-color: var(--river-aqua);
+            border-color: var(--accent-river-aqua);
         }
 
         .input-group input {
             background: transparent;
             border: none;
-            color: var(--pure-white);
+            color: var(--text-white);
             flex-grow: 1;
             font-size: 1.05rem;
             outline: none;
@@ -192,14 +514,13 @@
         .submit-btn {
             background: transparent;
             border: none;
-            color: var(--pure-white);
+            color: var(--text-white);
             cursor: pointer;
             font-size: 1.15rem;
-            transition: color 0.3s ease, transform 0.2s ease;
         }
 
         .submit-btn:hover {
-            color: var(--river-aqua);
+            color: var(--accent-river-aqua);
             transform: translateX(3px);
         }
 
@@ -241,27 +562,105 @@
         }
 
         .link-column ul li a {
-            color: var(--pure-white);
+            color: var(--text-white);
             text-decoration: none;
             font-size: 0.95rem;
-            transition: color 0.25s ease;
             opacity: 0.85;
         }
 
         .link-column ul li a:hover {
-            color: var(--river-aqua);
+            color: var(--accent-river-aqua);
             opacity: 1;
         }
 
-        /* --- RESPONSIVE LAYOUT CONSTRAINTS --- */
+        /* ==========================================================================
+           AUTOMATIC MOBILE ALIGNMENT OVERRIDES (The Responsive Layout Toggle Engine)
+           ========================================================================== */
         @media (max-width: 1200px) {
-            .footer-links-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .container {
+                padding: 30px 16px;
+            }
+
+            .section-heading {
+                font-size: 2.2rem;
+            }
+
+            .about-overview-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .vision-mission-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .operations-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .recognition-partners-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .card-panel {
+                padding: 30px 20px;
+            }
         }
 
         @media (max-width: 768px) {
-            nav ul { display: none; } 
-            .footer-links-grid { grid-template-columns: 1fr; }
-            .footer-top { flex-direction: column; gap: 40px; }
+            nav ul { 
+                display: none; 
+            } 
+
+            .main-content {
+                padding-top: 75px;
+            }
+
+            .footer-links-grid { 
+                grid-template-columns: repeat(2, 1fr); 
+                gap: 30px; 
+            }
+
+            .footer-top { 
+                flex-direction: column; 
+                gap: 40px; 
+            }
+
+            .input-group {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section-heading {
+                font-size: 1.8rem;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .partner-logos-container {
+                grid-template-columns: 1fr;
+            }
+
+            .vm-card {
+                padding: 30px 20px;
+            }
+
+            .footer-links-grid { 
+                grid-template-columns: 1fr; 
+            }
         }
     </style>
 </head>
@@ -285,7 +684,151 @@
         </div>
     </header>
 
-    <div style="padding-top: 80px;"></div>
+    <div class="main-content">
+        <div class="container">
+            
+            <!-- Hero Header Section Area -->
+            <div class="scroll-reveal">
+                <p class="section-tagline">OUR ORIGIN & PURPOSE</p>
+                <h1 class="section-heading">Restoring the Vitality of Our <span class="highlight">River Ecosystems</span></h1>
+                <p class="section-description">Based out of Pune, India, Anautilus LLP combines modular ecological engineering with cutting-edge deployment tools to tackle urban river pollution and industrial waste flow directly at the source.</p>
+            </div>
+
+            <!-- What is Anautilus section & Quick statistics grid track -->
+            <div class="about-overview-grid">
+                <div class="card-panel scroll-reveal">
+                    <h2 class="form-title" style="margin-bottom: 16px;">What is Anautilus LLP?</h2>
+                    <p>Anautilus LLP is an environmental engineering firm dedicated to cleaning up and protecting solid-waste channels across India's waterways. Founded and operated in Pune, we serve as a vital link between technological innovation and environmental preservation.</p>
+                    <p>Our operation designs, builds, and maintains custom mechanical barriers and structural waste management catchments that prevent urban plastic pollution from destroying delicate marine habitats downstream.</p>
+                </div>
+
+                <div class="sidebar-stats-column">
+                    <div class="stat-card scroll-reveal">
+                        <div class="stat-icon"><i class="fas fa-water"></i></div>
+                        <div>
+                            <div class="stat-number">3+ Rivers</div>
+                            <div class="stat-label">Active Deployments</div>
+                        </div>
+                    </div>
+                    <div class="stat-card scroll-reveal">
+                        <div class="stat-icon"><i class="fas fa-dumpster"></i></div>
+                        <div>
+                            <div class="stat-number">450+ Tons</div>
+                            <div class="stat-label">Plastic Extracted</div>
+                        </div>
+                    </div>
+                    <div class="stat-card scroll-reveal">
+                        <div class="stat-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div>
+                            <div class="stat-number">Pune, IN</div>
+                            <div class="stat-label">Operational Hub Base</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vision and Mission Card Block Architecture -->
+            <div class="vision-mission-grid">
+                <div class="vm-card scroll-reveal">
+                    <h2><i class="fas fa-eye"></i> Our Vision</h2>
+                    <p>To establish an unyielding network of clean, plastic-free river channels throughout urban India, setting standard benchmarks for modern ecological engineering and resource recovery.</p>
+                </div>
+                <div class="vm-card scroll-reveal">
+                    <h2><i class="fas fa-bullseye"></i> Our Mission</h2>
+                    <p>To eliminate surface-level marine pollutants through localized engineering barriers, automated sorting systems, and collaborative public-private environmental frameworks.</p>
+                </div>
+            </div>
+
+            <!-- What We Do Operations Section Track -->
+            <p class="section-tagline scroll-reveal">OPERATIONAL STRATEGY</p>
+            <h2 class="section-heading scroll-reveal" style="font-size: 2.2rem; margin-bottom: 32px;">What We Do</h2>
+            
+            <div class="operations-grid">
+                <div class="operation-card scroll-reveal">
+                    <i class="fas fa-tools"></i>
+                    <h3>Mechanical Interception</h3>
+                    <p>We deploy customizable debris barriers designed to safely snare surface plastics without impeding native fish populations or blocking water currents.</p>
+                </div>
+                <div class="operation-card scroll-reveal">
+                    <i class="fas fa-recycle"></i>
+                    <h3>Waste Management</h3>
+                    <p>Every ton of trash collected is brought ashore and fed into priority sorting systems, ensuring all recyclable components bypass landfills completely.</p>
+                </div>
+                <div class="operation-card scroll-reveal">
+                    <i class="fas fa-chart-bar"></i>
+                    <h3>Ecological Analytics</h3>
+                    <p>Our field technicians log daily flow patterns and extraction metrics, offering transparent data sets used for future environmental planning.</p>
+                </div>
+            </div>
+
+            <!-- Team Members Section Track Grid -->
+            <div class="team-section-heading scroll-reveal">
+                <p class="section-tagline">THE FIELD FORCE</p>
+                <h2 style="color: var(--text-white); font-size: 2rem;">Team Members</h2>
+            </div>
+
+            <div class="team-grid">
+                <div class="team-card scroll-reveal">
+                    <div class="avatar-placeholder"><i class="fas fa-user-gear"></i></div>
+                    <div class="team-name">Anand B.</div>
+                    <div class="team-role">Managing Partner</div>
+                </div>
+                <div class="team-card scroll-reveal">
+                    <div class="avatar-placeholder"><i class="fas fa-helmet-safety"></i></div>
+                    <div class="team-name">Rajesh K.</div>
+                    <div class="team-role">Lead Operations Engineer</div>
+                </div>
+                <div class="team-card scroll-reveal">
+                    <div class="avatar-placeholder"><i class="fas fa-microscope"></i></div>
+                    <div class="team-name">Dr. Sunita M.</div>
+                    <div class="team-role">Ecological Analyst</div>
+                </div>
+                <div class="team-card scroll-reveal">
+                    <div class="avatar-placeholder"><i class="fas fa-truck-ramp-box"></i></div>
+                    <div class="team-name">Vikram S.</div>
+                    <div class="team-role">Logistics Supervisor</div>
+                </div>
+            </div>
+
+            <!-- Awards and Partners Container Track Block -->
+            <div class="recognition-partners-grid">
+                <div class="scroll-reveal">
+                    <h2 class="form-title" style="font-size: 1.6rem; margin-bottom: 24px;">Awards & Honours</h2>
+                    <div class="award-list">
+                        <div class="award-item">
+                            <i class="fas fa-trophy"></i>
+                            <div>
+                                <h4 style="color: var(--text-white);">Maharashtra Eco-Innovation Award</h4>
+                                <p style="font-size: 0.85rem; opacity: 0.8;">Recognized for local river cleaning engineering systems.</p>
+                            </div>
+                        </div>
+                        <div class="award-item">
+                            <i class="fas fa-award"></i>
+                            <div>
+                                <h4 style="color: var(--text-white);">Pune Civic Green Impact Citation</h4>
+                                <p style="font-size: 0.85rem; opacity: 0.8;">Awarded for excellence in municipal plastic waste extraction.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="scroll-reveal">
+                    <h2 class="form-title" style="font-size: 1.6rem; margin-bottom: 24px;">Our Partners</h2>
+                    <div class="partner-logos-container">
+                        <div class="partner-logo-card">
+                            <i class="fas fa-building-ngo"></i>
+                            <div class="partner-name">Pune Municipal Frameworks</div>
+                        </div>
+                        <div class="partner-logo-card">
+                            <i class="fas fa-handshake-angle"></i>
+                            <div class="partner-name">Mula-Mutha Clean Taskforce</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 
     <footer class="premium-footer">
         <div class="footer-top">
@@ -297,7 +840,6 @@
                     <a href="#" class="icon-circle" style="font-weight: bold; font-family: sans-serif; font-size: 1.1rem; color: #003356; text-decoration: none;">X</a>
                     <a href="#" class="icon-circle"><i class="fab fa-youtube"></i></a>
                     <a href="#" class="icon-circle"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" class="icon-circle"><i class="fab fa-tiktok"></i></a>
                 </div>
             </div>
             
@@ -322,22 +864,15 @@
                     <li><a href="library.html">Research Library</a></li>
                     <li><a href="#">Waste Management</a></li>
                     <li><a href="#">Global Public Affairs</a></li>
-                    <li><a href="#">Research</a></li>
-                    <li><a href="#">Milestones</a></li>
-                    <li><a href="#">Updates</a></li>
-                    <li><a href="#">Podcasts</a></li>
                 </ul>
             </div>
             <div class="link-column">
                 <h4>ABOUT US</h4>
                 <ul>
                     <li><a href="about.html">About Us</a></li>
-                    <li><a href="about.html#careers">Careers</a></li>
+                    <li><a href="#">Careers</a></li>
                     <li><a href="#">Press kit</a></li>
                     <li><a href="gallery.html">Media gallery</a></li>
-                    <li><a href="contact.html">Become a partner</a></li>
-                    <li><a href="#">Suppliers</a></li>
-                    <li><a href="#">Community Corner</a></li>
                 </ul>
             </div>
             <div class="link-column">
@@ -345,12 +880,8 @@
                 <ul>
                     <li><a href="#">Donate now</a></li>
                     <li><a href="#">Fundraise</a></li>
-                    <li><a href="contact.html">Become a partner</a></li>
                     <li><a href="#">Merchandise</a></li>
-                    <li><a href="#">Citizen Science</a></li>
-                    <li><a href="about.html#faq">FAQ</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="#">Volunteering locally</a></li>
+                    <li><a href="#">FAQ</a></li>
                 </ul>
             </div>
             <div class="link-column">
@@ -358,13 +889,34 @@
                 <ul>
                     <li><a href="disclaimer.html#privacy">Privacy and Cookie Notice</a></li>
                     <li><a href="disclaimer.html">Disclaimer</a></li>
-                    <li><a href="#">Donation Terms & Conditions</a></li>
-                    <li><a href="#">Third Party Code of Conduct</a></li>
-                    <li><a href="#">Foundation Details</a></li>
                 </ul>
             </div>
         </div>
     </footer>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const revealElements = document.querySelectorAll('.scroll-reveal');
+            
+            const observerOptions = {
+                root: null, 
+                threshold: 0.1, 
+                rootMargin: "0px 0px -40px 0px" 
+            };
+
+            const pageObserver = new IntersectionObserver(function (entries, observer) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('appear');
+                        pageObserver.unobserve(entry.target); 
+                    }
+                });
+            }, observerOptions);
+
+            revealElements.forEach(element => {
+                pageObserver.observe(element);
+            });
+        });
+    </script>
 </body>
 </html>
