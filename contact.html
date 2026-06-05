@@ -441,17 +441,18 @@
     .sidebar-card a:hover {
         color: var(--text-pristine) !important;
     }
-        /* Initial hidden state for the cards */
-.sidebar-card {
+      /* Universal hidden state for ALL blocks */
+.scroll-reveal {
     opacity: 0;
-    transform: translateY(30px); /* Shifts it down slightly */
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    transform: translateY(40px); /* Slightly deeper float effect */
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), 
+                transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* The active class that will be triggered on scroll */
-.sidebar-card.appear {
+/* The active state when triggered */
+.scroll-reveal.appear {
     opacity: 1;
-    transform: translateY(0); /* Returns to its original position */
+    transform: translateY(0);
 }
 
         /* --- PREMIUM FOOTER --- */
@@ -647,7 +648,7 @@
             <h1 class="section-heading">Chart the Path to <span class="highlight">Marine Restoration</span></h1>
             <p class="section-description">Whether you're looking to partner on large-scale river conservation or join our technical field teams, your contribution fuels the next wave of ecological engineering.</p>
 
-            <div class="contact-grid">
+            <div class="contact-grid scroll-reveal">
                 <!-- Inquiry Form Panel -->
                 <div class="card-panel">
                     <h2 class="form-title">Send an Inquiry</h2>
@@ -680,7 +681,7 @@
 
                 <!-- Info Sidebar Blocks -->
                 <div>
-                    <div class="sidebar-card hq-map-wrapper">
+                    <div class="sidebar-card hq-map-wrapper scroll-reveal">
                         <div class="info-header"><i class="fas fa-map-marker-alt"></i> Headquarters</div>
                         <div class="info-content">ANAUTILUS LLP GAT NO 64, SASEWADI, TAL. BHOR, Khed Shivapur, Khed Shivapur, Haveli, Pune- 412205, Maharashtra, India</div>
      <a href="https://maps.google.com/?q=ANAUTILUS+LLP+GAT+NO+64+SASEWADI+TAL+BHOR+Khed+Shivapur+Maharashtra+India" target="_blank" rel="noopener noreferrer" class="map-link">
@@ -688,18 +689,18 @@
 </a>
                     </div>
 
-                    <div class="sidebar-card">
+                    <div class="sidebar-card scroll-reveal">
                         <div class="info-header"><i class="fas fa-envelope"></i> Email Communications</div>
                         <div class="info-content">info@anautilusllp.com</div>
                     </div>
 
-                    <div class="sidebar-card">
+                    <div class="sidebar-card scroll-reveal">
                         <div class="info-header"><i class="fas fa-phone-alt"></i> Direct Technical Line</div>
                         <div class="info-content">+91 22 4593 1100</div>
                         <div class="info-subtext">Mon-Fri, 0900 to 1800 IST.</div>
                     </div>
 
-                    <div class="sidebar-card">
+                    <div class="sidebar-card scroll-reveal">
                         <div class="info-header">Connect Socially</div>
                         <div class="social-row">
                             <a href="#" class="btn-social"><i class="fab fa-linkedin"></i> LinkedIn</a>
@@ -712,7 +713,7 @@
             </div>
 
             <!-- Bottom Dashboard Engagement Links -->
-            <div class="engagement-grid">
+            <div class="engagement-grid scroll-reveal">
                 <div class="engagement-card card-partner">
                     <div>
                         <h3>Partner with Us</h3>
@@ -721,7 +722,7 @@
                     <a href="#" class="btn-action-link">Explore Partnerships <i class="fas fa-arrow-right"></i></a>
                 </div>
 
-                <div class="engagement-card card-volunteer">
+                <div class="engagement-card card-volunteer scroll-reveal">
                     <div>
                         <h3>Volunteer</h3>
                         <p>Join our seasonal cleanup drives and community monitoring programs. We value hands-on impact from dedicated individuals committed to preserving local river ecosystems.</p>
