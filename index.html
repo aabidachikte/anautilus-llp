@@ -369,6 +369,7 @@
         .mission-right-animation {
             background: transparent;
             height: 400px;
+            width: 100%;
             position: relative;
             overflow: hidden;
             display: flex;
@@ -786,16 +787,6 @@
             color: rgba(255,255,255,0.55);
         }
 
-        .input-group input {
-            background: transparent;
-            border: none;
-            color: var(--pure-white);
-            flex-grow: 1;
-            font-size: 1.05rem;
-            outline: none;
-            padding-right: 10px;
-        }
-
         .submit-btn {
             background: transparent;
             border: none;
@@ -870,6 +861,7 @@
             opacity: 1;
             transform: translateY(0);
         }
+
         /* Compliance Bottom Bar Styling */
         .footer-bottom-compliance {
             margin-top: 60px;
@@ -936,9 +928,8 @@
     </header>
 
     <div class="hero-wrapper">
-        <video class="hero-video-bg" autoplay loop muted playsinline>
+        <video class="hero-video-bg" autoplay loop muted playsinline preload="auto" controls="false">
             <source src="hero-water.mov" type="video/quicktime">
-            <source src="hero-water.mov" type="video/mp4">
         </video>
         <div class="hero-overlay"></div>
         <section class="hero-section"></section>
@@ -1026,118 +1017,24 @@
             <div class="mission-left scroll-reveal">
                 <h3>A Localized Crisis</h3>
                 <h2>Intercepting Waste Across Mumbai & Pune</h2>
-                <p>Every single day, tons of industrial plastic fragments, solid waste, and urban debris choke critical water basins across the Maharashtra region. From the dense city curves of Mumbai’s Mithi River down to the broad agricultural channels of Pune's Mula-Mutha confluence, the damage cascades rapidly toward our oceans.</p>
-                <p>Anautilus LLP operates at these precise geographic bottlenecks. By deploying custom, non-invasive barrier networks and fluid dynamic extraction systems, we intercept synthetic materials directly from high-velocity currents before they can disintegrate into hazardous microplastics.</p>
+                <p>Every single day, tons of industrial plastic fragments, solid waste, and urban debris escape into our local tributaries. Our interceptor technology actively captures this waste downstream before it compromises biological habitats or feeds into ocean channels.</p>
             </div>
-            
-            <div class="mission-right-animation scroll-reveal">
+            <div class="mission-right-animation">
                 <div class="river-streamline stream-top"></div>
                 <div class="river-streamline stream-middle"></div>
                 <div class="river-streamline stream-bottom"></div>
-                
                 <div class="interceptor-barrier-line">
-                    <span class="active-pulse-node"></span>
-                    <span class="barrier-label">ANAUTILUS BARRIER</span>
+                    <div class="active-pulse-node"></div>
+                    <div class="barrier-label">ANAUTILUS INTERCEPTOR</div>
                 </div>
-                
-                <div class="debris-item plastic-bottle"><i class="fas fa-wine-bottle"></i></div>
-                <div class="debris-item plastic-bag"><i class="fas fa-shopping-bag"></i></div>
-                <div class="debris-item waste-box"><i class="fas fa-box"></i></div>
+                <div class="debris-item plastic-bottle"><i class="fas fa-bottle-water"></i></div>
+                <div class="debris-item plastic-bag"><i class="fas fa-box-tissue"></i></div>
+                <div class="debris-item waste-box"><i class="fas fa-dumpster"></i></div>
             </div>
         </div>
     </section>
 
-    <!-- PREMIUM CLEAN SECTION: OUR PARTNERS -->
-    <section class="partners-section">
-        <div class="partners-wrapper">
-            
-            <!-- Clean Profile Frame Layout -->
-            <div class="partner-photos-frame">
-                <!-- Single headshot focusing beautifully on the layout shown in edited-image.jpg -->
-                <div class="partner-photo-card">
-                    <img src="image_10.png" alt="Bhushan Raj Profile Picture">
-                </div>
-            </div>
-
-            <!-- Profile Narrative Grid Layout Layer -->
-            <div class="partner-profile-text scroll-reveal">
-                <span class="tag">02 / Leadership & Technical Direction</span>
-                <h2>Bhushan Raj</h2>
-                <div class="partner-title-sub">Designated Partner, Anautilus LLP</div>
-                <p>An active marine engineer with over 40 cumulative years of sailing and ships technical support experience. Bhushan combines deep maritime infrastructure mastery with a profound dedication to ecological preservation.</p>
-                <p>As a passionate nature lover, avid reader, and music aficionado, he extends his engineering perspective directly to environmental stewardship. His background spans structural waste management within CHS complexes to active bamboo plantation drives over critical MbPA plots.</p>
-                <p>Beyond technical supervision, Bhushan is deeply invested in human resource development through mentoring juniors, alongside promoting local coexistence as an active participant in the "Living with Leopards" citizen outreach initiative under the aegis of SGNP. He stands keenly persevering on delivering the foundational objectives and aspirations of Anautilus LLP.</p>
-                
-                <!-- Quick Icon Reference Metrics -->
-                <div class="partner-bullet-metrics">
-                    <div class="metric-item">
-                        <i class="fas fa-anchor"></i>
-                        <span>40+ Years Marine Engineering & Technical Support</span>
-                    </div>
-                    <div class="metric-item">
-                        <i class="fas fa-seedling"></i>
-                        <span>Active Environmental & Waste Management Contributor</span>
-                    </div>
-                    <div class="metric-item">
-                        <i class="fas fa-users"></i>
-                        <span>Junior Mentorship & SGNP Wildlife Outreach Participant</span>
-                    </div>
-                    <div class="metric-item">
-                        <i class="fas fa-bullseye"></i>
-                        <span>Keenly Delivering Anautilus Growth Objectives</span>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <section class="quotes-section">
-        <div class="quotes-header">
-            <div class="slider-controls">
-                <div class="slider-arrow" id="slidePrev"><i class="fas fa-chevron-left"></i></div>
-                <div class="slider-arrow" id="slideNext"><i class="fas fa-chevron-right"></i></div>
-            </div>
-        </div>
-        
-        <div class="quotes-slider-container" id="quoteSlider">
-            
-            <div class="quote-card-premium">
-                <div>
-                    <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
-                    <p class="quote-body">"Water is the common thread that connects all worldly challenges. Cleaning our rivers is not an option; it is an absolute survival imperative for humanity."</p>
-                </div>
-                <div class="quote-author">Ban Ki-moon <span>Former UN Secretary-General</span></div>
-            </div>
-
-            <div class="quote-card-premium">
-                <div>
-                    <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
-                    <p class="quote-body">"No water, no life. No blue, no green. Every piece of debris intercepted in an inland river is a victory for the deep ocean leagues away."</p>
-                </div>
-                <div class="quote-author">Dr. Sylvia Earle <span>Oceanographer & Explorer</span></div>
-            </div>
-
-            <div class="quote-card-premium">
-                <div>
-                    <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
-                    <p class="quote-body">"We must treat the cleaning and protection of our water resources with the same urgency as economic expansion. They are two sides of the same coin."</p>
-                </div>
-                <div class="quote-author">Kofi Annan <span>Late Nobel Peace Prize Laureate</span></div>
-            </div>
-
-            <div class="quote-card-premium">
-                <div>
-                    <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
-                    <p class="quote-body">"Humanity has lost the capacity to foresee and to forestall. It will end by destroying the earth—unless we actively restore the purity of our flowing waters."</p>
-                </div>
-                <div class="quote-author">Albert Schweitzer <span>Philosopher & Humanitarian</span></div>
-            </div>
-
-        </div>
-    </section>
-
-<footer class="premium-footer">
+    <footer class="premium-footer">
         <div class="footer-top">
             <div class="footer-brand-section">
                 <h3>FOLLOW US</h3>
@@ -1211,63 +1108,33 @@
                     <li><a href="#">Donation Terms & Conditions</a></li>
                     <li><a href="#">Third Party Code of Conduct</a></li>
                     <li><a href="#">Foundation Details</a></li>
-                    <li><a href="#">Friends of Anautilus</a></li>
+                    <li><a href="#">American Friends of The Ocean Cleanup</a></li>
                 </ul>
             </div>
         </div>
 
-        <!-- NEW COMPLIANCE BOTTOM BAR -->
         <div class="footer-bottom-compliance">
             <p>© 2026 Anautilus LLP. All rights reserved. This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a> and <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer">Terms of Service</a> apply.</p>
         </div>
     </footer>
 
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const standardObserver = new IntersectionObserver((entries) => {
-                entries.forEach((entry) => {
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            document.querySelectorAll('.scroll-reveal').forEach((el) => standardObserver.observe(el));
-
-            // Premium Intersect Observer for glide portrait frame
-            const glideObserver = new IntersectionObserver((entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        const premiumCards = entry.target.querySelectorAll('.photo-card-premium, .partner-photo-card');
-                        premiumCards.forEach((card, index) => {
-                            setTimeout(() => {
-                                card.classList.add('glide-active');
-                            }, index * 250);
-                        });
-                        glideObserver.unobserve(entry.target);
+                        
+                        // Handle side nested photo transitions
+                        const photoCards = entry.target.parentElement.querySelectorAll('.photo-card-premium, .partner-photo-card');
+                        photoCards.forEach(card => card.classList.add('glide-active'));
                     }
                 });
             }, { threshold: 0.15 });
 
-            const glideContainers = document.querySelectorAll('.glide-photos, .partner-photos-frame');
-            glideContainers.forEach((container) => {
-                if (container) {
-                    glideObserver.observe(container);
-                }
+            document.querySelectorAll('.scroll-reveal').forEach(element => {
+                observer.observe(element);
             });
-
-            const slider = document.getElementById('quoteSlider');
-            const nextBtn = document.getElementById('slideNext');
-            const prevBtn = document.getElementById('slidePrev');
-
-            if(slider && nextBtn && prevBtn) {
-                nextBtn.addEventListener('click', () => {
-                    slider.scrollBy({ left: 490, behavior: 'smooth' });
-                });
-                prevBtn.addEventListener('click', () => {
-                    slider.scrollBy({ left: -490, behavior: 'smooth' });
-                });
-            }
         });
     </script>
 </body>
