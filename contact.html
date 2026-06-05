@@ -441,6 +441,18 @@
     .sidebar-card a:hover {
         color: var(--text-pristine) !important;
     }
+        /* Initial hidden state for the cards */
+.sidebar-card {
+    opacity: 0;
+    transform: translateY(30px); /* Shifts it down slightly */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* The active class that will be triggered on scroll */
+.sidebar-card.appear {
+    opacity: 1;
+    transform: translateY(0); /* Returns to its original position */
+}
 
         /* --- PREMIUM FOOTER --- */
         .premium-footer {
@@ -798,6 +810,29 @@
             </div>
         </div>
     </footer>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const cards = document.querySelectorAll('.sidebar-card');
+        
+        const observerOptions = {
+            root: null, // Uses the browser viewport
+            threshold: 0.15, // Triggers when 15% of the card is visible
+            rootMargin: "0px 0px -50px 0px" // Triggers slightly before hitting the bottom
+        };
 
+        const cardObserver = new IntersectionObserver(function (entries, observer) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('appear');
+                    cardObserver.unobserve(entry.target); // Keeps it visible once animated
+                }
+            });
+        }, observerOptions);
+
+        cards.forEach(card => {
+            cardObserver.observe(card);
+        });
+    });
+</script>
 </body>
 </html>
