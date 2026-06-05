@@ -10,6 +10,15 @@
         /* ==========================================================================
            Anautilus LLP - Unified Design System Variables
            ========================================================================== */
+        /* Active Navigation State Link Highlight */
+nav ul li a.active {
+    color: var(--accent-river-aqua);
+}
+
+nav ul li a.active::after {
+    width: 100%; /* Keeps the custom slide underline fully expanded */
+    background-color: var(--accent-river-aqua);
+}
         :root {
             --bg-deep-ocean: #0B2545;      
             --bg-clean-marine: #134074;    
@@ -562,7 +571,7 @@
             <nav>
                 <ul>
                     <li><a href="about.html">About Us</a></li>
-                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="gallery.html" class="active" >Gallery</a></li>
                     <li><a href="contact.html">Contact Us</a></li>
                     <li><a href="library.html">Library</a></li>
                     <li><a href="disclaimer.html">Disclaimer</a></li>
