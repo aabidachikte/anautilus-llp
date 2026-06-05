@@ -109,6 +109,89 @@
         nav ul li a:hover::after {
             width: 100%;
         }
+        /*---CONTENT---*/
+        /* --- COLOR PALETTE VARIABLES --- */
+:root {
+  --secondary-fixed-dim: #82cfff;
+  --secondary-fixed: #c6e7ff;
+  --on-primary: #1a324c;
+  --on-tertiary-fixed-variant: #00513c;
+  --on-background: #e2e2e2;
+  --inverse-on-surface: #2f3131;
+  --on-error: #690005;
+  --surface-dim: #121414;
+  --tertiary-container: #001f15;
+  --error: #ffb4ab;
+  --on-secondary-fixed-variant: #004c6b;
+  --on-secondary-fixed: #001e2d;
+  --on-secondary-container: #003c55;
+  --surface-container: #1e2020;
+  --primary-fixed-dim: #b1c8ea;
+  --secondary-container: #00abec;
+  --tertiary-fixed-dim: #00e1ab;
+  --surface-variant: #333535;
+  --on-secondary: #00344b;
+  --inverse-surface: #e2e2e2;
+  --surface-container-low: #1a1c1c;
+  --on-error-container: #ffdad6;
+  --on-surface-variant: #c4c6ce;
+  --on-primary-container: #6e84a3;
+  --surface-container-high: #282a2b;
+  --surface-container-lowest: #0c0f0f;
+  --on-primary-fixed: #011c36;
+  --tertiary: #00e1ab;
+  --on-tertiary-container: #009570;
+  --on-surface: #e2e2e2;
+  --primary-fixed: #d2e4ff;
+  --inverse-primary: #49607d;
+  --on-tertiary-fixed: #002116;
+  --on-primary-fixed-variant: #314864;
+  --background: #121414;
+  --error-container: #93000a;
+  --primary: #b1c8ea;
+  --surface-bright: #37393a;
+  --surface-container-highest: #333535;
+  --secondary: #82cfff;
+  --primary-container: #001b35;
+  --surface: #121414;
+  --surface-tint: #b1c8ea;
+  --outline-variant: #43474d;
+  --on-tertiary: #003828;
+  --outline: #8e9198;
+  --tertiary-fixed: #36ffc4;
+}
+
+/* --- BASE & BODY STYLES --- */
+body {
+  background-color: var(--background);
+  color: var(--on-surface);
+  font-family: 'Manrope', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* --- PAGE HERO & SECTIONS --- */
+.hero-gradient {
+  background: radial-gradient(circle at top right, rgba(0, 225, 171, 0.05), transparent 40%);
+}
+
+.max-w-screen-2xl {
+  max-width: 1536px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.px-margin-desktop {
+  padding-left: 80px;
+  padding-right: 80px;
+}
+
+.pt-24 { padding-top: 96px; }
+.pb-16 { padding-bottom: 64px
 
         /* --- PREMIUM FOOTER --- */
         .premium-footer {
