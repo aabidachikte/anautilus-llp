@@ -601,25 +601,89 @@
             opacity: 1;
         }
 
-        /* --- RESPONSIVE LAYOUT CONSTRAINTS --- */
-        @media (max-width: 1200px) {
-            .footer-links-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
-        }
-
+        /* ==========================================================================
+           AUTOMATIC MOBILE ALIGNMENT OVERRIDES (The Responsive Layout Toggle Engine)
+           ========================================================================== */
         @media (max-width: 992px) {
-            .contact-grid { grid-template-columns: 1fr; }
+            .container {
+                padding: 30px 16px;
+            }
+
+            .section-heading {
+                font-size: 2.2rem;
+            }
+
+            /* Flips layout grids from side-by-side columns into neat single vertical tracks */
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .engagement-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .card-panel {
+                padding: 30px 20px;
+            }
         }
 
         @media (max-width: 768px) {
-            nav ul { display: none; } 
-            .footer-links-grid { grid-template-columns: 1fr; }
-            .footer-top { flex-direction: column; gap: 40px; }
-            .engagement-grid { grid-template-columns: 1fr; }
+            /* Drops navigation menu elements to preserve screen layout estate on mobile devices */
+            nav ul { 
+                display: none; 
+            } 
+
+            .main-content {
+                padding-top: 75px;
+            }
+
+            .footer-links-grid { 
+                grid-template-columns: repeat(2, 1fr); 
+                gap: 30px; 
+            }
+
+            .footer-top { 
+                flex-direction: column; 
+                gap: 40px; 
+            }
+
+            .input-group {
+                width: 100%;
+            }
         }
 
         @media (max-width: 576px) {
-            .form-row { grid-template-columns: 1fr; }
-            .section-heading { font-size: 2.2rem; }
+            .section-heading {
+                font-size: 1.8rem;
+            }
+
+            /* Form rows change layout configuration from 2-column side-by-side to unified vertical list blocks */
+            .form-row { 
+                grid-template-columns: 1fr; 
+                gap: 0;
+            }
+
+            .engagement-card {
+                padding: 30px 20px;
+                min-height: auto;
+            }
+
+            .engagement-card p {
+                max-width: 100%;
+                margin-bottom: 20px;
+            }
+
+            /* Adapts the 2-row social button panel layout safely on compact mobile devices */
+            .social-row {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            .footer-links-grid { 
+                grid-template-columns: 1fr; 
+            }
         }
     </style>
 </head>
