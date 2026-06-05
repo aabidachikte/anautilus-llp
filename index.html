@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anautilus LLP – Liberating Our Waters</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Color Palette Assignments */
         :root {
@@ -13,6 +14,7 @@
             --seafoam-teal: #90E0EF;
             --pristine-water: #F4F9FC;
             --pure-white: #FFFFFF;
+            --footer-dark: #003356; /* Accurate matching from reference */
         }
 
         * {
@@ -109,11 +111,11 @@
             width: 100%;
         }
 
-        /* Hero Wrapper - Restoring layout flexibility */
+        /* Hero Wrapper */
         .hero-wrapper {
             position: relative;
             width: 100%;
-            min-height: 90vh;
+            min-height: 95vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -167,13 +169,13 @@
             border-radius: 0 8px 8px 0;
         }
 
-        /* --- FIXED REALISTIC WAVES & DEBRIS CONTAINER --- */
+        /* Realistic Fluids & Waves Styling */
         .wave-background {
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 260px; /* Locked explicit depth so content isn't swallowed */
+            height: 260px;
             z-index: 2;
             pointer-events: none;
         }
@@ -189,21 +191,18 @@
             transform: translate3d(0, 0, 0);
         }
 
-        /* Wave Layer 1 (Deep base wave) */
         .giant-wave.wave-alpha {
             opacity: 0.35;
             background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" preserveAspectRatio="none"><path d="M0,150 C300,250 600,50 900,200 C1050,250 1150,180 1200,150 L1200,300 L0,300 Z" fill="%23134074"/></svg>');
             animation: realisticFluid 18s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
         }
 
-        /* Wave Layer 2 (Intersecting dynamic flow) */
         .giant-wave.wave-beta {
             opacity: 0.25;
             background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" preserveAspectRatio="none"><path d="M0,180 C250,80 550,280 850,130 C1000,80 1150,180 1200,200 L1200,300 L0,300 Z" fill="%2300B4D8"/></svg>');
             animation: realisticFluid 13s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite reverse;
         }
 
-        /* Wave Layer 3 (Pristine crest overlay) */
         .giant-wave.wave-gamma {
             opacity: 0.2;
             background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" preserveAspectRatio="none"><path d="M0,120 C400,60 700,220 1200,100 L1200,300 L0,300 Z" fill="%2390E0EF"/></svg>');
@@ -216,7 +215,7 @@
             100% { transform: translateX(-50%) scaleY(1); }
         }
 
-        /* Debris Animation Layer */
+        /* Falling Trash/Debris Layer */
         .debris-layer {
             position: absolute;
             bottom: 0;
@@ -235,59 +234,26 @@
             height: 28px;
         }
 
-        /* Individual falling-dropping triggers */
-        .trash-particle:nth-child(1) {
-            left: 20%;
-            animation: dropAndSink 10s infinite linear;
-            animation-delay: 0s;
-        }
-        .trash-particle:nth-child(2) {
-            left: 45%;
-            animation: dropAndSink 12s infinite linear;
-            animation-delay: 2.5s;
-        }
-        .trash-particle:nth-child(3) {
-            left: 70%;
-            animation: dropAndSink 11s infinite linear;
-            animation-delay: 5s;
-        }
-        .trash-particle:nth-child(4) {
-            left: 85%;
-            animation: dropAndSink 14s infinite linear;
-            animation-delay: 1s;
-        }
+        .trash-particle:nth-child(1) { left: 20%; animation: dropAndSink 10s infinite linear; }
+        .trash-particle:nth-child(2) { left: 45%; animation: dropAndSink 12s infinite linear; animation-delay: 2.5s; }
+        .trash-particle:nth-child(3) { left: 70%; animation: dropAndSink 11s infinite linear; animation-delay: 5s; }
+        .trash-particle:nth-child(4) { left: 85%; animation: dropAndSink 14s infinite linear; animation-delay: 1s; }
 
         @keyframes dropAndSink {
-            0% {
-                opacity: 0;
-                transform: translateY(-40px) rotate(0deg);
-            }
-            15% {
-                opacity: 0.8;
-                transform: translateY(10px) rotate(45deg);
-            }
-            45% {
-                opacity: 0.7;
-                transform: translateY(40px) translateX(15px) rotate(120deg);
-            }
-            /* Dropping down one by one into the depths */
-            70% {
-                opacity: 0.3;
-                transform: translateY(140px) translateX(-10px) rotate(240deg);
-            }
-            95%, 100% {
-                opacity: 0;
-                transform: translateY(220px) rotate(360deg);
-            }
+            0% { opacity: 0; transform: translateY(-40px) rotate(0deg); }
+            15% { opacity: 0.8; transform: translateY(10px) rotate(45deg); }
+            45% { opacity: 0.7; transform: translateY(40px) translateX(15px) rotate(120deg); }
+            70% { opacity: 0.3; transform: translateY(140px) translateX(-10px) rotate(240deg); }
+            95%, 100% { opacity: 0; transform: translateY(220px) rotate(360deg); }
         }
 
-        /* River Stream Dashboard Grid Layout */
+        /* Dashboard Container & Grid Layout */
         .dashboard-container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 6rem 2rem;
+            padding: 8rem 2rem;
             position: relative;
-            z-index: 20; /* High index forces dashboard on top of canvas wrapper */
+            z-index: 20;
         }
 
         .grid-layout {
@@ -296,13 +262,12 @@
             gap: 2rem;
         }
 
-        /* Premium Floating Cards */
         .river-card {
             background-color: var(--clean-marine);
             border-radius: 16px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, border-color 0.4s ease;
             display: flex;
             flex-direction: column;
             border: 1px solid rgba(144, 224, 239, 0.1);
@@ -362,11 +327,245 @@
             opacity: 0.9;
         }
 
-        /* Scroll Transition Class */
+        /* --- NEW PREMIUM SCROLL & PHOTO GLIDE LAYERS --- */
+        .scroll-container {
+            background: linear-gradient(to bottom, #0B2545, #021124);
+            color: #ffffff;
+            padding: 160px 8%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .glide-wrapper {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .glide-text .tag {
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            color: var(--river-aqua);
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .glide-text h2 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.15;
+            margin: 15px 0 25px 0;
+            color: var(--pure-white);
+        }
+
+        .glide-text p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: rgba(244, 249, 252, 0.85);
+        }
+
+        .glide-photos {
+            position: relative;
+            height: 520px;
+            width: 100%;
+        }
+
+        .photo-card-premium {
+            position: absolute;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+            transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.4s ease;
+            opacity: 0;
+        }
+
+        /* Initial staggered offset maps for premium entrance */
+        .photo-card-premium.image-one {
+            width: 70%;
+            left: 0;
+            top: 10px;
+            transform: translateX(-100px) translateY(50px) rotate(-4deg);
+            z-index: 3;
+        }
+
+        .photo-card-premium.image-two {
+            width: 65%;
+            right: -20px;
+            bottom: 10px;
+            transform: translateX(100px) translateY(80px) rotate(5deg);
+            z-index: 2;
+        }
+
+        .photo-card-premium img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.8s ease;
+        }
+
+        .photo-card-premium:hover img {
+            transform: scale(1.06);
+        }
+
+        /* Trigger active entry points gracefully */
+        .photo-card-premium.glide-active {
+            opacity: 1;
+            transform: translateX(0) translateY(0) rotate(0deg) !important;
+        }
+
+        /* --- THE OCEAN CLEANUP INSPIRED PREMIUM FOOTER --- */
+        .premium-footer {
+            background-color: var(--footer-dark);
+            color: var(--pure-white);
+            padding: 90px 8% 45px 8%;
+            position: relative;
+            z-index: 30;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand-section h3, .footer-newsletter h3 {
+            font-size: 1rem;
+            letter-spacing: 2.5px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 16px;
+        }
+
+        .icon-circle {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background-color: var(--pure-white);
+            color: var(--footer-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.15rem;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .icon-circle:hover {
+            transform: scale(1.08);
+            opacity: 0.9;
+        }
+
+        /* Input Field Architecture */
+        .input-group {
+            display: flex;
+            border-bottom: 2px solid var(--pure-white);
+            padding-bottom: 10px;
+            width: 340px;
+            max-width: 100%;
+            transition: border-color 0.3s ease;
+        }
+
+        .input-group:focus-within {
+            border-color: var(--river-aqua);
+        }
+
+        .input-group input {
+            background: transparent;
+            border: none;
+            color: var(--pure-white);
+            flex-grow: 1;
+            font-size: 1.05rem;
+            outline: none;
+            padding-right: 10px;
+        }
+
+        .input-group input::placeholder {
+            color: rgba(255,255,255,0.55);
+        }
+
+        .submit-btn {
+            background: transparent;
+            border: none;
+            color: var(--pure-white);
+            cursor: pointer;
+            font-size: 1.15rem;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+
+        .submit-btn:hover {
+            color: var(--river-aqua);
+            transform: translateX(3px);
+        }
+
+        .newsletter-sub {
+            font-size: 0.85rem;
+            color: rgba(244, 249, 252, 0.65);
+            margin-top: 14px;
+            max-width: 340px;
+            line-height: 1.5;
+        }
+
+        .footer-divider {
+            border: 0;
+            height: 1px;
+            background: rgba(255,255,255,0.12);
+            margin-bottom: 60px;
+        }
+
+        .footer-links-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+        }
+
+        .link-column h4 {
+            font-size: 0.9rem;
+            letter-spacing: 1.5px;
+            color: rgba(255,255,255,0.45);
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .link-column ul {
+            list-style: none;
+        }
+
+        .link-column ul li {
+            margin-bottom: 14px;
+        }
+
+        .link-column ul li a {
+            color: var(--pure-white);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.25s ease;
+            opacity: 0.85;
+        }
+
+        .link-column ul li a:hover {
+            color: var(--river-aqua);
+            opacity: 1;
+        }
+
+        /* Core Reveal Script Engine Animation States */
         .scroll-reveal {
             opacity: 0;
             transform: translateY(40px);
-            transition: all 0.8s ease-out;
+            transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         .scroll-reveal.visible {
@@ -374,17 +573,22 @@
             transform: translateY(0);
         }
 
-        @media (max-width: 1100px) {
-            .grid-layout {
-                grid-template-columns: repeat(2, 1fr);
-            }
+        /* --- RESPONSIVE LAYOUT CONSTRAINTS --- */
+        @media (max-width: 1200px) {
+            .grid-layout { grid-template-columns: repeat(2, 1fr); }
+            .footer-links-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
+            .glide-wrapper { grid-template-columns: 1fr; gap: 50px; }
+            .glide-photos { height: 440px; }
+            .glide-text h2 { font-size: 2.6rem; }
         }
 
         @media (max-width: 768px) {
             nav ul { display: none; } 
             .grid-layout { grid-template-columns: 1fr; }
-            .hero-section h1 { font-size: 2.2rem; }
-            .brand-aim { font-size: 1.1rem; }
+            .footer-links-grid { grid-template-columns: 1fr; }
+            .hero-section h1 { font-size: 2.3rem; }
+            .brand-aim { font-size: 1.15rem; }
+            .footer-top { flex-direction: column; gap: 40px; }
         }
     </style>
 </head>
@@ -411,11 +615,9 @@
     <div class="hero-wrapper">
         <section class="hero-section">
             <h1>Restoring the Golden Ratio of <span>Our Waters</span></h1>
-            
             <p class="brand-aim">
                 We at <strong>Anautilus</strong> have a definitive aim to bring these local rivers, and many vibrant waterbodies like them, to be completely freed from debris, waste, and structural stagnation.
             </p>
-            
             <p class="brand-creative">
                 Just like the Nautilus shell perfectly filters, chambers, and navigates the deepest marine depths, Anautilus designs systemic pathways to let nature’s architecture flow clear, unburdened, and pristine once again.
             </p>
@@ -440,7 +642,7 @@
             
             <div class="river-card scroll-reveal">
                 <div class="image-wrapper">
-                    <img src="dahisar.jpg" alt="Dahisar River">
+                    <img src="dahisar.jpg" alt="Dahisar River" onerror="this.src='https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=600'">
                 </div>
                 <div class="card-content">
                     <h2 class="river-title">Dahisar River</h2>
@@ -453,7 +655,7 @@
 
             <div class="river-card scroll-reveal">
                 <div class="image-wrapper">
-                    <img src="mithi.jpg" alt="Mithi River">
+                    <img src="mithi.jpg" alt="Mithi River" onerror="this.src='https://images.unsplash.com/photo-1503264116251-35a269f4ea41?q=80&w=600'">
                 </div>
                 <div class="card-content">
                     <h2 class="river-title">Mithi River</h2>
@@ -466,7 +668,7 @@
 
             <div class="river-card scroll-reveal">
                 <div class="image-wrapper">
-                    <img src="mutha.jpg" alt="Mutha River">
+                    <img src="mutha.jpg" alt="Mutha River" onerror="this.src='https://images.unsplash.com/photo-1433832597046-4f10e10ac764?q=80&w=600'">
                 </div>
                 <div class="card-content">
                     <h2 class="river-title">Mutha River</h2>
@@ -479,7 +681,7 @@
 
             <div class="river-card scroll-reveal">
                 <div class="image-wrapper">
-                    <img src="mula.jpg" alt="Mula River">
+                    <img src="mula.jpg" alt="Mula River" onerror="this.src='https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=600'">
                 </div>
                 <div class="card-content">
                     <h2 class="river-title">Mula River</h2>
@@ -493,18 +695,138 @@
         </div>
     </main>
 
-    <script>
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, {
-            threshold: 0.1
-        });
+    <section class="scroll-container">
+        <div class="glide-wrapper">
+            <div class="glide-text scroll-reveal">
+                <span class="tag">01 / STRUCTURAL ARCHITECTURE</span>
+                <h2>Sailing Through Uncharted Paths</h2>
+                <p>Deploying advanced architectural concepts to map, extract, and clean complex waterways with absolute precision. Our tracking technologies ensure data transparency while maintaining the intrinsic ecosystem biodiversity of local rivers from resource to mouth.</p>
+            </div>
+            
+            <div class="glide-photos">
+                <div class="photo-card-premium image-one">
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=600" alt="Marine Horizon">
+                </div>
+                <div class="photo-card-premium image-two">
+                    <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?q=80&w=600" alt="Subsurface Currents">
+                </div>
+            </div>
+        </div>
+    </section>
 
-        document.querySelectorAll('.scroll-reveal').forEach((el) => observer.observe(el));
+    <footer class="premium-footer">
+        <div class="footer-top">
+            <div class="footer-brand-section">
+                <h3>FOLLOW US</h3>
+                <div class="social-icons">
+                    <a href="#" class="icon-circle"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="icon-circle"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="icon-circle"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#" class="icon-circle"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="icon-circle"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="icon-circle"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-newsletter">
+                <h3>NEWSLETTER</h3>
+                <div class="input-group">
+                    <input type="email" placeholder="E-mail address" required>
+                    <button class="submit-btn" type="submit"><i class="fas fa-paper-plane"></i></button>
+                </div>
+                <p class="newsletter-sub">Join our 80,000+ strong community and get updates straight to your inbox.</p>
+            </div>
+        </div>
+        
+        <hr class="footer-divider">
+        
+        <div class="footer-links-grid">
+            <div class="link-column">
+                <h4>PROJECTS AND UPDATES</h4>
+                <ul>
+                    <li><a href="#">Oceans</a></li>
+                    <li><a href="#">Rivers</a></li>
+                    <li><a href="#">Impact Dashboard</a></li>
+                    <li><a href="#">Waste Management</a></li>
+                    <li><a href="#">Global Public Affairs</a></li>
+                    <li><a href="#">Research</a></li>
+                    <li><a href="#">Milestones</a></li>
+                    <li><a href="#">Updates</a></li>
+                    <li><a href="#">Podcasts</a></li>
+                </ul>
+            </div>
+            <div class="link-column">
+                <h4>ABOUT US</h4>
+                <ul>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press kit</a></li>
+                    <li><a href="#">Media gallery</a></li>
+                    <li><a href="#">Become a partner</a></li>
+                    <li><a href="#">Suppliers</a></li>
+                    <li><a href="#">Community Corner</a></li>
+                </ul>
+            </div>
+            <div class="link-column">
+                <h4>HELP</h4>
+                <ul>
+                    <li><a href="#">Donate now</a></li>
+                    <li><a href="#">Fundraise</a></li>
+                    <li><a href="#">Become a partner</a></li>
+                    <li><a href="#">Merchandise</a></li>
+                    <li><a href="#">Citizen Science</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Volunteering locally</a></li>
+                </ul>
+            </div>
+            <div class="link-column">
+                <h4>LEGAL</h4>
+                <ul>
+                    <li><a href="#">Privacy and Cookie Notice</a></li>
+                    <li><a href="#">Disclaimer</a></li>
+                    <li><a href="#">Donation Terms & Conditions</a></li>
+                    <li><a href="#">Third Party Code of Conduct</a></li>
+                    <li><a href="#">Foundation Details</a></li>
+                    <li><a href="#">American Friends of The Ocean Cleanup</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // General grid fade-in tracker
+            const standardObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.scroll-reveal').forEach((el) => standardObserver.observe(el));
+
+            // Specialized Premium Gliding Photo Tracker
+            const glideObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        const premiumCards = entry.target.querySelectorAll('.photo-card-premium');
+                        premiumCards.forEach((card, index) => {
+                            setTimeout(() => {
+                                card.classList.add('glide-active');
+                            }, index * 250); // Luxury staggered fluid latency delay
+                        });
+                        glideObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+
+            const glideContainer = document.querySelector('.glide-photos');
+            if (glideContainer) {
+                glideObserver.observe(glideContainer);
+            }
+        });
     </script>
 
 </body>
