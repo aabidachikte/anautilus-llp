@@ -3,19 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anautilus LLP – Navigation & Footer</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Anautilus LLP – Media Gallery</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* Color Palette Assignments */
+        /* ==========================================================================
+           Anautilus LLP - Unified Design System Variables
+           ========================================================================== */
         :root {
-            --deep-ocean: #0B2545;
-            --river-aqua: #00B4D8;
-            --seafoam-teal: #90E0EF;
-            --pristine-water: #F4F9FC;
-            --pure-white: #FFFFFF;
-            --footer-dark: #003356;
+            --bg-deep-ocean: #0B2545;      
+            --bg-clean-marine: #134074;    
+            --accent-river-aqua: #00B4D8;  
+            --accent-seafoam: #90E0EF;     
+            --text-pristine: #F4F9FC;      
+            --text-white: #FFFFFF;         
+            --bg-footer-dark: #003356;     
+            
+            --radius-lg: 16px;
+            --radius-md: 8px;
+            --transition-smooth: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
+        /* Base Reset */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -24,18 +33,31 @@
         }
 
         body {
-            background-color: var(--deep-ocean);
-            color: var(--pristine-water);
+            background-color: var(--bg-deep-ocean);
+            color: var(--text-pristine);
+            line-height: 1.6;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
         }
 
-        /* --- MODERNIZED NAVIGATION BAR --- */
+        /* Smooth Interactive Transitions */
+        a, button, .gallery-card, .filter-btn {
+            transition: var(--transition-smooth);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+
+        /* --- FIXED NAVIGATION BAR --- */
         header {
             background-color: rgba(11, 37, 69, 0.95);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             position: fixed;
             top: 0;
             width: 100%;
@@ -62,18 +84,17 @@
         .logo-area img {
             height: 45px;
             width: auto;
-            border-radius: 4px;
         }
 
         .brand-name {
-            color: var(--pure-white);
+            color: var(--text-white);
             font-size: 1.5rem;
             font-weight: 800;
             letter-spacing: 1px;
         }
 
         .brand-name span {
-            color: var(--river-aqua);
+            color: var(--accent-river-aqua);
         }
 
         nav ul {
@@ -83,16 +104,15 @@
         }
 
         nav ul li a {
-            color: var(--pristine-water);
+            color: var(--text-pristine);
             text-decoration: none;
             font-size: 0.95rem;
             font-weight: 500;
-            transition: color 0.3s ease;
             position: relative;
         }
 
         nav ul li a:hover {
-            color: var(--river-aqua);
+            color: var(--accent-river-aqua);
         }
 
         nav ul li a::after {
@@ -102,23 +122,268 @@
             height: 2px;
             bottom: -5px;
             left: 0;
-            background-color: var(--river-aqua);
-            transition: width 0.3s ease;
+            background-color: var(--accent-river-aqua);
+            transition: var(--transition-smooth);
         }
 
         nav ul li a:hover::after {
             width: 100%;
         }
 
+        .main-content {
+            padding-top: 85px; 
+            flex-grow: 1;
+        }
+
+        /* --- TYPOGRAPHY & HEADER --- */
+        .section-tagline {
+            color: var(--accent-seafoam);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .section-heading {
+            color: var(--text-white);
+            font-size: 2.8rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .section-heading span.highlight {
+            color: var(--accent-river-aqua);
+        }
+
+        .section-description {
+            color: var(--text-pristine);
+            font-size: 1.1rem;
+            max-width: 750px;
+            opacity: 0.9;
+            margin-bottom: 40px;
+        }
+
+        /* ==========================================================================
+           DYNAMIC GALLERY FILTER SYSTEMS
+           ========================================================================== */
+        .filter-container {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background-color: rgba(19, 64, 116, 0.4);
+            border: 1px solid rgba(144, 224, 239, 0.2);
+            color: var(--text-pristine);
+            padding: 10px 22px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: 30px;
+            cursor: pointer;
+        }
+
+        .filter-btn:hover {
+            background-color: rgba(144, 224, 239, 0.15);
+            border-color: var(--accent-river-aqua);
+        }
+
+        .filter-btn.active {
+            background-color: var(--accent-river-aqua);
+            border-color: var(--accent-river-aqua);
+            color: var(--bg-deep-ocean);
+            box-shadow: 0 4px 15px rgba(0, 180, 216, 0.3);
+        }
+
+        /* ==========================================================================
+           GALLERY MASONRY/GRID TRACK
+           ========================================================================== */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+
+        .gallery-card {
+            background-color: var(--bg-clean-marine);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(11, 37, 69, 0.2);
+            cursor: pointer;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 35px rgba(11, 37, 69, 0.4);
+        }
+
+        .image-wrapper {
+            position: relative;
+            width: 100%;
+            padding-top: 66.66%; /* 3:2 Premium Aspect Ratio */
+            background-color: var(--bg-deep-ocean);
+            overflow: hidden;
+        }
+
+        .image-wrapper img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-card:hover .image-wrapper img {
+            transform: scale(1.05);
+        }
+
+        /* Custom Placeholder Icon System when image source paths aren't loaded */
+        .image-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #134074, #0B2545);
+            color: rgba(144, 224, 239, 0.3);
+            font-size: 3rem;
+        }
+
+        .card-meta {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            border-top: 1px solid rgba(144, 224, 239, 0.05);
+        }
+
+        .card-tag {
+            color: var(--accent-seafoam);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card-title {
+            color: var(--text-white);
+            font-size: 1.15rem;
+            font-weight: 700;
+        }
+
+        .card-desc {
+            color: var(--text-pristine);
+            font-size: 0.9rem;
+            opacity: 0.8;
+            line-height: 1.4;
+        }
+
+        /* Filtering Animation State Transitions */
+        .gallery-card.hide {
+            display: none;
+        }
+
+        /* ==========================================================================
+           BUILT-IN LIGHTBOX MODAL ACTIONS
+           ========================================================================== */
+        .lightbox-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(11, 37, 69, 0.95);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            padding: 24px;
+        }
+
+        .lightbox-modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 1100px;
+            width: 100%;
+            max-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .lightbox-img {
+            max-width: 100%;
+            max-height: 75vh;
+            object-fit: contain;
+            border-radius: var(--radius-md);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        .lightbox-caption {
+            color: var(--text-white);
+            margin-top: 16px;
+            font-size: 1.1rem;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: transparent;
+            border: none;
+            color: var(--text-white);
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        .lightbox-close:hover {
+            color: var(--accent-river-aqua);
+        }
+
+        /* ==========================================================================
+           SCROLL-REVEAL SYSTEM ENGINE
+           ========================================================================== */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1), 
+                        transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .scroll-reveal.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         /* --- PREMIUM FOOTER --- */
         .premium-footer {
-            background-color: var(--footer-dark);
-            color: var(--pure-white);
+            background-color: var(--bg-footer-dark);
+            color: var(--text-white);
             padding: 90px 8% 45px 8%;
-            position: relative;
-            z-index: 30;
             border-top: 1px solid rgba(255, 255, 255, 0.08);
-            margin-top: auto; /* Pushes footer to bottom if page content is short */
+            margin-top: auto; 
         }
 
         .footer-top {
@@ -135,7 +400,6 @@
             letter-spacing: 2.5px;
             font-weight: 700;
             margin-bottom: 25px;
-            color: rgba(255, 255, 255, 0.9);
         }
 
         .social-icons {
@@ -147,42 +411,34 @@
             width: 44px;
             height: 44px;
             border-radius: 50%;
-            background-color: var(--pure-white);
-            color: var(--footer-dark);
+            background-color: var(--text-white);
+            color: var(--bg-footer-dark);
             display: flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
             font-size: 1.15rem;
-            transition: transform 0.3s ease, opacity 0.3s ease;
         }
 
         .icon-circle:hover {
             transform: scale(1.08);
-            opacity: 0.9;
         }
 
         .input-group {
             display: flex;
-            border-bottom: 2px solid var(--pure-white);
+            border-bottom: 2px solid var(--text-white);
             padding-bottom: 10px;
             width: 340px;
             max-width: 100%;
-            transition: border-color 0.3s ease;
-        }
-
-        .input-group:focus-within {
-            border-color: var(--river-aqua);
         }
 
         .input-group input {
             background: transparent;
             border: none;
-            color: var(--pure-white);
+            color: var(--text-white);
             flex-grow: 1;
             font-size: 1.05rem;
             outline: none;
-            padding-right: 10px;
         }
 
         .input-group input::placeholder {
@@ -192,23 +448,9 @@
         .submit-btn {
             background: transparent;
             border: none;
-            color: var(--pure-white);
+            color: var(--text-white);
             cursor: pointer;
             font-size: 1.15rem;
-            transition: color 0.3s ease, transform 0.2s ease;
-        }
-
-        .submit-btn:hover {
-            color: var(--river-aqua);
-            transform: translateX(3px);
-        }
-
-        .newsletter-sub {
-            font-size: 0.85rem;
-            color: rgba(244, 249, 252, 0.65);
-            margin-top: 14px;
-            max-width: 340px;
-            line-height: 1.5;
         }
 
         .footer-divider {
@@ -229,7 +471,6 @@
             letter-spacing: 1.5px;
             color: rgba(255, 255, 255, 0.45);
             margin-bottom: 25px;
-            font-weight: 600;
         }
 
         .link-column ul {
@@ -241,27 +482,54 @@
         }
 
         .link-column ul li a {
-            color: var(--pure-white);
+            color: var(--text-white);
             text-decoration: none;
             font-size: 0.95rem;
-            transition: color 0.25s ease;
             opacity: 0.85;
         }
 
-        .link-column ul li a:hover {
-            color: var(--river-aqua);
-            opacity: 1;
-        }
-
-        /* --- RESPONSIVE LAYOUT CONSTRAINTS --- */
-        @media (max-width: 1200px) {
-            .footer-links-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
+        /* ==========================================================================
+           RESPONSIVE RE-ALIGNMENT ENGINE (Mobile Breakpoints)
+           ========================================================================== */
+        @media (max-width: 992px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            .section-heading {
+                font-size: 2.2rem;
+            }
         }
 
         @media (max-width: 768px) {
-            nav ul { display: none; } 
-            .footer-links-grid { grid-template-columns: 1fr; }
-            .footer-top { flex-direction: column; gap: 40px; }
+            nav ul { 
+                display: none; 
+            } 
+            .main-content {
+                padding-top: 75px;
+            }
+            .footer-links-grid { 
+                grid-template-columns: repeat(2, 1fr); 
+            }
+            .footer-top { 
+                flex-direction: column; 
+            }
+        }
+
+        @media (max-width: 576px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            .filter-container {
+                gap: 8px;
+            }
+            .filter-btn {
+                padding: 8px 16px;
+                font-size: 0.8rem;
+            }
+            .footer-links-grid { 
+                grid-template-columns: 1fr; 
+            }
         }
     </style>
 </head>
@@ -270,7 +538,6 @@
     <header>
         <div class="nav-container">
             <a href="index.html" class="logo-area">
-                <img src="logo.png" alt="Anautilus Logo" onerror="this.style.display='none'">
                 <div class="brand-name">ANAUTILUS<span>LLP</span></div>
             </a>
             <nav>
@@ -285,7 +552,118 @@
         </div>
     </header>
 
-    <div style="padding-top: 80px;"></div>
+    <div class="main-content">
+        <div class="container">
+            
+            <!-- Gallery Title Header Frame -->
+            <div class="scroll-reveal">
+                <p class="section-tagline">VISUAL LOGS & OPERATIONS</p>
+                <h1 class="section-heading">Field Evidence & <span class="highlight">Impact Gallery</span></h1>
+                <p class="section-description">A real-time photographic catalog tracking our mechanical cleanup progress across Pune's river networks and primary catchment channels.</p>
+            </div>
+
+            <!-- Client Side Category Selection Buttons -->
+            <div class="filter-container scroll-reveal">
+                <button class="filter-btn active" data-filter="all">All Operations</button>
+                <button class="filter-btn" data-filter="deployments">Active Deployments</button>
+                <button class="filter-btn" data-filter="waste">Waste Management</button>
+                <button class="filter-btn" data-filter="tech">Team &amp; Tech</button>
+            </div>
+
+            <!-- Interactive Core Grid Matrix -->
+            <div class="gallery-grid">
+                
+                <!-- Card Item 1 -->
+                <div class="gallery-card scroll-reveal" data-category="deployments">
+                    <div class="image-wrapper">
+                        <div class="image-placeholder"><i class="fas fa-water"></i></div>
+                        <img src="gallery-mula-river.jpg" alt="Mula River Barrier Setup" onerror="this.style.opacity='0'">
+                    </div>
+                    <div class="card-meta">
+                        <div class="card-tag">Active Deployments</div>
+                        <div class="card-title">Mula River Sector-4</div>
+                        <div class="card-desc">Installation of modular surface barriers capturing high-density floating plastics.</div>
+                    </div>
+                </div>
+
+                <!-- Card Item 2 -->
+                <div class="gallery-card scroll-reveal" data-category="waste">
+                    <div class="image-wrapper">
+                        <div class="image-placeholder"><i class="fas fa-recycle"></i></div>
+                        <img src="gallery-sorting.jpg" alt="Sorting Operations" onerror="this.style.opacity='0'">
+                    </div>
+                    <div class="card-meta">
+                        <div class="card-tag">Waste Management</div>
+                        <div class="card-title">Sorting Hub Extraction</div>
+                        <div class="card-desc">Recovered multi-layered polymers sorted before processing into recycling units.</div>
+                    </div>
+                </div>
+
+                <!-- Card Item 3 -->
+                <div class="gallery-card scroll-reveal" data-category="tech">
+                    <div class="image-wrapper">
+                        <div class="image-placeholder"><i class="fas fa-microscope"></i></div>
+                        <img src="gallery-barrier-tech.jpg" alt="Mechanical Barrier Design" onerror="this.style.opacity='0'">
+                    </div>
+                    <div class="card-meta">
+                        <div class="card-tag">Team &amp; Tech</div>
+                        <div class="card-title">Mesh Optimization Test</div>
+                        <div class="card-desc">Calibrating barrier grids to withstand heavy monsoon currents while safely sparing local river fauna.</div>
+                    </div>
+                </div>
+
+                <!-- Card Item 4 -->
+                <div class="gallery-card scroll-reveal" data-category="deployments">
+                    <div class="image-wrapper">
+                        <div class="image-placeholder"><i class="fas fa-water"></i></div>
+                        <img src="gallery-mutha-river.jpg" alt="Mutha River Network" onerror="this.style.opacity='0'">
+                    </div>
+                    <div class="card-meta">
+                        <div class="card-tag">Active Deployments</div>
+                        <div class="card-title">Mutha Canal Deflection Grid</div>
+                        <div class="card-desc">Angled barrier arrays pushing solid run-off directly into structural sorting terminals.</div>
+                    </div>
+                </div>
+
+                <!-- Card Item 5 -->
+                <div class="gallery-card scroll-reveal" data-category="waste">
+                    <div class="image-wrapper">
+                        <div class="image-placeholder"><i class="fas fa-dumpster"></i></div>
+                        <img src="gallery-tonnage.jpg" alt="Tonnage Log Extraction" onerror="this.style.opacity='0'">
+                    </div>
+                    <div class="card-meta">
+                        <div class="card-tag">Waste Management</div>
+                        <div class="card-title">Daily Extraction Payload</div>
+                        <div class="card-desc">Over 2.5 metric tons of urban packaging materials intercepted over a single morning operation cycle.</div>
+                    </div>
+                </div>
+
+                <!-- Card Item 6 -->
+                <div class="gallery-card scroll-reveal" data-category="tech">
+                    <div class="image-wrapper">
+                        <div class="image-placeholder"><i class="fas fa-helmet-safety"></i></div>
+                        <img src="gallery-field-team.jpg" alt="Field Engineering Team" onerror="this.style.opacity='0'">
+                    </div>
+                    <div class="card-meta">
+                        <div class="card-tag">Team &amp; Tech</div>
+                        <div class="card-title">Hydraulic Verification Checks</div>
+                        <div class="card-desc">Field engineering supervisors ensuring anchor points remain completely taut under shifting river velocities.</div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- PURE CSS/JS LIGHTBOX OVERLAY ELEMENT -->
+    <div class="lightbox-modal" id="lightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close" id="lightbox-close"><i class="fas fa-xmark"></i></button>
+            <img src="" alt="Enlarged View" class="lightbox-img" id="lightbox-img">
+            <div class="lightbox-caption" id="lightbox-caption"></div>
+        </div>
+    </div>
 
     <footer class="premium-footer">
         <div class="footer-top">
@@ -297,22 +675,17 @@
                     <a href="#" class="icon-circle" style="font-weight: bold; font-family: sans-serif; font-size: 1.1rem; color: #003356; text-decoration: none;">X</a>
                     <a href="#" class="icon-circle"><i class="fab fa-youtube"></i></a>
                     <a href="#" class="icon-circle"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" class="icon-circle"><i class="fab fa-tiktok"></i></a>
                 </div>
             </div>
-            
             <div class="footer-newsletter">
                 <h3>NEWSLETTER</h3>
                 <div class="input-group">
                     <input type="email" placeholder="E-mail address" required>
                     <button class="submit-btn" type="submit"><i class="fas fa-paper-plane"></i></button>
                 </div>
-                <p class="newsletter-sub">Join our 80,000+ strong community and get updates straight to your inbox.</p>
             </div>
         </div>
-        
         <hr class="footer-divider">
-        
         <div class="footer-links-grid">
             <div class="link-column">
                 <h4>PROJECTS AND UPDATES</h4>
@@ -320,51 +693,95 @@
                     <li><a href="index.html">Rivers Dashboard</a></li>
                     <li><a href="gallery.html">Media Gallery</a></li>
                     <li><a href="library.html">Research Library</a></li>
-                    <li><a href="#">Waste Management</a></li>
-                    <li><a href="#">Global Public Affairs</a></li>
-                    <li><a href="#">Research</a></li>
-                    <li><a href="#">Milestones</a></li>
-                    <li><a href="#">Updates</a></li>
-                    <li><a href="#">Podcasts</a></li>
                 </ul>
             </div>
             <div class="link-column">
                 <h4>ABOUT US</h4>
                 <ul>
                     <li><a href="about.html">About Us</a></li>
-                    <li><a href="about.html#careers">Careers</a></li>
-                    <li><a href="#">Press kit</a></li>
-                    <li><a href="gallery.html">Media gallery</a></li>
-                    <li><a href="contact.html">Become a partner</a></li>
-                    <li><a href="#">Suppliers</a></li>
-                    <li><a href="#">Community Corner</a></li>
+                    <li><a href="#">Careers</a></li>
                 </ul>
             </div>
             <div class="link-column">
                 <h4>HELP</h4>
                 <ul>
-                    <li><a href="#">Donate now</a></li>
-                    <li><a href="#">Fundraise</a></li>
-                    <li><a href="contact.html">Become a partner</a></li>
-                    <li><a href="#">Merchandise</a></li>
-                    <li><a href="#">Citizen Science</a></li>
-                    <li><a href="about.html#faq">FAQ</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="#">Volunteering locally</a></li>
+                    <li><a href="#">FAQ</a></li>
                 </ul>
             </div>
             <div class="link-column">
                 <h4>LEGAL</h4>
                 <ul>
-                    <li><a href="disclaimer.html#privacy">Privacy and Cookie Notice</a></li>
                     <li><a href="disclaimer.html">Disclaimer</a></li>
-                    <li><a href="#">Donation Terms & Conditions</a></li>
-                    <li><a href="#">Third Party Code of Conduct</a></li>
-                    <li><a href="#">Foundation Details</a></li>
                 </ul>
             </div>
         </div>
     </footer>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            /* 1. SCROLL REVEAL OBSERVER ENGINE */
+            const revealElements = document.querySelectorAll('.scroll-reveal');
+            const pageObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('appear');
+                        pageObserver.unobserve(entry.target);
+                    }
+                });
+            }, { root: null, threshold: 0.1, rootMargin: "0px 0px -30px 0px" });
+
+            revealElements.forEach(el => pageObserver.observe(el));
+
+            /* 2. LIVE FILTER ARCHITECTURE */
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const galleryCards = document.querySelectorAll('.gallery-card');
+
+            filterButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterButtons.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    const selectedFilter = btn.getAttribute('data-filter');
+
+                    galleryCards.forEach(card => {
+                        const cardCategory = card.getAttribute('data-category');
+                        if (selectedFilter === 'all' || cardCategory === selectedFilter) {
+                            card.classList.remove('hide');
+                        } else {
+                            card.classList.add('hide');
+                        }
+                    });
+                });
+            });
+
+            /* 3. LIGHTBOX INTERACTION ENGINE */
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxCaption = document.getElementById('lightbox-caption');
+            const lightboxClose = document.getElementById('lightbox-close');
+
+            galleryCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    // Try to grab the actual high-res image source, fall back to placeholder styling logic if broken
+                    const imgElement = card.querySelector('img');
+                    const titleText = card.querySelector('.card-title').innerText;
+                    
+                    lightboxImg.src = imgElement.src;
+                    lightboxCaption.innerText = titleText;
+                    lightbox.classList.add('active');
+                });
+            });
+
+            lightboxClose.addEventListener('click', () => {
+                lightbox.classList.remove('active');
+            });
+
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) {
+                    lightbox.classList.remove('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
