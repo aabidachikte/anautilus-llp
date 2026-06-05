@@ -14,7 +14,7 @@
             --seafoam-teal: #90E0EF;
             --pristine-water: #F4F9FC;
             --pure-white: #FFFFFF;
-            --footer-dark: #003356; /* Accurate matching from reference */
+            --footer-dark: #003356;
         }
 
         * {
@@ -115,7 +115,7 @@
         .hero-wrapper {
             position: relative;
             width: 100%;
-            min-height: 95vh;
+            height: 100vh; /* Adjusted to fill screen nicely without waves underneath */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -134,7 +134,7 @@
             z-index: 1;
         }
 
-        /* --- LIGHT OVERLAY (Reduced darkness since video has its own text) --- */
+        /* --- LIGHT OVERLAY --- */
         .hero-overlay {
             position: absolute;
             top: 0;
@@ -145,7 +145,7 @@
                 to bottom,
                 rgba(11, 37, 69, 0.2) 0%,
                 rgba(11, 37, 69, 0) 50%,
-                rgba(11, 37, 69, 0.6) 100
+                rgba(11, 37, 69, 0.4) 100%
             );
             z-index: 2;
         }
@@ -156,85 +156,6 @@
             text-align: center;
             max-width: 950px;
             margin: 0 auto;
-            padding: 150px 2rem 180px 2rem;
-        }
-
-        /* Realistic Fluids & Waves Styling */
-        .wave-background {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 260px;
-            z-index: 4;
-            pointer-events: none;
-        }
-
-        .giant-wave {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 200%;
-            height: 100%;
-            background-repeat: repeat-x;
-            background-position: 0 bottom;
-            transform: translate3d(0, 0, 0);
-        }
-
-        .giant-wave.wave-alpha {
-            opacity: 0.35;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" preserveAspectRatio="none"><path d="M0,150 C300,250 600,50 900,200 C1050,250 1150,180 1200,150 L1200,300 L0,300 Z" fill="%23134074"/></svg>');
-            animation: realisticFluid 18s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
-        }
-
-        .giant-wave.wave-beta {
-            opacity: 0.25;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" preserveAspectRatio="none"><path d="M0,180 C250,80 550,280 850,130 C1000,80 1150,180 1200,200 L1200,300 L0,300 Z" fill="%2300B4D8"/></svg>');
-            animation: realisticFluid 13s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite reverse;
-        }
-
-        .giant-wave.wave-gamma {
-            opacity: 0.2;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" preserveAspectRatio="none"><path d="M0,120 C400,60 700,220 1200,100 L1200,300 L0,300 Z" fill="%2390E0EF"/></svg>');
-            animation: realisticFluid 24s linear infinite;
-        }
-
-        @keyframes realisticFluid {
-            0% { transform: translateX(0) scaleY(1); }
-            50% { transform: translateX(-25%) scaleY(1.1); }
-            100% { transform: translateX(-50%) scaleY(1); }
-        }
-
-        /* Falling Trash/Debris Layer */
-        .debris-layer {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 260px;
-            z-index: 5;
-            pointer-events: none;
-        }
-
-        .trash-particle {
-            position: absolute;
-            fill: rgba(144, 224, 239, 0.6);
-            opacity: 0;
-            width: 28px;
-            height: 28px;
-        }
-
-        .trash-particle:nth-child(1) { left: 20%; animation: dropAndSink 10s infinite linear; }
-        .trash-particle:nth-child(2) { left: 45%; animation: dropAndSink 12s infinite linear; animation-delay: 2.5s; }
-        .trash-particle:nth-child(3) { left: 70%; animation: dropAndSink 11s infinite linear; animation-delay: 5s; }
-        .trash-particle:nth-child(4) { left: 85%; animation: dropAndSink 14s infinite linear; animation-delay: 1s; }
-
-        @keyframes dropAndSink {
-            0% { opacity: 0; transform: translateY(-40px) rotate(0deg); }
-            15% { opacity: 0.8; transform: translateY(10px) rotate(45deg); }
-            45% { opacity: 0.7; transform: translateY(40px) translateX(15px) rotate(120deg); }
-            70% { opacity: 0.3; transform: translateY(140px) translateX(-10px) rotate(240deg); }
-            95%, 100% { opacity: 0; transform: translateY(220px) rotate(360deg); }
         }
 
         /* Dashboard Container & Grid Layout */
@@ -595,31 +516,18 @@
             </nav>
         </div>
     </header>
-<div class="hero-wrapper">
-        <!-- BACKGROUND VIDEO ELEMENT (.mov version) -->
+
+    <div class="hero-wrapper">
+        <!-- BACKGROUND VIDEO ELEMENT -->
         <video class="hero-video-bg" autoplay loop muted playsinline>
             <source src="hero-water.mov" type="video/quicktime">
-            <source src="hero-water.mov" type="video/mp4"> <!-- Fallback for broad browser support -->
+            <source src="hero-water.mov" type="video/mp4">
         </video>
         
-        <!-- VISUAL BLENDING LAYER (Lightened so it won't hide video text) -->
+        <!-- VISUAL BLENDING LAYER -->
         <div class="hero-overlay"></div>
 
-        <!-- Section is empty now so only the background video plays -->
         <section class="hero-section"></section>
-
-        <div class="debris-layer">
-            <svg class="trash-particle" viewBox="0 0 24 24"><path d="M19 4h-3c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2H5c-1.1 0-2 .9-2 2v2h18V6c0-1.1-.9-2-2-2zm-2 6H7v10c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2V10z"/></svg>
-            <svg class="trash-particle" viewBox="0 0 24 24"><path d="M4 21h16V7H4v14zm4-11h8v2H8v-2zm0 4h8v2H8v-2z"/></svg>
-            <svg class="trash-particle" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/></svg>
-            <svg class="trash-particle" viewBox="0 0 24 24"><path d="M2 22h20V2H2v20zm4-16h12v3H6V6z"/></svg>
-        </div>
-
-        <div class="wave-background">
-            <div class="giant-wave wave-alpha"></div>
-            <div class="giant-wave wave-beta"></div>
-            <div class="giant-wave wave-gamma"></div>
-        </div>
     </div>
 
     <main class="dashboard-container">
