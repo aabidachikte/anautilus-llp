@@ -1,1 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anautilus LLP – Navigation & Footer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Color Palette Assignments */
+        :root {
+            --deep-ocean: #0B2545;
+            --river-aqua: #00B4D8;
+            --seafoam-teal: #90E0EF;
+            --pristine-water: #F4F9FC;
+            --pure-white: #FFFFFF;
+            --footer-dark: #003356;
+        }
 
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--deep-ocean);
+            color: var(--pristine-water);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* --- MODERNIZED NAVIGATION BAR --- */
+        header {
+            background-color: rgba(11, 37, 69, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(144, 224, 239, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-area img {
+            height: 45px;
+            width: auto;
+            border-radius: 4px;
+        }
+
+        .brand-name {
+            color: var(--pure-white);
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .brand-name span {
+            color: var(--river-aqua);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav ul li a {
+            color: var(--pristine-water);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav ul li a:hover {
+            color: var(--river-aqua);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--river-aqua);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* --- PREMIUM FOOTER --- */
+        .premium-footer {
+            background-color: var(--footer-dark);
+            color: var(--pure-white);
+            padding: 90px 8% 45px 8%;
+            position: relative;
+            z-index: 30;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            margin-top: auto; /* Pushes footer to bottom if page content is short */
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand-section h3, .footer-newsletter h3 {
+            font-size: 1rem;
+            letter-spacing: 2.5px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 16px;
+        }
+
+        .icon-circle {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background-color: var(--pure-white);
+            color: var(--footer-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.15rem;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .icon-circle:hover {
+            transform: scale(1.08);
+            opacity: 0.9;
+        }
+
+        .input-group {
+            display: flex;
+            border-bottom: 2px solid var(--pure-white);
+            padding-bottom: 10px;
+            width: 340px;
+            max-width: 100%;
+            transition: border-color 0.3s ease;
+        }
+
+        .input-group:focus-within {
+            border-color: var(--river-aqua);
+        }
+
+        .input-group input {
+            background: transparent;
+            border: none;
+            color: var(--pure-white);
+            flex-grow: 1;
+            font-size: 1.05rem;
+            outline: none;
+            padding-right: 10px;
+        }
+
+        .input-group input::placeholder {
+            color: rgba(255, 255, 255, 0.55);
+        }
+
+        .submit-btn {
+            background: transparent;
+            border: none;
+            color: var(--pure-white);
+            cursor: pointer;
+            font-size: 1.15rem;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+
+        .submit-btn:hover {
+            color: var(--river-aqua);
+            transform: translateX(3px);
+        }
+
+        .newsletter-sub {
+            font-size: 0.85rem;
+            color: rgba(244, 249, 252, 0.65);
+            margin-top: 14px;
+            max-width: 340px;
+            line-height: 1.5;
+        }
+
+        .footer-divider {
+            border: 0;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.12);
+            margin-bottom: 60px;
+        }
+
+        .footer-links-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+        }
+
+        .link-column h4 {
+            font-size: 0.9rem;
+            letter-spacing: 1.5px;
+            color: rgba(255, 255, 255, 0.45);
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .link-column ul {
+            list-style: none;
+        }
+
+        .link-column ul li {
+            margin-bottom: 14px;
+        }
+
+        .link-column ul li a {
+            color: var(--pure-white);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.25s ease;
+            opacity: 0.85;
+        }
+
+        .link-column ul li a:hover {
+            color: var(--river-aqua);
+            opacity: 1;
+        }
+
+        /* --- RESPONSIVE LAYOUT CONSTRAINTS --- */
+        @media (max-width: 1200px) {
+            .footer-links-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
+        }
+
+        @media (max-width: 768px) {
+            nav ul { display: none; } 
+            .footer-links-grid { grid-template-columns: 1fr; }
+            .footer-top { flex-direction: column; gap: 40px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo-area">
+                <img src="logo.png" alt="Anautilus Logo" onerror="this.style.display='none'">
+                <div class="brand-name">ANAUTILUS<span>LLP</span></div>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="library.html">Library</a></li>
+                    <li><a href="disclaimer.html">Disclaimer</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div style="padding-top: 80px;"></div>
+
+    <footer class="premium-footer">
+        <div class="footer-top">
+            <div class="footer-brand-section">
+                <h3>FOLLOW US</h3>
+                <div class="social-icons">
+                    <a href="#" class="icon-circle"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="icon-circle"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="icon-circle" style="font-weight: bold; font-family: sans-serif; font-size: 1.1rem; color: #003356; text-decoration: none;">X</a>
+                    <a href="#" class="icon-circle"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="icon-circle"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="icon-circle"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-newsletter">
+                <h3>NEWSLETTER</h3>
+                <div class="input-group">
+                    <input type="email" placeholder="E-mail address" required>
+                    <button class="submit-btn" type="submit"><i class="fas fa-paper-plane"></i></button>
+                </div>
+                <p class="newsletter-sub">Join our 80,000+ strong community and get updates straight to your inbox.</p>
+            </div>
+        </div>
+        
+        <hr class="footer-divider">
+        
+        <div class="footer-links-grid">
+            <div class="link-column">
+                <h4>PROJECTS AND UPDATES</h4>
+                <ul>
+                    <li><a href="index.html">Rivers Dashboard</a></li>
+                    <li><a href="gallery.html">Media Gallery</a></li>
+                    <li><a href="library.html">Research Library</a></li>
+                    <li><a href="#">Waste Management</a></li>
+                    <li><a href="#">Global Public Affairs</a></li>
+                    <li><a href="#">Research</a></li>
+                    <li><a href="#">Milestones</a></li>
+                    <li><a href="#">Updates</a></li>
+                    <li><a href="#">Podcasts</a></li>
+                </ul>
+            </div>
+            <div class="link-column">
+                <h4>ABOUT US</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="about.html#careers">Careers</a></li>
+                    <li><a href="#">Press kit</a></li>
+                    <li><a href="gallery.html">Media gallery</a></li>
+                    <li><a href="contact.html">Become a partner</a></li>
+                    <li><a href="#">Suppliers</a></li>
+                    <li><a href="#">Community Corner</a></li>
+                </ul>
+            </div>
+            <div class="link-column">
+                <h4>HELP</h4>
+                <ul>
+                    <li><a href="#">Donate now</a></li>
+                    <li><a href="#">Fundraise</a></li>
+                    <li><a href="contact.html">Become a partner</a></li>
+                    <li><a href="#">Merchandise</a></li>
+                    <li><a href="#">Citizen Science</a></li>
+                    <li><a href="about.html#faq">FAQ</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#">Volunteering locally</a></li>
+                </ul>
+            </div>
+            <div class="link-column">
+                <h4>LEGAL</h4>
+                <ul>
+                    <li><a href="disclaimer.html#privacy">Privacy and Cookie Notice</a></li>
+                    <li><a href="disclaimer.html">Disclaimer</a></li>
+                    <li><a href="#">Donation Terms & Conditions</a></li>
+                    <li><a href="#">Third Party Code of Conduct</a></li>
+                    <li><a href="#">Foundation Details</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
