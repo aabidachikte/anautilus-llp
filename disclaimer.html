@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="icon" type="image/png" href="logo.png">
+    <link rel="icon" type="image/png" href="logo.png">
     <title>Anautilus LLP – Navigation & Footer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -24,6 +24,8 @@ nav ul li a.active::after {
             --pristine-water: #F4F9FC;
             --pure-white: #FFFFFF;
             --footer-dark: #003356;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --border-glow: rgba(144, 224, 239, 0.15);
         }
 
         * {
@@ -118,6 +120,76 @@ nav ul li a.active::after {
 
         nav ul li a:hover::after {
             width: 100%;
+        }
+
+        /* --- LEGAL CONTENT LAYOUT --- */
+        .legal-main-container {
+            max-width: 900px;
+            width: 90%;
+            margin: 140px auto 80px auto;
+            flex-grow: 1;
+        }
+
+        .legal-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-glow);
+            border-radius: 16px;
+            padding: 3.5rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(5px);
+        }
+
+        .legal-header {
+            margin-bottom: 2.5rem;
+            border-bottom: 1px solid var(--border-glow);
+            padding-bottom: 1.5rem;
+        }
+
+        .legal-header .tag {
+            color: var(--river-aqua);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .legal-header h1 {
+            font-size: 2.6rem;
+            color: var(--pure-white);
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .legal-body {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: rgba(244, 249, 252, 0.85);
+        }
+
+        .legal-body p {
+            margin-bottom: 1.8rem;
+        }
+
+        .legal-body h2 {
+            font-size: 1.4rem;
+            color: var(--pure-white);
+            margin: 2.5rem 0 1rem 0;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .legal-body h2::before {
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 18px;
+            background-color: var(--river-aqua);
+            border-radius: 2px;
         }
 
         /* --- PREMIUM FOOTER --- */
@@ -272,6 +344,8 @@ nav ul li a.active::after {
             nav ul { display: none; } 
             .footer-links-grid { grid-template-columns: 1fr; }
             .footer-top { flex-direction: column; gap: 40px; }
+            .legal-card { padding: 2.5rem 2rem; }
+            .legal-header h1 { font-size: 2.1rem; }
         }
     </style>
 </head>
@@ -296,6 +370,35 @@ nav ul li a.active::after {
     </header>
 
     <div style="padding-top: 80px;"></div>
+
+    <!-- MAIN LEGAL CONTAINER FOR THE PROVIDED CONTENT -->
+    <main class="legal-main-container">
+        <div class="legal-card">
+            
+            <div class="legal-header">
+                <span class="tag">Terms & Conditions</span>
+                <h1>Disclaimer</h1>
+            </div>
+
+            <div class="legal-body">
+                <h2>1. Accuracy of Information</h2>
+                <p>Despite the careful attention given to the content of this website, Anautilus LLP (along with its affiliates and subsidiaries, hereinafter referred to as the Company) cannot guarantee the absolute completeness, accuracy, or timeliness of the data provided. All information, resources, and services regarding our river cleanup operations are offered on an "as is" and "as available" basis, without any warranty or safeguard—whether implicit or explicit—concerning their suitability or fitness for any particular purpose intended by the user.</p>
+                
+                <h2>2. Liability & Verification</h2>
+                <p>Visitors are advised to seek independent verification for any information obtained through this platform, as the Company accepts no liability for any direct, indirect, incidental, or consequential damages arising from, or in any way connected to, the use or accessibility of this website. Furthermore, the Company reserves the right to modify, amend, or update any website content at its sole discretion without prior notice.</p>
+                
+                <h2>3. Forward-Looking Statements</h2>
+                <p>Certain statements on this website regarding our river remediation projects, technological capabilities, and operational timelines constitute forward-looking statements that are inherently subject to unforeseen risks, environmental variables, and uncertainties. Because actual results may differ materially from these current expectations, the Company provides no guarantee regarding the definitive success or outcome of its environmental initiatives.</p>
+                
+                <h2>4. External Links & Authorship</h2>
+                <p>Additionally, this website may feature links to third-party platforms; the Company exercises no control over, and assumes no responsibility for, the content, security, or privacy practices of these external sites, and strongly encourages users to review their respective terms and privacy policies before sharing personal data. Any opinions or viewpoints expressed on these pages belong strictly to their respective authors and do not necessarily reflect the official stance of the Company, its webmaster, or its network providers.</p>
+                
+                <h2>5. Lawful Usage Boundaries</h2>
+                <p>Finally, users agree to utilize this website strictly for lawful purposes and are prohibited from engaging in malicious activities, including hacking, injecting destructive code or viruses, misleading other parties, or engaging in harassment, defamation, or identity misrepresentation. Anautilus LLP reserves the right to immediately suspend or terminate website access and pursue legal remedies against any individual found to be circumventing security controls or violating these terms.</p>
+            </div>
+
+        </div>
+    </main>
 
     <footer class="premium-footer">
         <div class="footer-top">
@@ -338,7 +441,7 @@ nav ul li a.active::after {
                 <ul>
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="about.html#careers">Careers</a></li>
-                  
+                </ul>
             </div>
             <div class="link-column">
                 <h4>HELP</h4>
