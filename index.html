@@ -861,72 +861,20 @@
             opacity: 1;
             transform: translateY(0);
         }
-        /* Add this right before your @media queries for general styling */
-.mobile-menu-toggle {
-    display: none;
-    background: transparent;
-    border: none;
-    color: var(--pristine-water);
-    font-size: 1.5rem;
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
 
-.mobile-menu-toggle:hover {
-    color: var(--river-aqua);
-}
+        .mobile-menu-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            color: var(--pristine-water);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
 
-/* Updated Responsive Media Queries */
-@media (max-width: 768px) {
-    .mobile-menu-toggle {
-        display: block; /* Show hamburger button on mobile */
-    }
-
-    nav {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background-color: rgba(11, 37, 69, 0.98);
-        backdrop-filter: blur(10px);
-        border-bottom: 1px solid rgba(144, 224, 239, 0.1);
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.4s ease-in-out;
-    }
-
-    /* JavaScript will toggle this class to open the menu */
-    nav.mobile-active {
-        max-height: 350px; 
-    }
-
-    nav ul {
-        display: flex; /* Override the previous display: none */
-        flex-direction: column;
-        gap: 0;
-        padding: 1rem 0;
-        text-align: center;
-    }
-
-    nav ul li {
-        width: 100%;
-    }
-
-    nav ul li a {
-        display: block;
-        padding: 1rem;
-        font-size: 1.1rem;
-    }
-    
-    nav ul li a::after {
-        display: none; /* Hide the underline effect on mobile for cleaner look */
-    }
-
-    .grid-layout { grid-template-columns: 1fr; }
-    .footer-links-grid { grid-template-columns: 1fr; }
-    .footer-top { flex-direction: column; gap: 40px; }
-    .quote-card-premium { min-width: 300px; width: 300px; padding: 2rem 1.5rem; }
-}
+        .mobile-menu-toggle:hover {
+            color: var(--river-aqua);
+        }
 
         /* --- RESPONSIVE LAYOUT CONSTRAINTS --- */
         @media (max-width: 1200px) {
@@ -940,7 +888,50 @@
         }
 
         @media (max-width: 768px) {
-            nav ul { display: none; } 
+            .mobile-menu-toggle {
+                display: block; /* Show hamburger button on mobile */
+            }
+
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: rgba(11, 37, 69, 0.98);
+                backdrop-filter: blur(10px);
+                border-bottom: 1px solid rgba(144, 224, 239, 0.1);
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.4s ease-in-out;
+            }
+
+            /* JavaScript will toggle this class to open the menu */
+            nav.mobile-active {
+                max-height: 350px; 
+            }
+
+            nav ul {
+                display: flex; 
+                flex-direction: column;
+                gap: 0;
+                padding: 1rem 0;
+                text-align: center;
+            }
+
+            nav ul li {
+                width: 100%;
+            }
+
+            nav ul li a {
+                display: block;
+                padding: 1rem;
+                font-size: 1.1rem;
+            }
+            
+            nav ul li a::after {
+                display: none; /* Hide the underline effect on mobile for cleaner look */
+            }
+
             .grid-layout { grid-template-columns: 1fr; }
             .footer-links-grid { grid-template-columns: 1fr; }
             .footer-top { flex-direction: column; gap: 40px; }
@@ -1192,7 +1183,6 @@
                     <a href="#" class="icon-circle" style="font-weight: bold; font-family: sans-serif; font-size: 1.1rem; color: #003356; text-decoration: none;">X</a>
                     <a href="#" class="icon-circle"><i class="fab fa-youtube"></i></a>
                     <a href="#" class="icon-circle"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" class="icon-circle"><i class="fab fa-tiktok"></i></a>
                 </div>
             </div>
             
@@ -1285,9 +1275,7 @@
                 });
             }
 
-            // ==========================================
-            // PASTE THE MOBILE NAVIGATION CODE HERE:
-            // ==========================================
+            // Mobile Navigation Toggle logic
             const menuToggle = document.getElementById('menuToggle');
             const navMenu = document.getElementById('navMenu');
             const toggleIcon = menuToggle ? menuToggle.querySelector('i') : null;
@@ -1313,7 +1301,6 @@
                     });
                 });
             }
-            // ==========================================
 
         }); // This ends your DOMContentLoaded listener
     </script>
