@@ -7,14 +7,14 @@
     <title>Anautilus LLP – Navigation & Footer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Active Navigation State Link Highlight */
+       /* Active Navigation State Link Highlight */
         nav ul li a.active {
-            color: var(--accent-river-aqua);
+            color: var(--river-aqua);
         }
 
         nav ul li a.active::after {
             width: 100%; /* Keeps the custom slide underline fully expanded */
-            background-color: var(--accent-river-aqua);
+            background-color: var(--river-aqua);
         }
         
         /* Color Palette Assignments */
@@ -191,6 +191,7 @@
             height: 18px;
             background-color: var(--river-aqua);
             border-radius: 2px;
+            flex-shrink: 0; /* Prevents line breaks from squeezing the accent bar */
         }
 
         /* --- PREMIUM FOOTER --- */
@@ -201,7 +202,7 @@
             position: relative;
             z-index: 30;
             border-top: 1px solid rgba(255, 255, 255, 0.08);
-            margin-top: auto; /* Pushes footer to bottom if page content is short */
+            margin-top: auto;
         }
 
         .footer-top {
@@ -224,6 +225,7 @@
         .social-icons {
             display: flex;
             gap: 16px;
+            flex-wrap: wrap;
         }
 
         .icon-circle {
@@ -341,26 +343,27 @@
             .footer-links-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
         }
 
-        /* ==========================================
-           MOBILE NAVIGATION ENGINE 
-        ========================================== */
         .mobile-menu-toggle {
             display: none;
             background: transparent;
             border: none;
-            color: var(--pristine-water, #F4F9FC);
+            color: var(--pristine-water);
             font-size: 1.5rem;
             cursor: pointer;
             transition: color 0.3s ease;
         }
 
         .mobile-menu-toggle:hover {
-            color: var(--river-aqua, #00B4D8);
+            color: var(--river-aqua);
         }
 
+        /* ==========================================
+           REFINED TABLET & MOBILE MEDIA QUERIES 
+        ========================================== */
         @media (max-width: 768px) {
+            /* Navbar Structure Fixes */
             .mobile-menu-toggle {
-                display: block; /* Show hamburger button on mobile screens */
+                display: block;
             }
 
             nav {
@@ -377,21 +380,16 @@
                 z-index: 1001;
             }
 
-            /* Toggled via JavaScript */
             nav.mobile-active {
                 max-height: 350px; 
             }
 
             nav ul {
-                display: flex !important; /* Forces the menu layout engine awake on open */
+                display: flex !important;
                 flex-direction: column;
                 gap: 0;
                 padding: 1rem 0;
                 text-align: center;
-                width: 100%;
-            }
-
-            nav ul li {
                 width: 100%;
             }
 
@@ -402,13 +400,66 @@
             }
             
             nav ul li a::after {
-                display: none; /* Strip out desktop absolute slide-lines */
+                display: none;
             }
 
-            .footer-links-grid { grid-template-columns: 1fr; }
-            .footer-top { flex-direction: column; gap: 40px; }
-            .legal-card { padding: 2.5rem 2rem; }
-            .legal-header h1 { font-size: 2.1rem; }
+            /* Main Content Container Adjustments */
+            .legal-main-container {
+                margin: 110px auto 40px auto; /* Reduced top gap for smaller screens */
+                width: 92%;
+            }
+
+            /* Card Layout Enhancements */
+            .legal-card {
+                padding: 2rem 1.5rem; /* Drastically reduced excessive inner desktop space */
+                border-radius: 12px;
+            }
+
+            .legal-header {
+                margin-bottom: 1.5rem;
+                padding-bottom: 1rem;
+            }
+
+            .legal-header h1 {
+                font-size: 1.85rem; /* Clean, scales nicely without awkward text wraps */
+                line-height: 1.3;
+            }
+
+            .legal-body {
+                font-size: 0.98rem; /* Slightly tighter reading base */
+                line-height: 1.7;
+            }
+
+            .legal-body p {
+                margin-bottom: 1.4rem;
+            }
+
+            .legal-body h2 {
+                font-size: 1.2rem; /* Scaled down subheaders */
+                margin: 2rem 0 0.8rem 0;
+                align-items: flex-start; /* Corrects block alignment if a subheader line breaks */
+            }
+
+            .legal-body h2::before {
+                margin-top: 3px; /* Keeps the blue indicator line center-aligned with line-1 text */
+            }
+
+            /* Footer Mobile Overhauls */
+            .premium-footer {
+                padding: 60px 6% 30px 6%;
+            }
+            .footer-links-grid { 
+                grid-template-columns: 1fr; 
+                gap: 25px;
+            }
+            .footer-top { 
+                flex-direction: column; 
+                gap: 35px; 
+                margin-bottom: 40px;
+            }
+            .footer-divider {
+                margin-bottom: 40px;
+            }
         }
     </style>
 </head>
@@ -480,7 +531,6 @@
                     <a href="#" class="icon-circle" style="font-weight: bold; font-family: sans-serif; font-size: 1.1rem; color: #003356; text-decoration: none;">X</a>
                     <a href="#" class="icon-circle"><i class="fab fa-youtube"></i></a>
                     <a href="#" class="icon-circle"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" class="icon-circle"><i class="fab fa-tiktok"></i></a>
                 </div>
             </div>
             
