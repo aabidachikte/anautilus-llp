@@ -8,14 +8,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Active Navigation State Link Highlight */
-nav ul li a.active {
-    color: var(--accent-river-aqua);
-}
+        nav ul li a.active {
+            color: var(--accent-river-aqua);
+        }
 
-nav ul li a.active::after {
-    width: 100%; /* Keeps the custom slide underline fully expanded */
-    background-color: var(--accent-river-aqua);
-}
+        nav ul li a.active::after {
+            width: 100%; /* Keeps the custom slide underline fully expanded */
+            background-color: var(--accent-river-aqua);
+        }
+        
         /* Color Palette Assignments */
         :root {
             --deep-ocean: #0B2545;
@@ -340,8 +341,70 @@ nav ul li a.active::after {
             .footer-links-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
         }
 
+        /* ==========================================
+           MOBILE NAVIGATION ENGINE 
+        ========================================== */
+        .mobile-menu-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            color: var(--pristine-water, #F4F9FC);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-menu-toggle:hover {
+            color: var(--river-aqua, #00B4D8);
+        }
+
         @media (max-width: 768px) {
-            nav ul { display: none; } 
+            .mobile-menu-toggle {
+                display: block; /* Show hamburger button on mobile screens */
+            }
+
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: rgba(11, 37, 69, 0.98);
+                backdrop-filter: blur(10px);
+                border-bottom: 1px solid rgba(144, 224, 239, 0.1);
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.4s ease-in-out;
+                z-index: 1001;
+            }
+
+            /* Toggled via JavaScript */
+            nav.mobile-active {
+                max-height: 350px; 
+            }
+
+            nav ul {
+                display: flex !important; /* Forces the menu layout engine awake on open */
+                flex-direction: column;
+                gap: 0;
+                padding: 1rem 0;
+                text-align: center;
+                width: 100%;
+            }
+
+            nav ul li {
+                width: 100%;
+            }
+
+            nav ul li a {
+                display: block;
+                padding: 1rem;
+                font-size: 1.1rem;
+            }
+            
+            nav ul li a::after {
+                display: none; /* Strip out desktop absolute slide-lines */
+            }
+
             .footer-links-grid { grid-template-columns: 1fr; }
             .footer-top { flex-direction: column; gap: 40px; }
             .legal-card { padding: 2.5rem 2rem; }
@@ -357,13 +420,20 @@ nav ul li a.active::after {
                 <img src="logo.png" alt="Anautilus Logo" onerror="this.style.display='none'">
                 <div class="brand-name">ANAUTILUS<span>LLP</span></div>
             </a>
-            <nav>
+            
+            <!-- Mobile Navigation Trigger -->
+            <button class="mobile-menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- Menu ID linked here -->
+            <nav id="navMenu">
                 <ul>
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
                     <li><a href="contact.html">Contact Us</a></li>
                     <li><a href="library.html">Library</a></li>
-                    <li><a href="disclaimer.html" class="active" >Disclaimer</a></li>
+                    <li><a href="disclaimer.html" class="active">Disclaimer</a></li>
                 </ul>
             </nav>
         </div>
@@ -420,7 +490,6 @@ nav ul li a.active::after {
                     <input type="email" placeholder="E-mail address" required>
                     <button class="submit-btn" type="submit"><i class="fas fa-paper-plane"></i></button>
                 </div>
-               
             </div>
         </div>
         
@@ -433,7 +502,6 @@ nav ul li a.active::after {
                     <li><a href="index.html">Rivers Dashboard</a></li>
                     <li><a href="gallery.html">Media Gallery</a></li>
                     <li><a href="library.html">Research Library</a></li>
-                   
                 </ul>
             </div>
             <div class="link-column">
@@ -446,21 +514,48 @@ nav ul li a.active::after {
             <div class="link-column">
                 <h4>HELP</h4>
                 <ul>
-                    
                     <li><a href="about.html#faq">FAQ</a></li>
-                 
                 </ul>
             </div>
             <div class="link-column">
                 <h4>LEGAL</h4>
                 <ul>
-                   
                     <li><a href="disclaimer.html">Disclaimer</a></li>
-                    
                 </ul>
             </div>
         </div>
     </footer>
 
+    <!-- INTERACTION LOGIC ENGINE -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const menuToggle = document.getElementById('menuToggle');
+            const navMenu = document.getElementById('navMenu');
+            const toggleIcon = menuToggle ? menuToggle.querySelector('i') : null;
+
+            if (menuToggle && navMenu && toggleIcon) {
+                menuToggle.addEventListener('click', () => {
+                    navMenu.classList.toggle('mobile-active');
+                    
+                    if (navMenu.classList.contains('mobile-active')) {
+                        toggleIcon.classList.remove('fa-bars');
+                        toggleIcon.classList.add('fa-times');
+                    } else {
+                        toggleIcon.classList.remove('fa-times');
+                        toggleIcon.classList.add('fa-bars');
+                    }
+                });
+
+                // Dismisses the panel nicely if an in-page layout link is struck
+                document.querySelectorAll('nav ul li a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navMenu.classList.remove('mobile-active');
+                        toggleIcon.classList.remove('fa-times');
+                        toggleIcon.classList.add('fa-bars');
+                    });
+                });
+            }
+        });
+    </script>
 </body>
 </html>
