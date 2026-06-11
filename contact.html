@@ -639,30 +639,7 @@ nav ul li a.active::after {
             }
         }
 
-        @media (max-width: 768px) {
-            /* Drops navigation menu elements to preserve screen layout estate on mobile devices */
-            nav ul { 
-                display: none; 
-            } 
-
-            .main-content {
-                padding-top: 75px;
-            }
-
-            .footer-links-grid { 
-                grid-template-columns: repeat(2, 1fr); 
-                gap: 30px; 
-            }
-
-            .footer-top { 
-                flex-direction: column; 
-                gap: 40px; 
-            }
-
-            .input-group {
-                width: 100%;
-            }
-        }
+       
 
         @media (max-width: 576px) {
             .section-heading {
@@ -695,27 +672,96 @@ nav ul li a.active::after {
                 grid-template-columns: 1fr; 
             }
         }
+        /* ==========================================
+           MOBILE NAVIGATION ENGINE 
+        ========================================== */
+        .mobile-menu-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            color: var(--pristine-water, #F4F9FC);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-menu-toggle:hover {
+            color: var(--river-aqua, #00B4D8);
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block; /* Show hamburger button on mobile screens */
+            }
+
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: rgba(11, 37, 69, 0.98);
+                backdrop-filter: blur(10px);
+                border-bottom: 1px solid rgba(144, 224, 239, 0.1);
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.4s ease-in-out;
+                z-index: 1001;
+            }
+
+            /* Toggled via JavaScript */
+            nav.mobile-active {
+                max-height: 350px; 
+            }
+
+            nav ul {
+                display: flex !important; /* Force display on mobile */
+                flex-direction: column;
+                gap: 0;
+                padding: 1rem 0;
+                text-align: center;
+                width: 100%;
+            }
+
+            nav ul li {
+                width: 100%;
+            }
+
+            nav ul li a {
+                display: block;
+                padding: 1rem;
+                font-size: 1.1rem;
+            }
+            
+            nav ul li a::after {
+                display: none; /* Strip out desktop hover lines */
+            }
+        }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="nav-container">
-            <a href="index.html" class="logo-area">
-                <img src="logo.png" alt="Anautilus Logo" onerror="this.style.display='none'">
-                <div class="brand-name">ANAUTILUS<span>LLP</span></div>
-            </a>
-            <nav>
-                <ul>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="gallery.html">Gallery</a></li>
-                    <li><a href="contact.html" class="active" >Contact Us</a></li>
-                    <li><a href="library.html">Library</a></li>
-                    <li><a href="disclaimer.html">Disclaimer</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+   <header>
+    <div class="nav-container">
+        <a href="index.html" class="logo-area">
+            <img src="logo.png" alt="Anautilus Logo" onerror="this.style.display='none'">
+            <div class="brand-name">ANAUTILUS<span>LLP</span></div>
+        </a>
+        
+        <button class="mobile-menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <nav id="navMenu">
+            <ul>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="library.html">Library</a></li>
+                <li><a href="disclaimer.html">Disclaimer</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
 
     <div class="main-content">
         <div class="container">
@@ -892,6 +938,37 @@ nav ul li a.active::after {
                 pageObserver.observe(element);
             });
         });
+        <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Mobile Navigation Toggle logic
+            const menuToggle = document.getElementById('menuToggle');
+            const navMenu = document.getElementById('navMenu');
+            const toggleIcon = menuToggle ? menuToggle.querySelector('i') : null;
+
+            if (menuToggle && navMenu && toggleIcon) {
+                menuToggle.addEventListener('click', () => {
+                    navMenu.classList.toggle('mobile-active');
+                    
+                    if (navMenu.classList.contains('mobile-active')) {
+                        toggleIcon.classList.remove('fa-bars');
+                        toggleIcon.classList.add('fa-times');
+                    } else {
+                        toggleIcon.classList.remove('fa-times');
+                        toggleIcon.classList.add('fa-bars');
+                    }
+                });
+
+                // Close menu if a link is clicked
+                document.querySelectorAll('nav ul li a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navMenu.classList.remove('mobile-active');
+                        toggleIcon.classList.remove('fa-times');
+                        toggleIcon.classList.add('fa-bars');
+                    });
+                });
+            }
+        });
+    </script>
     </script>
 </body>
 </html>
