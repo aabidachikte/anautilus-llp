@@ -773,31 +773,35 @@ nav ul li a.active::after {
             <div class="contact-grid">
                 <div class="card-panel scroll-reveal">
                     <h2 class="form-title">Send an Inquiry</h2>
-                    <form action="#" method="POST">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label class="form-label">Full Name</label>
-                                <input type="text" class="form-control" placeholder="Johnathan Doe">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Email Address</label>
-                                <input type="email" class="form-control" placeholder="j.doe@engineering.com">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Subject</label>
-                            <select class="form-control">
-                                <option>General Inquiry</option>
-                                <option>Partnership Proposal</option>
-                                <option>Volunteering Opportunities</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Message</label>
-                            <textarea class="form-control" placeholder="How can we collaborate on river restoration?"></textarea>
-                        </div>
-                        <button type="submit" class="btn-transmit">Transmit Message <i class="fas fa-paper-plane"></i></button>
-                    </form>
+                   <div class="card-panel scroll-reveal">
+    <h2 class="form-title">Send an Inquiry</h2>
+    
+    <form id="inquiryForm">
+        <div class="form-row">
+            <div class="form-group">
+                <label class="form-label">Full Name</label>
+                <input type="text" id="nameInput" class="form-control" placeholder="Johnathan Doe" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Email Address</label>
+                <input type="email" id="emailInput" class="form-control" placeholder="j.doe@engineering.com" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-label">Subject</label>
+            <select id="subjectInput" class="form-control" required>
+                <option value="General Inquiry">General Inquiry</option>
+                <option value="Partnership Proposal">Partnership Proposal</option>
+                <option value="Volunteering Opportunities">Volunteering Opportunities</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-label">Message</label>
+            <textarea id="messageInput" class="form-control" placeholder="How can we collaborate on river restoration?" required></textarea>
+        </div>
+        <button type="submit" id="submitBtn" class="btn-transmit">Transmit Message <i class="fas fa-paper-plane"></i></button>
+    </form>
+</div>
                 </div>
 
                 <div>
@@ -965,6 +969,54 @@ nav ul li a.active::after {
                         toggleIcon.classList.add('fa-bars');
                     });
                 });
+            }
+        });
+        // ==========================================
+        // WEB3FORMS CONTACT SUBMISSION LOGIC
+        // ==========================================
+        document.getElementById('inquiryForm').addEventListener('submit', async function(event) {
+            event.preventDefault(); // Stop page reload
+
+            const submitButton = document.getElementById('submitBtn');
+            const originalBtnText = submitButton.innerHTML;
+            
+            // Visual feedback while sending
+            submitButton.innerHTML = 'Transmitting... <i class="fas fa-spinner fa-spin"></i>';
+            submitButton.disabled = true;
+
+            const formData = {
+                access_key: "5e86d986-38db-44a0-aa90-e68da5277322",
+                name: document.getElementById('nameInput').value,
+                email: document.getElementById('emailInput').value,
+                subject: document.getElementById('subjectInput').value,
+                message: document.getElementById('messageInput').value
+            };
+
+            try {
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    alert("Inquiry successfully transmitted to Anautilus LLP!");
+                    document.getElementById('inquiryForm').reset(); // Clear input entries
+                } else {
+                    alert("Transmission failed: " + result.message);
+                }
+            } catch (error) {
+                console.error("Submission error:", error);
+                alert("An error occurred. Please verify your connection setup.");
+            } finally {
+                // Restore button state
+                submitButton.innerHTML = originalBtnText;
+                submitButton.disabled = false;
             }
         });
     </script>
