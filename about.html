@@ -8,80 +8,45 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         /* Active Navigation State Link Highlight */
-nav ul li a.active {
-    color: var(--accent-river-aqua);
-}
+        nav ul li a.active {
+            color: var(--accent-river-aqua);
+        }
 
-nav ul li a.active::after {
-    width: 100%; /* Keeps the custom slide underline fully expanded */
-    background-color: var(--accent-river-aqua);
-}
+        nav ul li a.active::after {
+            width: 100%; /* Keeps the custom slide underline fully expanded */
+            background-color: var(--accent-river-aqua);
+        }
+
         /* Premium Hover Highlight for About Us Panels & Cards */
-.stat-card, .vm-card, .operation-card, .team-card, .award-item, .partner-logo-card {
-    border: 1px solid rgba(144, 224, 239, 0.1);
-    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
-                border-color 0.3s ease, 
-                box-shadow 0.3s ease,
-                background-color 0.3s ease;
-}
+        .stat-card, .vm-card, .operation-card, .team-card, .award-item, .partner-logo-card {
+            border: 1px solid rgba(144, 224, 239, 0.1);
+            transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
+                        border-color 0.3s ease, 
+                        box-shadow 0.3s ease,
+                        background-color 0.3s ease;
+        }
 
-/* Hover States for Main Grid Components */
-.stat-card:hover, 
-.vm-card:hover, 
-.operation-card:hover, 
-.team-card:hover, 
-.award-item:hover, 
-.partner-logo-card:hover {
-    transform: translateY(-6px); /* Clean upward lift */
-    border-color: var(--accent-river-aqua); /* Sharp brand outline shift */
-    background-color: rgba(19, 64, 116, 0.8); /* Slightly enriches card depth */
-    
-    /* Soft aqua ambient glow */
-    box-shadow: 0 12px 24px rgba(0, 180, 216, 0.2), 
-                0 0 12px rgba(0, 180, 216, 0.1);
-}
+        /* Hover States for Main Grid Components */
+        .stat-card:hover, 
+        .vm-card:hover, 
+        .operation-card:hover, 
+        .team-card:hover, 
+        .partner-logo-card:hover {
+            /* Dramatic upward glide */
+            transform: translateY(-12px); 
+            border-color: var(--accent-river-aqua);
+            background-color: rgba(19, 64, 116, 0.85);
+            /* Deep background drop shadow combined with an aqua ambient glow */
+            box-shadow: 0 20px 40px rgba(11, 37, 69, 0.6), 
+                        0 0 20px rgba(0, 180, 216, 0.2);
+        }
 
-/* Specific adjustment for horizontal award rows so they push outward instead of upward */
-.award-item:hover {
-    transform: translateX(6px); 
-}
-/* About Us Cards 3D Pop-Up Effect */
-.stat-card:hover, 
-.vm-card:hover, 
-.operation-card:hover, 
-.team-card:hover, 
-.partner-logo-card:hover {
-    /* Dramatic upward glide */
-    transform: translateY(-12px); 
-    
-    border-color: var(--accent-river-aqua);
-    background-color: rgba(19, 64, 116, 0.85);
-    
-    /* Deep background drop shadow combined with an aqua ambient glow */
-    box-shadow: 0 20px 40px rgba(11, 37, 69, 0.6), 
-                0 0 20px rgba(0, 180, 216, 0.2);
-}
+        /* Specific adjustment for horizontal award rows so they push outward instead of upward */
+        .award-item:hover {
+            transform: translateX(6px); 
+            background-color: var(--bg-clean-marine);
+        }
 
-/* Hover States for Main Grid Components */
-.stat-card:hover, 
-.vm-card:hover, 
-.operation-card:hover, 
-.team-card:hover, 
-.award-item:hover, 
-.partner-logo-card:hover {
-    transform: translateY(-6px); /* Clean upward lift */
-    border-color: var(--accent-river-aqua); /* Sharp brand outline shift */
-    background-color: rgba(19, 64, 116, 0.8); /* Slightly enriches card depth */
-    
-    /* Soft aqua ambient glow */
-    box-shadow: 0 12px 24px rgba(0, 180, 216, 0.2), 
-                0 0 12px rgba(0, 180, 216, 0.1);
-}
-
-/* Specific adjustment for horizontal award rows so they push outward instead of upward */
-.award-item:hover {
-    transform: translateX(6px); 
-}
         /* ==========================================================================
            Anautilus LLP - Unified Ocean-Inspired Design System
            ========================================================================== */
@@ -287,11 +252,6 @@ nav ul li a.active::after {
             gap: 20px;
         }
 
-        .stat-card:hover {
-            transform: translateY(-2px);
-            border-color: var(--accent-river-aqua);
-        }
-
         .stat-icon {
             font-size: 2.5rem;
             color: var(--accent-river-aqua);
@@ -395,11 +355,6 @@ nav ul li a.active::after {
             align-items: center;
         }
 
-        .team-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 24px rgba(11, 37, 69, 0.4);
-        }
-
         .avatar-placeholder {
             width: 100px;
             height: 100px;
@@ -451,11 +406,6 @@ nav ul li a.active::after {
             align-items: center;
             gap: 16px;
             border-left: 3px solid var(--accent-river-aqua);
-        }
-
-        .award-item:hover {
-            background-color: var(--bg-clean-marine);
-            transform: translateX(4px);
         }
 
         .award-item i {
@@ -649,7 +599,7 @@ nav ul li a.active::after {
         }
 
         /* ==========================================================================
-           AUTOMATIC MOBILE ALIGNMENT OVERRIDES (The Responsive Layout Toggle Engine)
+           AUTOMATIC RESPONSIVE DESIGN MEDIA QUERIES
            ========================================================================== */
         @media (max-width: 1200px) {
             .team-grid {
@@ -689,7 +639,6 @@ nav ul li a.active::after {
             .card-panel {
                 padding: 30px 20px;
             }
-        }
 
             .main-content {
                 padding-top: 75px;
@@ -732,6 +681,7 @@ nav ul li a.active::after {
                 grid-template-columns: 1fr; 
             }
         }
+
         /* ==========================================
            MOBILE NAVIGATION ENGINE 
         ========================================== */
@@ -739,14 +689,14 @@ nav ul li a.active::after {
             display: none;
             background: transparent;
             border: none;
-            color: var(--pristine-water, #F4F9FC);
+            color: var(--text-pristine);
             font-size: 1.5rem;
             cursor: pointer;
             transition: color 0.3s ease;
         }
 
         .mobile-menu-toggle:hover {
-            color: var(--river-aqua, #00B4D8);
+            color: var(--accent-river-aqua);
         }
 
         @media (max-width: 768px) {
@@ -813,7 +763,7 @@ nav ul li a.active::after {
 
         <nav id="navMenu">
             <ul>
-                <li><a href="about.html"  class="active">About Us</a></li>
+                <li><a href="about.html" class="active">About Us</a></li>
                 <li><a href="gallery.html">Gallery</a></li>
                 <li><a href="contact.html">Contact Us</a></li>
                 <li><a href="library.html">Library</a></li>
@@ -826,14 +776,12 @@ nav ul li a.active::after {
     <div class="main-content">
         <div class="container">
             
-            <!-- Hero Header Section Area -->
             <div class="scroll-reveal">
                 <p class="section-tagline">OUR ORIGIN & PURPOSE</p>
                 <h1 class="section-heading">Restoring the Vitality of Our <span class="highlight">River Ecosystems</span></h1>
                 <p class="section-description">Based out of Pune, India, Anautilus LLP combines modular ecological engineering with cutting-edge deployment tools to tackle urban river pollution and industrial waste flow directly at the source.</p>
             </div>
 
-            <!-- What is Anautilus section & Quick statistics grid track -->
             <div class="about-overview-grid">
                 <div class="card-panel scroll-reveal">
                     <h2 class="form-title" style="margin-bottom: 16px;">What is Anautilus LLP?</h2>
@@ -866,7 +814,6 @@ nav ul li a.active::after {
                 </div>
             </div>
 
-            <!-- Vision and Mission Card Block Architecture -->
             <div class="vision-mission-grid">
                 <div class="vm-card scroll-reveal">
                     <h2><i class="fas fa-eye"></i> Our Vision</h2>
@@ -878,7 +825,6 @@ nav ul li a.active::after {
                 </div>
             </div>
 
-            <!-- What We Do Operations Section Track -->
             <p class="section-tagline scroll-reveal">OPERATIONAL STRATEGY</p>
             <h2 class="section-heading scroll-reveal" style="font-size: 2.2rem; margin-bottom: 32px;">What We Do</h2>
             
@@ -900,7 +846,6 @@ nav ul li a.active::after {
                 </div>
             </div>
 
-            <!-- Team Members Section Track Grid -->
             <div class="team-section-heading scroll-reveal">
                 <p class="section-tagline">THE FIELD FORCE</p>
                 <h2 style="color: var(--text-white); font-size: 2rem;">Team Members</h2>
@@ -932,7 +877,6 @@ nav ul li a.active::after {
                 </div>
             </div>
 
-            <!-- Awards and Partners Container Track Block -->
             <div class="recognition-partners-grid">
                 <div class="scroll-reveal">
                     <h2 class="form-title" style="font-size: 1.6rem; margin-bottom: 24px;">Awards & Honours</h2>
@@ -962,8 +906,8 @@ nav ul li a.active::after {
                             <div class="partner-name">Pune Municipal Frameworks</div>
                         </div>
                         <div class="partner-logo-card">
-                            <i class="fas fa-handshake-angle"></i>
-                            <div class="partner-name">Mula-Mutha Clean Taskforce</div>
+                            <i class="fas fa-handshake"></i>
+                            <div class="partner-name">Industrial Waste Frameworks</div>
                         </div>
                     </div>
                 </div>
@@ -977,10 +921,10 @@ nav ul li a.active::after {
             <div class="footer-brand-section">
                 <h3>FOLLOW US</h3>
                 <div class="social-icons">
-                    <a href="https://www.instagram.com/anautilusllp/" class="icon-circle"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.facebook.com/profile.php?id=61590883765350" class="icon-circle"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://x.com/anautilusllp" class="icon-circle" style="font-weight: bold; font-family: sans-serif; font-size: 1.1rem; color: #003356; text-decoration: none;">X</a>
-                    <a href="https://www.youtube.com/channel/UC1iT7Zn_87jrkXAlCEaItSg" class="icon-circle"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="icon-circle"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="icon-circle"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="icon-circle"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#" class="icon-circle"><i class="fab fa-youtube"></i></a>
                     <a href="#" class="icon-circle"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
@@ -988,23 +932,22 @@ nav ul li a.active::after {
             <div class="footer-newsletter">
                 <h3>NEWSLETTER</h3>
                 <div class="input-group">
-                    <input type="email" placeholder="E-mail address" required>
-                    <button class="submit-btn" type="submit"><i class="fas fa-paper-plane"></i></button>
+                    <input type="email" placeholder="E-mail address" aria-label="E-mail address">
+                    <button class="submit-btn" type="submit" aria-label="Subscribe"><i class="fas fa-paper-plane"></i></button>
                 </div>
-                
+                <p class="newsletter-sub">Subscribe to trace monthly engineering metric milestones and clean water analytics.</p>
             </div>
         </div>
-        
+
         <hr class="footer-divider">
-        
+
         <div class="footer-links-grid">
             <div class="link-column">
                 <h4>PROJECTS AND UPDATES</h4>
                 <ul>
-                    <li><a href="index.html">Rivers Dashboard</a></li>
+                    <li><a href="#">Rivers Dashboard</a></li>
                     <li><a href="gallery.html">Media Gallery</a></li>
-                    <li><a href="library.html">Research Library</a></li>
-               
+                    <li><a href="#">Research Library</a></li>
                 </ul>
             </div>
             <div class="link-column">
@@ -1012,20 +955,17 @@ nav ul li a.active::after {
                 <ul>
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="#">Careers</a></li>
-                   
                 </ul>
             </div>
             <div class="link-column">
                 <h4>HELP</h4>
                 <ul>
-             
                     <li><a href="#">FAQ</a></li>
                 </ul>
             </div>
             <div class="link-column">
                 <h4>LEGAL</h4>
                 <ul>
-                    
                     <li><a href="disclaimer.html">Disclaimer</a></li>
                 </ul>
             </div>
@@ -1033,55 +973,29 @@ nav ul li a.active::after {
     </footer>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const revealElements = document.querySelectorAll('.scroll-reveal');
-            
-            const observerOptions = {
-                root: null, 
-                threshold: 0.1, 
-                rootMargin: "0px 0px -40px 0px" 
-            };
-
-            const pageObserver = new IntersectionObserver(function (entries, observer) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('appear');
-                        pageObserver.unobserve(entry.target); 
-                    }
-                });
-            }, observerOptions);
-
+        // Simple Scroll-Reveal Mechanism Setup
+        const revealElements = document.querySelectorAll('.scroll-reveal');
+        const revealOnScroll = () => {
             revealElements.forEach(element => {
-                pageObserver.observe(element);
+                const elementTop = element.getBoundingClientRect().top;
+                if (elementTop < window.innerHeight * 0.85) {
+                    element.classList.add('appear');
+                }
             });
-        });
-        document.addEventListener("DOMContentLoaded", () => {
-            // Mobile Navigation Toggle logic
-            const menuToggle = document.getElementById('menuToggle');
-            const navMenu = document.getElementById('navMenu');
-            const toggleIcon = menuToggle ? menuToggle.querySelector('i') : null;
+        };
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
 
-            if (menuToggle && navMenu && toggleIcon) {
-                menuToggle.addEventListener('click', () => {
-                    navMenu.classList.toggle('mobile-active');
-                    
-                    if (navMenu.classList.contains('mobile-active')) {
-                        toggleIcon.classList.remove('fa-bars');
-                        toggleIcon.classList.add('fa-times');
-                    } else {
-                        toggleIcon.classList.remove('fa-times');
-                        toggleIcon.classList.add('fa-bars');
-                    }
-                });
-
-                // Close menu if a link is clicked
-                document.querySelectorAll('nav ul li a').forEach(link => {
-                    link.addEventListener('click', () => {
-                        navMenu.classList.remove('mobile-active');
-                        toggleIcon.classList.remove('fa-times');
-                        toggleIcon.classList.add('fa-bars');
-                    });
-                });
+        // Mobile Menu Toggle Script Engine Logic
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('mobile-active');
+            const icon = menuToggle.querySelector('i');
+            if(navMenu.classList.contains('mobile-active')) {
+                icon.classList.replace('fa-bars', 'fa-times');
+            } else {
+                icon.classList.replace('fa-times', 'fa-bars');
             }
         });
     </script>
