@@ -112,13 +112,13 @@
             width: 100%;
         }
 
-     /* Hero Wrapper */
+    /* Hero Wrapper */
         .hero-wrapper {
             position: relative;
             width: 100%;
             height: 100vh;
-            /* Support older or strict mobile rendering engines */
-            height: -webkit-fill-available; 
+            /* Use a fallback for modern mobile viewports */
+            height: 100dvh; 
             display: flex;
             align-items: center;
             justify-content: center;
@@ -134,9 +134,9 @@
             height: 100%;
             min-width: 100%;
             min-height: 100%;
-            /* Centers the video properly regardless of the aspect ratio changes on mobile */
-            transform: translate(-50%, -50%); 
             object-fit: cover;
+            /* This brings it back to view and scales it perfectly from the center */
+            transform: translate(-50%, -50%); 
             z-index: 1;
         }
 
